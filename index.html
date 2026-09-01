@@ -1770,8 +1770,9 @@
             }
         ];
 
-        let currentYear = 2026;
-        let currentMonth = 6; // July (0-indexed)
+        const todayDate = new Date();
+        let currentYear = todayDate.getFullYear();
+        let currentMonth = todayDate.getMonth();
 
         const MONTH_NAMES = [
             'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -1811,9 +1812,12 @@
                 const event = CALENDAR_EVENTS.find(e => e.day === day && e.month === currentMonth && e.year === currentYear);
 
                 const cell = document.createElement('div');
+                const isToday = (day === todayDate.getDate() && currentMonth === todayDate.getMonth() && currentYear === todayDate.getFullYear());
+
                 if (event) {
                     const badgeCls = event.badgeClass || 'event-blue';
                     cell.className = `calendar-cell has-event ${badgeCls}`;
+                    if (isToday) cell.classList.add('is-today');
                     const eventIndex = CALENDAR_EVENTS.indexOf(event);
                     cell.onclick = () => showEventDetailsByIndex(eventIndex);
 
@@ -1828,6 +1832,7 @@
                     `;
                 } else {
                     cell.className = 'calendar-cell';
+                    if (isToday) cell.classList.add('is-today');
                     cell.innerHTML = `<div class="calendar-day-num-box">${day}</div>`;
                 }
                 gridContainer.appendChild(cell);

@@ -543,6 +543,16 @@ p {
     transition: all 0.2s ease;
 }
 
+.calendar-cell.is-today .calendar-day-num-box {
+    border: 2px solid var(--secondary) !important;
+    box-shadow: 0 0 15px var(--secondary) !important;
+}
+
+.calendar-cell.is-today:not(.has-event) .calendar-day-num-box {
+    color: var(--secondary);
+    background: rgba(130, 207, 255, 0.1);
+}
+
 /* Event Types and Highlights */
 .calendar-cell.has-event {
     cursor: pointer;
