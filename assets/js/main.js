@@ -548,18 +548,19 @@ ${mensaje}`;
                     }
                     
                     areas.forEach(area => {
-                        const color = area.color || 'primary';
-                        const isMaterial = area.isMaterial || false;
-                        const icon = area.icon || 'bi-gear';
-                        const textClass = color === 'primary' ? 'text-primary-custom' : 'text-secondary-custom';
-                        const bgRgba = color === 'primary' ? 'rgba(166,227,88,0.1)' : 'rgba(130,207,255,0.1)';
+                        let color = area.color || '#a6e358';
+                        if (color === 'primary') color = '#a6e358';
+                        if (color === 'secondary') color = '#82cfff';
                         
+                        const rawIcon = area.icon || 'bi-gear';
+                        // Detect if it's a Bootstrap icon (starts with 'bi-') or Material icon
+                        const isBootstrap = rawIcon.startsWith('bi-') || rawIcon.startsWith('bi ');
                         let iconHtml = "";
-                        if (isMaterial) {
-                            iconHtml = `<span class="material-symbols-outlined fs-3 ${textClass}">${icon}</span>`;
+                        if (isBootstrap) {
+                            const finalIcon = rawIcon.startsWith('bi-') ? rawIcon : `bi-${rawIcon}`;
+                            iconHtml = `<i class="bi ${finalIcon}" style="color: ${color}; font-size: 1.75rem;"></i>`;
                         } else {
-                            const finalIcon = icon.startsWith('bi-') ? icon : `bi-${icon}`;
-                            iconHtml = `<i class="${textClass} bi ${finalIcon}"></i>`;
+                            iconHtml = `<span class="material-symbols-outlined" style="color: ${color}; font-size: 1.75rem;">${rawIcon}</span>`;
                         }
                         
                         const col = document.createElement("div");
@@ -568,11 +569,11 @@ ${mensaje}`;
                             <a href="#" class="text-decoration-none h-100 d-block">
                                 <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-100" data-area-id="${area.id}">
                                     <div class="rounded-circle d-flex align-items-center justify-content-center"
-                                        style="width: 56px; height: 56px; background: ${bgRgba};">
+                                        style="width: 56px; height: 56px; background: ${color}1A;">
                                         ${iconHtml}
                                     </div>
                                     <div>
-                                        <h3 class="font-heading ${textClass} fs-5 fw-bold mb-2">${area.title}</h3>
+                                        <h3 class="font-heading fs-5 fw-bold mb-2" style="color: ${color} !important">${area.title}</h3>
                                         <p class="text-white mb-0" style="text-shadow: none;">${area.description}</p>
                                     </div>
                                 </div>

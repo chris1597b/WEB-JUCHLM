@@ -493,11 +493,31 @@
                         <form id="areasForm" onsubmit="saveArea(event)">
                             <div class="row g-3">
                                 <input type="hidden" id="area_id">
-                                <div class="col-md-7">
+                                <div class="col-md-5">
                                     <label class="form-label text-white fw-bold">Título del Área</label>
                                     <input type="text" class="form-control" id="area_title" placeholder="Ej. Área de Infraestructura Hidráulica" required>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-3">
+                                    <label class="form-label text-white fw-bold">Ícono del Área</label>
+                                    <input type="hidden" id="area_icon" value="bi-gear">
+                                    <div class="area-icon-picker-wrap" style="position:relative;">
+                                        <button type="button" id="area_icon_btn" onclick="toggleIconPicker()"
+                                            class="btn w-100 d-flex align-items-center gap-2 justify-content-between"
+                                            style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.2); color:#fff; border-radius:8px; height:38px;">
+                                            <span class="d-flex align-items-center gap-2">
+                                                <i id="area_icon_preview" class="bi bi-gear" style="font-size:1.2rem;"></i>
+                                                <span id="area_icon_label" class="small text-white-50">bi-gear</span>
+                                            </span>
+                                            <i class="bi bi-chevron-down small"></i>
+                                        </button>
+                                        <div id="iconPickerDropdown" style="display:none; position:absolute; z-index:999; top:42px; left:0; right:0; background:rgba(10,20,50,0.98); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px; max-height:220px; overflow-y:auto; box-shadow: 0 8px 32px rgba(0,0,0,0.6);">
+                                            <div class="d-flex flex-wrap gap-1" id="iconPickerGrid">
+                                                <!-- Populated by JS -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <label class="form-label text-white fw-bold d-flex justify-content-between align-items-center mb-2">
                                         <span>Paleta / Color de Sección</span>
                                         <span id="area_color_badge" class="badge rounded-pill px-2 py-1" style="background-color: #20c997; color: #fff;">Color Área</span>
@@ -2810,6 +2830,95 @@
         // 7. AREAS
         let areasList = [];
 
+        // === ICON PICKER ===
+        const AREA_ICONS = [
+            'bi-gear','bi-gear-wide-connected','bi-gear-fill',
+            'bi-people-fill','bi-person-fill','bi-person-check-fill',
+            'bi-building','bi-building-fill','bi-buildings-fill',
+            'bi-wrench-adjustable','bi-tools','bi-hammer',
+            'bi-droplet-fill','bi-water','bi-tsunami',
+            'bi-graph-up-arrow','bi-bar-chart-fill','bi-pie-chart-fill',
+            'bi-clipboard-data-fill','bi-clipboard-pulse','bi-journal-check',
+            'bi-shield-fill-check','bi-shield-lock-fill','bi-shield-fill',
+            'bi-briefcase-fill','bi-briefcase','bi-archive-fill',
+            'bi-cpu-fill','bi-cpu','bi-diagram-3-fill',
+            'bi-lightbulb-fill','bi-star-fill','bi-award-fill',
+            'bi-house-fill','bi-house-door-fill','bi-tree-fill',
+            'bi-cash-stack','bi-bank','bi-coin',
+            'bi-truck-front-fill','bi-map-fill','bi-geo-alt-fill',
+            'bi-calendar-event-fill','bi-calendar-check-fill','bi-clock-fill',
+            'bi-envelope-fill','bi-telephone-fill','bi-chat-dots-fill',
+            'bi-camera-fill','bi-file-earmark-text-fill','bi-folder-fill',
+            'bi-check-circle-fill','bi-info-circle-fill','bi-exclamation-triangle-fill',
+            'bi-recycle','bi-infinity','bi-arrows-fullscreen',
+            'bi-activity','bi-heart-pulse-fill','bi-broadcast',
+            'bi-lock-fill','bi-key-fill','bi-fingerprint',
+            'bi-rulers','bi-compass-fill','bi-globe',
+            'bi-send-fill','bi-pin-map-fill','bi-signpost-split-fill'
+        ];
+
+        function initIconPicker() {
+            const grid = document.getElementById('iconPickerGrid');
+            if (!grid || grid.dataset.initialized) return;
+            grid.dataset.initialized = 'true';
+            AREA_ICONS.forEach(icon => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.title = icon;
+                btn.style.cssText = 'width:38px;height:38px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;';
+                btn.innerHTML = `<i class="bi ${icon}" style="font-size:1.1rem;color:#82cfff;"></i>`;
+                btn.onmouseover = () => { btn.style.background = 'rgba(130,207,255,0.2)'; btn.style.borderColor = '#82cfff'; };
+                btn.onmouseleave = () => { btn.style.background = 'rgba(255,255,255,0.05)'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; };
+                btn.onclick = () => selectIcon(icon);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectIcon(icon) {
+            document.getElementById('area_icon').value = icon;
+            const prev = document.getElementById('area_icon_preview');
+            const lbl  = document.getElementById('area_icon_label');
+            if (prev) { prev.className = `bi ${icon}`; }
+            if (lbl)  { lbl.textContent = icon; }
+            document.getElementById('iconPickerDropdown').style.display = 'none';
+            // Highlight selected
+            document.querySelectorAll('#iconPickerGrid button').forEach(b => {
+                const ic = b.querySelector('i');
+                if (ic && ic.className === `bi ${icon}`) {
+                    b.style.background = 'rgba(130,207,255,0.3)';
+                    b.style.borderColor = '#82cfff';
+                } else {
+                    b.style.background = 'rgba(255,255,255,0.05)';
+                    b.style.borderColor = 'rgba(255,255,255,0.1)';
+                }
+            });
+        }
+
+        function toggleIconPicker() {
+            const dd = document.getElementById('iconPickerDropdown');
+            if (!dd) return;
+            initIconPicker();
+            dd.style.display = dd.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Close picker when clicking outside
+        document.addEventListener('click', function(e) {
+            const wrap = document.querySelector('.area-icon-picker-wrap');
+            if (wrap && !wrap.contains(e.target)) {
+                const dd = document.getElementById('iconPickerDropdown');
+                if (dd) dd.style.display = 'none';
+            }
+        });
+
+        // Helper: sync icon picker display when loading an area
+        function syncIconPickerDisplay(icon) {
+            const prev = document.getElementById('area_icon_preview');
+            const lbl  = document.getElementById('area_icon_label');
+            if (prev) prev.className = `bi ${icon}`;
+            if (lbl)  lbl.textContent = icon;
+        }
+
+
         function setAreaColor(colorHex) {
             const input = document.getElementById("area_color");
             if (input) {
@@ -2866,6 +2975,9 @@
                 document.getElementById("area_id").value = a.id;
                 document.getElementById("area_title").value = a.title;
                 document.getElementById("area_description").value = a.description || "";
+                const loadedIcon = a.icon || "bi-gear";
+                document.getElementById("area_icon").value = loadedIcon;
+                syncIconPickerDisplay(loadedIcon);
                 
                 const colorVal = (a.color && a.color.startsWith('#')) ? a.color : "#20c997";
                 document.getElementById("area_color").value = colorVal;
@@ -2882,6 +2994,8 @@
             document.getElementById("area_id").value = "";
             document.getElementById("area_title").value = "";
             document.getElementById("area_description").value = "";
+            document.getElementById("area_icon").value = "bi-gear";
+            syncIconPickerDisplay("bi-gear");
             document.getElementById("area_color").value = "#20c997";
             updateAreaColorPreview();
 
@@ -2932,6 +3046,7 @@
                 id: id,
                 title: document.getElementById("area_title").value,
                 description: document.getElementById("area_description").value,
+                icon: document.getElementById("area_icon").value || "bi-gear",
                 color: document.getElementById("area_color").value || "#20c997"
             };
 
