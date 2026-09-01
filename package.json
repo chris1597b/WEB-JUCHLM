@@ -1,0 +1,17 @@
+{
+  "name": "jushmchl",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "dev": "node server.js",
+    "lint": "echo 'No lint required'",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "multer": "^2.2.0"
+  }
+}

@@ -1,0 +1,22 @@
+# ==============================================================================
+# ARCHIVO DE CONFIGURACIÓN APACHE PARA INFINITYFREE / CPANEL
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Pasar el Header Authorization a PHP en Apache/FastCGI (Crucial para Login y Admin)
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+</IfModule>
+
+# Habilitar CORS
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, X-Authorization"
+</IfModule>
+
+# Configuración de límite de subida
+php_value upload_max_filesize 10M
+php_value post_max_size 10M

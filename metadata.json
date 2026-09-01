@@ -1,0 +1,6 @@
+{
+  "name": "Junta de Usuarios Chancay Lambayeque",
+  "description": "Plataforma oficial de la Junta de Usuarios Chancay Lambayeque con panel de administración inteligente para actualizar contenido, comisiones y convocatorias.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

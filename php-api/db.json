@@ -1,0 +1,29 @@
+{
+    "diagnostico": {
+        "title": "DIAGNÓSTICO DE LA JUSHMCHL",
+        "subtitle": "Análisis integral del modelo de negocio, core business y diagnóstico interno y externo institucional.",
+        "descripcionNegocio": {
+            "intro": "La Junta de Usuarios Chancay Lambayeque, en calidad de operador de la infraestructura hidráulica del Sector Hidráulico Menor Chancay Lambayeque tiene como funciones principales operar y mantener la infraestructura hidráulica a su cargo, promoviendo su desarrollo, así como cobrar las tarifas de agua y administrar estos recursos públicos.",
+            "funciones": [
+                "Operar y mantener la infraestructura hidráulica a su cargo, promoviendo su desarrollo.",
+                "Distribuir el agua en el sector hidráulico Menor de acuerdo a la disponibilidad de los recursos hídricos y los programas aprobados.",
+                "Cobrar las tarifas de agua y administrarlas adecuadamente.",
+                "Recaudar la retribución económica y transferirla a la Autoridad Nacional del Agua.",
+                "Supervisar el cumplimiento de las obligaciones de los usuarios de agua del sector hidráulico."
+            ]
+        },
+        "coreBusiness": "La Operación de la infraestructura Hidráulica: Distribución de Agua",
+        "diagnosticoInterno": "La JUSHMCHL actualmente viene pasando por tiempos de cambios en la reestructuración organizacional y el marco normativo regulatorio. En el aspecto financiero, eventos extraordinarios como la pandemia COVID-19 y la tormenta tropical Yaku afectaron la recaudación de la Tarifa de Agua. Frente al cambio climático y nuevas disposiciones legales, la institución prioriza la gestión del talento humano multigeneracional, la modernización tecnológica y la optimización de la infraestructura institucional y flota vehicular.",
+        "diagnosticoExterno": "Las perspectivas económicas de Perú (2024-2028) proyectan un crecimiento sostenido del Producto Interno Bruto (PIB) con estabilidad inflacionaria. El fortalecimiento del empleo y las oportunidades de inversión en sectores estratégicos como la agricultura, minería y tecnología ofrecen un marco propicio para el desarrollo productivo y la sostenibilidad del riego en la región Lambayeque."
+    },
+    "noticias": [
+        {
+            "id": "n1",
+            "title": "Reunión de Coordinación con Presidentes de las 16 Comisiones de Usuarios",
+            "category": "Institucional",
+            "date": "28\/07\/2026",
+            "summary": "Se abordaron los planes de distribución hídrica para el periodo de estiaje y el avance en el mantenimiento de canales de riego principales.",
+            "imageUrl": "assets\/img\/canales.jpg"
+        }
+    ]
+}

@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Junta de Usuarios Chancay Lambayeque</title>
+    <!--icon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom CSS & AOS Animations -->
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    
+    <!-- Image Load Error Fallback -->
+    <script>
+        window.addEventListener('error', function(e) {
+            if (e.target && e.target.tagName === 'IMG') {
+                const img = e.target;
+                if (img.src.includes('portadas/')) {
+                    img.src = 'assets/img/fondo/TINAJONES-1024x768.jpg';
+                } else if (img.src.includes('Logos/')) {
+                    img.src = 'assets/img/juchl.png';
+                }
+            }
+        }, true);
+    </script>
+</head>
+
+<body class="selection-bg-primary">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar mx-auto w-100"
+        style="max-width: 1280px; width: calc(100% - 48px) !important; padding: 1rem 2rem;">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <img alt="Logo" src="assets/img/juchl.png" height="50"
+                    title="Junta de Usuarios del sector Hidráulico Menor Chancay Lambayeque Clase A">
+                <span class="font-heading text-white fw-bold d-none d-md-block fs-5 mb-0"
+                    title="Junta de Usuarios del sector Hidráulico Menor Chancay Lambayeque Clase A">JUSHMCHL Clase A</span>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none text-white p-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="material-symbols-outlined fs-2">menu</span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link text-primary-custom" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link text-primary-custom" href="areas.html">Áreas</a></li>
+                    <li class="nav-item"><a class="nav-link text-primary-custom" href="normativa.html">Normativa</a></li>
+                    <li class="nav-item"><a class="nav-link text-primary-custom" href="index.html#noticias">Noticias</a></li>
+                    <li class="nav-item">
+                        <button class="nav-link text-primary-custom border-0 bg-transparent text-start w-100" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Convocatorias
+                        </button>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-primary-custom" href="comisiones.html">Comisiones</a></li>
+                    <li class="nav-item d-none d-lg-block ms-lg-2 btn-contacto-desktop">
+                        <a href="index.html#contacto" class="btn bg-primary-custom btn-custom-pill shadow-sm">Contacto</a>
+                    </li>
+                    <li class="nav-item d-lg-none mt-3 pt-2 border-top border-white border-opacity-10">
+                        <a href="index.html#contacto" class="btn bg-primary-custom btn-custom-pill w-100 text-center py-2">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Modal -->
+        <div class="modal fade-20 glass-card " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content glass-card" style="margin-top: 10rem; border:none">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-4 text-secondary-custom" id="exampleModalLabel">Lista de las
+                            Convocatorias</h1>
+                        <button type="button" class="btn-close text-secondary-custom" data-bs-dismiss="modal"
+                            aria-label="Close" style="background-color: #b7f568;"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="text-primary-custom">Vigentes:</h5>
+                        <p>Actualmente no ahy ninguna convocatoria vigente.</p>
+                        <h5 class="text-primary-custom">Concluidos:</h5>
+
+                        <div class="table-responsive">
+                            <table class="table table-borderless align-middle">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p class="bg-terceary-custom">Bases integradas de licitación pública para la
+                                                contratación de bienes
+                                                "Adquisición de un volquete".</p>
+                                        </td>
+                                        <td class="text-end" style="width: 100px;">
+                                            <a href="assets/archivos/convocatoria/BASES INTEGRADAS DE LICITACIÓN PUBLICA PARA LA CONTRATACIÓN.pdf"
+                                                target="_blank" class="btn bg-secondary-custom btn-sm">
+                                                Ver
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p class="bg-terceary-custom">Bases – Licitación Pública N.°
+                                                02-2025-JUSHMCHL –
+                                                "Adquisición de un Volquete".</p>
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="assets/archivos/convocatoria/BASES DE LICITACIÓN PUBLICA CONTRATACIÓN VOLQUETE.pdf"
+                                                target="_blank" class="btn bg-secondary-custom btn-sm">
+                                                Ver
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p class="bg-terceary-custom">Bases del proceso de selección para la
+                                                contratación de un (01)
+                                                especialista en estudios, inspección y supervisión en la Dirección
+                                                de Desarrollo de la Infraestructura Hidráulica.</p>
+                                        </td>
+                                        <td class="text-end ">
+                                            <a href="#" class="btn bg-terceary-custom  btn-sm"
+                                                style=" border:1px solid var(--gris-texto);">
+                                                Ver
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p class="bg-terceary-custom">Bases del proceso de selección especialista en
+                                                estudios.</p>
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="assets/archivos/convocatoria/BASES ESPECIALISTA EN ESTUDIOS FINAL0001.pdf"
+                                                target="_blank" class="btn bg-secondary-custom btn-sm">
+                                                Ver
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p class="bg-terceary-custom">Bases del proceso de selección para la
+                                                contratación de un (01)
+                                                contador general.</p>
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="#" class="btn bg-terceary-custom  btn-sm"
+                                                style=" border:1px solid var(--gris-texto);">
+                                                Ver
+                                            </a>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal"
+                            style="background-color: #b7f568; color:black">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Section -->
+        <section class="hero-section overflow-hidden" style="min-height: 60vh; ">
+            <div class="position-absolute w-100 h-100 top-0 start-0 hero-bg-overlay"></div>
+            <div class="container hero-content text-center mt-5">
+                <h1 class="hero-title text-white mb-4 mx-auto" style="max-width: 900px;" data-aos="fade-down" data-aos-duration="900">
+                    Comisiones de <span class="text-primary-custom">Usuarios</span>
+                </h1>
+                <p class="hero-subtitle mb-5 mx-auto"
+                    style="max-width: 700px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); text-align: center;" data-aos="fade-up" data-aos-delay="150">
+                    Una Comisión de Usuarios es una organización sin fines de lucro que reúne a los usuarios agrarios de
+                    una zona determinada y tiene como función principal gestionar y distribuir el agua de riego de
+                    manera eficiente entre los distintos predios agrícolas.</p>
+
+                <div class="d-flex flex-column flex-sm-row justify-content-center gap-4 mb-5 pb-5" data-aos="fade-up" data-aos-delay="250">
+                    <a href="#contacto" style="text-decoration: none;"><button
+                            class="btn bg-primary-custom btn-custom-pill shadow-primary d-flex align-items-center justify-content-center gap-2 px-4 py-3">
+                            <span>Explorar Mapa de Comisiones</span>
+                            <span class="material-symbols-outlined fs-5">arrow_forward</span>
+                        </button></a>
+
+                </div>
+
+
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section id="comisiones" class="py-5 "
+            style="background: rgba(11, 15, 16, 0.2);text-shadow: 2px 2px 4px rgb(0, 0, 0)">
+            <div class="container py-5">
+                <div class="text-center mb-5 pb-4" data-aos="fade-up">
+                    <h2 class="font-heading text-white fs-1 fw-bold mb-3">16 Comisiones </h2>
+                    <p class="text-secondary-custom mx-auto"
+                        style="max-width: 600px; text-shadow: 2px 2px 4px rgb(0, 0, 0);">Soluciones integrales para la
+                        gestión
+                        eficiente y equitativa de nuestros recursos hídricos.</p>
+                </div>
+                <div class="row g-4" id="comisiones-container">
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/capote.jpg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/capote.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Capote
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>GREGORIO GERONIMO
+                                            QUIROZ NÚÑEZ</span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle San Martín S/N,
+                                            Centro Poblado Capote, distrito de Picsi, Chiclayo</span>
+
+                                    </div>
+                                    <!--
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-telephone-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Telefono: </strong>+51 958 905 059</span>
+                                    </div>-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 694</span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 3819.2687 ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/chiclayo.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit:inherit; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/chiclayo.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Chiclayo
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>FELIX FALEN
+                                            SAMPEN</span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle Cajamarca N.°
+                                            410, Chiclayo</span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 694</span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 6596.4484 ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/chongoyape.jpg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/chongoyape.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Chongoyape
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>JOSE NELSIDO ESPINOZA
+                                            CHAVEZ</span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle Schut y Saco N.°
+                                            02, esquina Simón Bolívar, Chongoyape, Lambayeque</span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 1205
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 5739.0627
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/eten.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/eten.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Eten </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>FRANCISCO JAVIER
+                                            ÑIQUEN MILLONES
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Pedro Ruiz Nro. 648
+                                            Ciudad Eten
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 518
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 625.3509
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/ferreñafe.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/ferreñafe.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Ferreñafe
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>ROGELIO PRIMO RAMOS
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Av. Andrés A. Cáceres
+                                            N.° 610, Urb. Ramiro Prialé, Ferreñafe
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 4339
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 14784.6498
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/la ramada.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/la ramada.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">La Ramada
+                                        - Carniche
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>DARIO SANCHEZ ZELADA
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>C.P. La Ramada Baja
+                                            S/N, distrito de Llama, provincia de Chota, Cajamarca (referencia: a unos 20
+                                            minutos de Chongoyape)
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 493
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 1058.566
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/lambayeque.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/lambayeque.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga INSTITUCIÓN-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Lambayeque
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>MERCEDES SANTAMARIA
+                                            SUCLUPE
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle Huáscar N.° 720,
+                                            Lambayeque
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 2259
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 7284.3419
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/mochumi.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/mochumi.jpeg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga INSTITUCIÓN-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Mochumí
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>EXEQUIEL CHAPOÑAN
+                                            VIDAURRE
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle Federico
+                                            Villarreal N.° 098, Mochumí (Universidad Perú)
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 2367
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 4454.4083
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/monsefu.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/monsefu.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga INSTITUCIÓN-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Monsefú
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>JAIME ELIAS SALAZAR
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle Simón Bolívar
+                                            N.° 312, Monsefú
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 3754
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 7087.2347
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/morrope.jpg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/morrope.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga INSTITUCIÓN-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Mórrope
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>VICTORIO ACTOSTA
+                                            TEJADA
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Av. Los Incas N.° 390,
+                                            distrito de Mórrope
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 6267
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 12839.8507
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/muy finca.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/muy finca.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga INSTITUCIÓN-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Muy Finca
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>JOSE JUSTINIANO
+                                            FIGUEROA ROQUE
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle 28 de Julio N.°
+                                            858, Mochumí
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 4321
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 11149.194
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/pampagrande.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/pampagrande.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">
+                                        Pampagrande
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>PABLO COBEÑAS SANCHEZ
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Mz. 31, C.P. Collique
+                                            Alto (3 Compuertas Collique Alto), Pucalá, Chiclayo
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 773
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 3763.0337
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/pitipo.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/pitipo.jpeg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Pítipo
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>JOSÉ DE LA CRUZ
+                                            CARRANZA OLIVERA
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle Augusta López
+                                            Arenas N.° 106, Pítipo, Ferreñafe
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 839
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 3517.3952
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/reque.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/reque.jpg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Reque
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>JOSE DEL CARMEN LIZA
+                                            MAZA
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Calle Real Nro. 452
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 829
+
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 2031.6876 ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/sasape.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/sasape.jpeg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Sasape
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>NICOLAS BALDERA ROJAS
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Car. Panamericana
+                                            Norte Nro. 803 Cas. Sasape
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 3318
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 4154.5784
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a href="#" class="text-decoration-none h-100 d-block">
+                            <div class="glass-card p-4 p-md-5 d-flex flex-column gap-4 ambient-glow h-auto">
+                                <img src="assets/img/comisiones/portadas/tucume.jpeg" alt=""
+                                    style="width: 100%; height: 20rem;border-radius: 12px; object-fit: cover; filter: brightness(0.8);">
+                                <img src="assets/img/comisiones/Logos/tucume.jpeg" alt=""
+                                    style="width: 56px; height: 56px;border-radius: 50%; object-fit: cover; position: absolute; top: 2rem; left: 2rem; border: 2px solid rgba(255,255,255,0.8);">
+                                <!--cuadrito pequeño en la imagen superpuesta que diga Zona regulada-->
+                                <div class="bg-primary-custom text-white py-1 px-3 rounded-pill"
+                                    style="position: absolute; top: 4rem; right: 3.5rem; transform: translateY(-50%); font-size: 10px;">
+                                    <strong>INSTITUCIÓN</strong>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-white fs-5 fw-bold mb-2 text-primary-custom">Túcume
+
+                                    </h3>
+                                    <!-- icono con su texto al costado-->
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-check-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Presidente: </strong>MARCIAL BANCES
+                                            SANDOVAL
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Direccion: </strong>Cal. Miguel Grau Nro.
+                                            0852 P.J. Federico Villareal
+                                        </span>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-person-arms-up text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Usuarios: </strong>+ 1228
+
+                                        </span>
+
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-pin-map text-primary-custom"></i>
+                                        <span class="text-white" style="font-size: 12px;"><strong
+                                                class="text-secondary-custom">Area: </strong>+ 1698.7261
+
+                                            ha</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form & Map Section -->
+        <section id="contacto" class="py-5 position-relative" style="background: rgba(11, 15, 16, 0.2);">
+            <div class="container py-5">
+                <div class="glass-card overflow-hidden">
+                    <div class="row g-0">
+                        <div class="col-lg-6 p-4 p-md-5">
+                            <div class="flex-1">
+                                <h2
+                                    class=" text-primary-custom font-headline-lg text-headline-lg text-text-primary mb-6">
+                                    Presencia en todo
+                                    el Valle</h2>
+                                <p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                                    Nuestras 16 comisiones cubren estratégicamente cada hectárea del Sector Hidráulico
+                                    Menor Chancay
+                                    Lambayeque, desde la zona regulada hasta los sectores más alejados de La Ramada.
+                                </p>
+                                <div class="d-flex flex-column gap-4">
+                                    <div class="glass-card ambient-glow p-4 bg-surface-container rounded-lg">
+                                        <div
+                                            class="text-primary-custom text-acid-green font-stats-display text-stats-display">
+                                            16</div>
+                                        <div class="text-label-md font-label-md text-on-surface-variant uppercase">
+                                            Comisiones de Usuarios
+                                        </div>
+                                    </div>
+                                    <div class="glass-card ambient-glow p-4 bg-surface-container rounded-lg">
+                                        <div
+                                            class="text-primary-custom text-acid-green font-stats-display text-stats-display">
+                                            03</div>
+                                        <div class="text-label-md font-label-md text-on-surface-variant uppercase">
+                                            Empresas Agroindustriales
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 position-relative" style="min-height: 400px;">
+                            <iframe
+                                src="https://www.google.com/maps/d/u/0/embed?mid=1JRFK3r_v9s8LxeGutdxD-U-uQjWrXfA&ehbc=2E312F&noprof=1"
+                                width="640" height="480"></iframe>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-5 " style="background-color: var(--deep-navy); border-top: 1px solid var(--glass-stroke);">
+        <div class="container py-4">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <span class="font-heading text-primary-custom fs-4 fw-bold mb-3 d-block">JUSHMCHL Clase A
+                        Lambayeque</span>
+                    <p class="text-white-50 mb-4" style="max-width: 400px;">Junta de Usuarios del Sector Hidráulico
+                        Menor Chancay Lambayeque. Comprometidos con el desarrollo agrario.</p>
+                    <p class="text-white-50 small mb-0">© 2026 Junta de Usuarios Chancay Lambayeque. Todos los derechos
+                        reservados.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <span class="text-white fw-bold mb-4 d-block" style="font-size: 14px;">Enlaces Rápidos</span>
+                    <ul class="list-unstyled d-flex flex-column gap-3">
+                        <li><a href="https://drive.google.com/file/d/1lXep5NVgpEnX2NQ7yWGq7S03CaEkHAAF/view?usp=sharing"
+                                class="text-white-50 text-decoration-none hover-white transition-colors">Políticas de
+                                Privacidad</a></li>
+                        <li><a href="https://drive.google.com/file/d/1lXep5NVgpEnX2NQ7yWGq7S03CaEkHAAF/view?usp=sharing"
+                                class="text-white-50 text-decoration-none hover-white transition-colors">Términos de
+                                Uso</a></li>
+                        <li><a href="https://www.google.com/maps/place/Junta+de+Usuarios+Chancay+-+Lambayeque/@-6.767633,-79.857087,168m/data=!3m1!1e3!4m6!3m5!1s0x904ceee167f8bf2b:0xa80806c99ecb7e24!8m2!3d-6.7676971!4d-79.8570784!16s%2Fg%2F11btx68jph?hl=es&entry=ttu&g_ep=EgoyMDI2MDYxMy4wIKXMDSoASAFQAw%3D%3D"
+                                class="text-white-50 text-decoration-none hover-white transition-colors">Mapa
+                                del Sitio</a></li>
+                        <li><a href="admin.html"
+                                class="text-white-50 text-decoration-none hover-white transition-colors d-flex align-items-center gap-1">
+                                <i class="bi bi-shield-lock-fill text-primary-custom"></i> Admin</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <span class="text-white fw-bold mb-4 d-block" style="font-size: 14px;">Síguenos</span>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.facebook.com/jushmchl"
+                            class="rounded-circle d-flex align-items-center justify-content-center text-white-50 text-decoration-none transition-colors"
+                            style="width: 40px; height: 40px; background: rgba(255,255,255,0.05);"
+                            onmouseover="this.style.background='var(--primary)'; this.style.color='var(--on-primary)';"
+                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.5)';">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@junta.chancay.lam"
+                            class="rounded-circle d-flex align-items-center justify-content-center text-white-50 text-decoration-none transition-colors"
+                            style="width: 40px; height: 40px; background: rgba(255,255,255,0.05);"
+                            onmouseover="this.style.background='var(--primary)'; this.style.color='var(--on-primary)';"
+                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.5)';">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@juntadeusuarioschancaylamb8052"
+                            class="rounded-circle d-flex align-items-center justify-content-center text-white-50 text-decoration-none transition-colors"
+                            style="width: 40px; height: 40px; background: rgba(255,255,255,0.05);"
+                            onmouseover="this.style.background='var(--primary)'; this.style.color='var(--on-primary)';"
+                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.5)';">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="https://www.whatsapp.com/channel/0029Vb85b9vLtOj8QW05h83K?fbclid=IwY2xjawSesuBleHRuA2FlbQIxMABicmlkETE5SHM4RmtYUVNjdFhkQXRzc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHiSMHTz6bl7uoBdVg2R9PfktDlqCfehXNezrRmXpK0adx_KHfUikxivXE8cf_aem_kbmOF4Myk34XsRUEID0G3Q"
+                            class="rounded-circle d-flex align-items-center justify-content-center text-white-50 text-decoration-none transition-colors"
+                            style="width: 40px; height: 40px; background: rgba(255,255,255,0.05);"
+                            onmouseover="this.style.background='var(--primary)'; this.style.color='var(--on-primary)';"
+                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.5)';">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        const POSTS_ENDPOINT = "/api/facebook";
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/\"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        function formatDate(value) {
+            if (!value) return "Reciente";
+            const date = new Date(typeof value === "number" ? value * 1000 : value);
+            return date.toLocaleString("es-ES", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+        }
+
+        async function loadPosts() {
+            const container = document.getElementById("posts");
+            if (!container) return;
+
+            try {
+                const response = await fetch(POSTS_ENDPOINT);
+                if (!response.ok) throw new Error("No se pudieron cargar los posts");
+
+                const posts = await response.json();
+
+                if (!Array.isArray(posts) || posts.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-12">
+                            <div class="glass-card p-4 text-white text-center">
+                                Aún no hay publicaciones recibidas desde el webhook.
+                            </div>
+                        </div>`;
+                    return;
+                }
+
+                container.innerHTML = posts.map((post) => `
+                    <div class="col-12 col-lg-6">
+                        <div class="glass-card p-4 h-100 ambient-glow">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <strong class="text-white">${escapeHtml(post.author || "Página")}</strong>
+                                <span class="text-white-50 small">${escapeHtml(formatDate(post.created))}</span>
+                            </div>
+                            <p class="text-white mb-0">${escapeHtml(post.message || "Sin mensaje")}</p>
+                        </div>
+                    </div>
+                `).join("");
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = `
+                    <div class="col-12">
+                        <div class="glass-card p-4 text-white text-center">
+                            No se pudieron cargar las publicaciones en este momento.
+                        </div>
+                    </div>`;
+            }
+        }
+
+        loadPosts();
+        setInterval(loadPosts, 30000);
+
+        async function loadFrontConvocatorias() {
+            const modalBody = document.querySelector('#exampleModal .modal-body');
+            if (!modalBody) return;
+
+            try {
+                const isDev = window.location.port === "3000" || window.location.hostname.includes("run.app") || window.location.hostname.includes("aistudio");
+                const apiUrl = isDev ? '/api/admin/convocatorias' : 'php-api/convocatorias.php';
+
+                const res = await fetch(apiUrl);
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!Array.isArray(data) || data.length === 0) return;
+
+                const vigentes = data.filter(c => c.status === 'vigente');
+                const concluidos = data.filter(c => c.status === 'concluido');
+
+                let html = '<h5 class="text-primary-custom fw-bold mb-3">Vigentes:</h5>';
+
+                if (vigentes.length === 0) {
+                    html += '<p class="text-white-50">Actualmente no hay ninguna convocatoria vigente.</p>';
+                } else {
+                    html += '<div class="table-responsive mb-4"><table class="table table-borderless align-middle"><tbody>';
+                    vigentes.forEach(c => {
+                        html += `
+                            <tr>
+                                <td>
+                                    <p class="bg-terceary-custom mb-0 text-white">${c.title}</p>
+                                </td>
+                                <td class="text-end" style="width: 100px;">
+                                    <a href="${c.fileUrl || '#'}" target="_blank" class="btn bg-primary-custom text-dark fw-bold btn-sm">
+                                        Ver
+                                    </a>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    html += '</tbody></table></div>';
+                }
+
+                html += '<h5 class="text-primary-custom fw-bold mb-3 mt-4">Concluidos:</h5>';
+                if (concluidos.length === 0) {
+                    html += '<p class="text-white-50">No hay convocatorias concluidas registradas.</p>';
+                } else {
+                    html += '<div class="table-responsive"><table class="table table-borderless align-middle"><tbody>';
+                    concluidos.forEach(c => {
+                        const hasLink = c.fileUrl && c.fileUrl !== '#';
+                        html += `
+                            <tr>
+                                <td>
+                                    <p class="bg-terceary-custom mb-0 text-white-50">${c.title}</p>
+                                </td>
+                                <td class="text-end" style="width: 100px;">
+                                    <a href="${c.fileUrl || '#'}" target="${hasLink ? '_blank' : '_self'}" class="btn ${hasLink ? 'bg-secondary-custom' : 'bg-terceary-custom'} btn-sm" ${!hasLink ? 'style="border:1px solid var(--gris-texto);"' : ''}>
+                                        Ver
+                                    </a>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    html += '</tbody></table></div>';
+                }
+
+                modalBody.innerHTML = html;
+            } catch (err) {
+                console.log('Using static convocatorias fallback');
+            }
+        }
+        document.addEventListener("DOMContentLoaded", loadFrontConvocatorias);
+    </script>
+
+    <!-- AOS Scroll Animation Script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof AOS !== "undefined") {
+                AOS.init({
+                    duration: 750,
+                    easing: "ease-out-cubic",
+                    once: true,
+                    offset: 50
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

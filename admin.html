@@ -1,0 +1,3792 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>Panel de Administración - JUSHMCHL</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container {
+            max-width: 450px;
+            margin: auto;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 6rem auto 3rem auto;
+            width: 100%;
+            padding: 0 1.5rem;
+            display: none;
+        }
+
+        .admin-nav {
+            background: rgba(10, 12, 16, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-stroke);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .sidebar-menu .list-group-item {
+            background: transparent;
+            color: var(--on-surface);
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu .list-group-item:hover,
+        .sidebar-menu .list-group-item.active {
+            background: rgba(166, 227, 88, 0.15);
+            color: var(--primary-fixed);
+        }
+
+        .card-custom {
+            background: rgba(14, 34, 73, 0.65);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .card-custom:hover {
+            border-color: rgba(166, 227, 88, 0.3);
+            box-shadow: 0 12px 40px -5px rgba(166, 227, 88, 0.08);
+        }
+
+        .form-control {
+            background: rgba(14, 34, 73, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-select {
+            background-color: #0e2249 !important;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #fff !important;
+            border-radius: 10px;
+            padding: 10px 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-select option {
+            background-color: #0e2249 !important;
+            color: #ffffff !important;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 0 0.25rem rgba(166, 227, 88, 0.25);
+        }
+
+        .btn-primary-custom {
+            background: var(--primary);
+            color: var(--on-primary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            padding: 10px 24px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--primary-fixed);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid var(--glass-stroke);
+            color: var(--on-surface);
+            background: transparent;
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 10px 24px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .badge-status {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+        }
+
+        .badge-vigente {
+            background: rgba(166, 227, 88, 0.2);
+            color: var(--primary-fixed);
+        }
+
+        .badge-concluido {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--gris-texto);
+        }
+
+        .preview-img {
+            max-width: 150px;
+            max-height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--glass-stroke);
+        }
+    </style>
+</head>
+
+<body class="selection-bg-primary">
+
+    <!-- Nav Bar -->
+    <nav class="admin-nav d-flex justify-content-between align-items-center">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="/">
+            <img alt="Logo" src="assets/img/juchl.png" height="40">
+            <span class="font-heading text-white fw-bold fs-5 mb-0">Admin JUSHMCHL</span>
+        </a>
+        <div class="d-none" id="logoutSection">
+            <a href="index.html" class="btn btn-outline-custom btn-sm me-2 d-inline-flex align-items-center gap-1">
+                <span class="material-symbols-outlined fs-6">arrow_back</span> Volver al Sitio
+            </a>
+            <span class="text-white me-3 d-none d-md-inline">Administrador</span>
+            <button class="btn btn-outline-custom btn-sm" onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <!-- Login Container -->
+    <div class="login-container" id="loginFormSection">
+        <div class="card-custom text-center">
+            <img src="assets/img/juchl.png" height="80" class="mb-4">
+            <h3 class="font-heading text-white mb-2 fw-bold">Iniciar Sesión</h3>
+            <p class="text-secondary-custom mb-4 fs-6">Panel de Control General</p>
+
+            <div id="loginError" class="alert alert-danger d-none" role="alert"></div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="mb-3 text-start">
+                    <label class="form-label text-white">Usuario</label>
+                    <input type="text" class="form-control" id="username" value="admin" required>
+                </div>
+                <div class="mb-4 text-start">
+                    <label class="form-label text-white">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="admin123" required>
+                </div>
+                <button type="submit" class="btn btn-primary-custom w-100 py-2">Ingresar al Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container" id="dashboardSection">
+        <div class="row g-4">
+            <!-- Sidebar Menu -->
+            <div class="col-lg-3">
+                <div class="card-custom p-3">
+                    <h5 class="text-secondary-custom font-heading mb-4 px-2 fw-bold">Navegación</h5>
+                    <div class="list-group sidebar-menu">
+                        <div class="list-group-item active" onclick="switchTab('inicio', this)">
+                            <span class="material-symbols-outlined">home</span>
+                            General / Inicio
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('convocatorias', this)">
+                            <span class="material-symbols-outlined">work</span>
+                            Convocatorias
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('comisiones', this)">
+                            <span class="material-symbols-outlined">groups</span>
+                            Comisiones
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('areas', this)">
+                            <span class="material-symbols-outlined">map</span>
+                            Áreas
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('estructura', this)">
+                            <span class="material-symbols-outlined">account_tree</span>
+                            Estructura Organizacional
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('diagnostico', this)">
+                            <span class="material-symbols-outlined">analytics</span>
+                            Diagnóstico Institucional
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('normativas', this)">
+                            <span class="material-symbols-outlined">gavel</span>
+                            Normativas
+                        </div>
+                        <!--
+                        <div class="list-group-item" onclick="switchTab('noticias', this)">
+                            <span class="material-symbols-outlined">newspaper</span>
+                            Noticias Institucionales
+                        </div>-->
+                        <div class="list-group-item" onclick="switchTab('avisos', this)">
+                            <span class="material-symbols-outlined">campaign</span>
+                            Anuncios / Avisos
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('galeria', this)">
+                            <span class="material-symbols-outlined">collections</span>
+                            Galería
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('videos', this)">
+                            <span class="material-symbols-outlined">videocam</span>
+                            Videos
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('eventos', this)">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                            Eventos / Calendario
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('fireworks', this)">
+                            <span class="material-symbols-outlined text-warning">celebration</span>
+                            Fuegos Artificiales
+                        </div>
+                        <div class="list-group-item" onclick="switchTab('seguridad', this)">
+                            <span class="material-symbols-outlined">security</span>
+                            Contraseña
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="col-lg-9">
+                <!-- SUCCESS / ERROR ALERT -->
+                <div id="apiAlert" class="alert d-none" role="alert"></div>
+
+                <!-- TAB: INICIO/GENERAL -->
+                <div class="tab-content" id="tab-inicio">
+                    <div class="card-custom">
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Ajustes Generales del Sitio</h4>
+                        <form id="generalConfigForm" onsubmit="saveGeneralConfig(event)">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Título del Sitio (Pestaña)</label>
+                                    <input type="text" class="form-control" id="site_pageTitle">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Subtítulo Corto (Navbar)</label>
+                                    <input type="text" class="form-control" id="site_pageSubtitle">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Nuestra Misión (Sección Nosotros)</label>
+                                    <textarea class="form-control" id="site_mision" rows="3" required></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Nuestra Visión (Sección Nosotros)</label>
+                                    <textarea class="form-control" id="site_vision" rows="3" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white">Reseña Histórica (Sección Nosotros)</label>
+                                    <textarea class="form-control" id="site_historia" rows="6" required></textarea>
+                                </div>
+                                <div class="col-md-10">
+                                    <label class="form-label text-white">Imagen de Fondo Principal</label>
+                                    <input type="text" class="form-control" id="site_heroBg">
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('site_heroBg')">Subir</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Email de Contacto</label>
+                                    <input type="email" class="form-control" id="site_contactEmail">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Teléfono de Contacto</label>
+                                    <input type="text" class="form-control" id="site_contactPhone">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Dirección de Contacto</label>
+                                    <input type="text" class="form-control" id="site_contactAddress">
+                                </div>
+                                <div class="col-12 mt-4 text-end">
+                                    <button type="submit" class="btn btn-primary-custom">Guardar Cambios Generales</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB: CONVOCATORIAS -->
+                <div class="tab-content d-none" id="tab-convocatorias">
+                    <div class="card-custom">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="font-heading text-secondary-custom fw-bold mb-0">Administrar Convocatorias</h4>
+                            <button class="btn btn-primary-custom btn-sm fw-bold px-3" onclick="openConvocatoriaModal()">+ Nueva Convocatoria</button>
+                        </div>
+                        <div class="alert bg-black bg-opacity-25 border-0 text-white-50 small mb-4 d-flex align-items-center gap-2">
+                            <span class="material-symbols-outlined text-primary-custom fs-5">info</span>
+                            <span>Para publicar o modificar convocatorias, use el botón <strong>+ Nueva Convocatoria</strong> o <strong>Editar</strong>, complete el formulario y presione <strong>Guardar Cambios</strong> en la ventana modal.</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark table-borderless align-middle">
+                                <thead>
+                                    <tr class="border-bottom border-secondary">
+                                        <th scope="col" class="text-white py-3">Título / Bases</th>
+                                        <th scope="col" class="text-white py-3">Estado</th>
+                                        <th scope="col" class="text-white py-3 text-end">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="convocatoriasTableBody">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: COMISIONES -->
+                <div class="tab-content d-none" id="tab-comisiones">
+                    <div class="card-custom">
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Comisiones de Usuarios</h4>
+                        
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Selecciona la Comisión a Editar o Administrar</label>
+                            <div class="d-flex gap-2">
+                                <select class="form-select" id="comisionSelect" onchange="loadSelectedComision()">
+                                    <!-- Dynamic Options -->
+                                </select>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewComision()">+ Nueva Comisión</button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none" id="deleteComisionBtn" onclick="deleteSelectedComision()">Eliminar</button>
+                            </div>
+                        </div>
+
+                        <form id="comisionesForm" onsubmit="saveComision(event)">
+                            <div class="row g-3">
+                                <input type="hidden" id="comision_id">
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Nombre de la Comisión</label>
+                                    <input type="text" class="form-control" id="comision_name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Descripción / Información General</label>
+                                    <textarea class="form-control" id="comision_description" rows="3"></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Presidente</label>
+                                    <input type="text" class="form-control" id="comision_presidente">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Dirección</label>
+                                    <input type="text" class="form-control" id="comision_direccion">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Usuarios (ej: + 694)</label>
+                                    <input type="text" class="form-control" id="comision_usuarios">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Área (ej: + 3819.2687 ha)</label>
+                                    <input type="text" class="form-control" id="comision_area">
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="form-label text-white">URL de Logo</label>
+                                    <input type="text" class="form-control" id="comision_logo">
+                                </div>
+                                <div class="col-md-4 d-flex align-items-end">
+                                    <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('comision_logo')">Subir Logo</button>
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="form-label text-white">URL de Portada / Imagen de Fondo</label>
+                                    <input type="text" class="form-control" id="comision_cover">
+                                </div>
+                                <div class="col-md-4 d-flex align-items-end">
+                                    <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('comision_cover')">Subir Portada</button>
+                                </div>
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn btn-primary-custom" id="saveComisionBtn">Guardar Cambios de Comisión</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB: ANUNCIOS / AVISOS -->
+                <div class="tab-content d-none" id="tab-avisos">
+                    <div class="card-custom">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                            <div>
+                                <h4 class="font-heading text-secondary-custom fw-bold mb-1">Carrusel de Anuncios / Avisos</h4>
+                                <p class="text-white-50 small mb-0">Administra los anuncios y la activación del modal emergente de la página principal.</p>
+                            </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button id="globalAvisosModalToggleBtn" class="btn btn-outline-danger btn-sm fw-bold px-3" onclick="toggleGlobalAvisosModal()">
+                                    🚫 Desactivar Modal Completo
+                                </button>
+                                <button class="btn btn-primary-custom btn-sm px-3" onclick="openAvisoModal()">+ Nuevo Anuncio</button>
+                            </div>
+                        </div>
+
+                        <!-- Global Status Banner -->
+                        <div id="globalAvisosModalStatusBanner" class="alert d-flex align-items-center justify-content-between mb-4 p-3 rounded-3" style="background: rgba(25, 135, 84, 0.2); border: 1px solid rgba(25, 135, 84, 0.4); color: #fff;">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="material-symbols-outlined fs-3 text-success" id="globalAvisosIcon">check_circle</span>
+                                <div>
+                                    <strong id="globalAvisosStatusTitle" class="d-block fs-6">Modal de Anuncios: ACTIVO</strong>
+                                    <span id="globalAvisosStatusDesc" class="small opacity-75">El modal emergente se mostrará automáticamente en la página principal cuando haya anuncios activos.</span>
+                                </div>
+                            </div>
+                            <span class="badge bg-success fs-6 px-3 py-2" id="globalAvisosBadge">Modal Visible</span>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-2 g-4" id="avisosCardsContainer">
+                            <!-- Dynamic Cards -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: AREAS -->
+                <div class="tab-content d-none" id="tab-areas">
+                    <div class="card-custom">
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Áreas Institucionales</h4>
+                        
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Selecciona el Área a Editar o Administrar</label>
+                            <div class="d-flex gap-2">
+                                <select class="form-select" id="areaSelect" onchange="loadSelectedArea()">
+                                    <!-- Dynamic Options -->
+                                </select>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewArea()">+ Nueva Área</button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none" id="deleteAreaBtn" onclick="deleteSelectedArea()">Eliminar</button>
+                            </div>
+                        </div>
+
+                        <form id="areasForm" onsubmit="saveArea(event)">
+                            <div class="row g-3">
+                                <input type="hidden" id="area_id">
+                                <div class="col-md-7">
+                                    <label class="form-label text-white fw-bold">Título del Área</label>
+                                    <input type="text" class="form-control" id="area_title" placeholder="Ej. Área de Infraestructura Hidráulica" required>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-label text-white fw-bold d-flex justify-content-between align-items-center mb-2">
+                                        <span>Paleta / Color de Sección</span>
+                                        <span id="area_color_badge" class="badge rounded-pill px-2 py-1" style="background-color: #20c997; color: #fff;">Color Área</span>
+                                    </label>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <input type="color" class="form-control form-control-color p-1" id="area_color" value="#20c997" title="Color Personalizado" style="width: 44px; height: 38px; cursor: pointer;" onchange="updateAreaColorPreview()">
+                                        <div class="d-flex gap-1 flex-wrap">
+                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#20c997; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#20c997')" title="Turquesa"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#0d6efd; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#0d6efd')" title="Azul"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#198754; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#198754')" title="Verde"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#ffc107; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#ffc107')" title="Amarillo"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#dc3545; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#dc3545')" title="Rojo"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#6f42c1; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#6f42c1')" title="Púrpura"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#fd7e14; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#fd7e14')" title="Naranja"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white">Descripción del Área</label>
+                                    <textarea class="form-control" id="area_description" rows="4" required></textarea>
+                                </div>
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn btn-primary-custom" id="saveAreaBtn">Guardar Cambios del Área</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB: ESTRUCTURA ORGANIZACIONAL -->
+                <div class="tab-content d-none" id="tab-estructura">
+                    <div class="card-custom mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                            <div>
+                                <h4 class="font-heading text-secondary-custom fw-bold mb-1"><i class="bi bi-diagram-3-fill me-2"></i>Estructura Organizacional (Organigrama)</h4>
+                                <p class="text-white-50 fs-6 mb-0">Gestione los órganos principales y sus respectivas unidades orgánicas que conforman el organigrama institucional.</p>
+                            </div>
+                            <button type="button" class="btn btn-outline-custom btn-sm d-inline-flex align-items-center gap-2" onclick="resetEstructuraToDefault()">
+                                <span class="material-symbols-outlined fs-5 text-warning">restart_alt</span>
+                                Restaurar Valores por Defecto
+                            </button>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Seleccionar Órgano para Editar</label>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <select class="form-select" id="estructuraSelect" onchange="loadSelectedEstructuraOrgano()" style="max-width: 400px;">
+                                    <!-- Dynamic Options -->
+                                </select>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewEstructuraOrgano()">
+                                    <i class="bi bi-plus-lg me-1"></i> + Nuevo Órgano
+                                </button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none;" id="deleteEstructuraBtn" onclick="deleteSelectedEstructuraOrgano()">
+                                    <i class="bi bi-trash-fill me-1"></i> Eliminar Órgano
+                                </button>
+                            </div>
+                        </div>
+
+                        <form id="estructuraForm" onsubmit="saveEstructuraOrgano(event)">
+                            <input type="hidden" id="estructura_id">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label class="form-label text-white">Código / Letra (ej. a, b, c)</label>
+                                    <input type="text" class="form-control" id="estructura_code" placeholder="a" required>
+                                </div>
+                                <div class="col-md-9">
+                                    <label class="form-label text-white">Título del Órgano (ej. Órganos de Dirección)</label>
+                                    <input type="text" class="form-control" id="estructura_title" placeholder="Órganos de Dirección" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Etiqueta Resumen / Badge</label>
+                                    <input type="text" class="form-control" id="estructura_badge" placeholder="Dirección">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Icono (Bootstrap Icon Class)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-black text-white border-secondary" id="estructuraIconPreview">
+                                            <i class="bi bi-diagram-3-fill"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="estructura_icon" placeholder="bi-award-fill" oninput="updateEstructuraIconPreview()">
+                                    </div>
+                                    <div class="form-text text-white-50">Ej: bi-award-fill, bi-shield-check, bi-gear-wide-connected, bi-building-fill-gear</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Color Distintivo del Órgano</label>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="color" class="form-control form-control-color p-1" id="estructura_color" value="#0d6efd" style="width: 50px; height: 38px; cursor: pointer;" oninput="syncEstructuraHexFromColor()">
+                                        <input type="text" class="form-control" id="estructura_color_hex" value="#0d6efd" oninput="syncEstructuraColorFromHex()">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <h5 class="text-secondary-custom font-heading fw-bold mb-0">Unidades Orgánicas (Sub-elementos)</h5>
+                                        <button type="button" class="btn btn-sm btn-outline-custom" onclick="addEstructuraItemRow()">
+                                            <i class="bi bi-plus-circle me-1"></i> + Agregar Unidad Orgánica
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-dark table-borderless align-middle mb-0">
+                                            <thead>
+                                                <tr class="border-bottom border-secondary text-white-50 small">
+                                                    <th style="width: 120px;">Código (ej. a.1)</th>
+                                                    <th>Nombre de la Unidad Orgánica</th>
+                                                    <th style="width: 90px;" class="text-end">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="estructuraItemsTableBody">
+                                                <!-- Dynamic sub-item rows -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn btn-primary-custom px-4" id="saveEstructuraBtn">
+                                        <i class="bi bi-floppy-fill me-1"></i> Guardar Cambios de la Estructura
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Vista previa visual de la estructura completa -->
+                    <div class="card-custom">
+                        <h5 class="font-heading text-white fw-bold mb-3"><i class="bi bi-eye-fill me-2 text-primary-custom"></i>Vista Previa del Organigrama</h5>
+                        <div class="row g-3" id="adminEstructuraPreviewContainer">
+                            <!-- Preview cards -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: DIAGNÓSTICO INSTITUCIONAL -->
+                <div class="tab-content d-none" id="tab-diagnostico">
+                    <div class="card-custom mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                            <div>
+                                <h4 class="font-heading text-secondary-custom fw-bold mb-1">
+                                    <i class="bi bi-graph-up-arrow me-2"></i>2. Diagnóstico de la JUSHMCHL
+                                </h4>
+                                <p class="text-white-50 fs-6 mb-0">
+                                    Administre y actualice la descripción del negocio, core business y diagnósticos interno y externo. Los cambios se sincronizan en tiempo real con la base de datos y la página pública.
+                                </p>
+                            </div>
+                        </div>
+
+                        <form id="diagnosticoForm" onsubmit="saveDiagnostico(event)">
+                            <div class="row g-4">
+                                <!-- Título y Subtítulo General -->
+                                <div class="col-md-6">
+                                    <label class="form-label text-white fw-bold">Título Principal de la Sección</label>
+                                    <input type="text" class="form-control" id="diag_title" placeholder="2. DIAGNÓSTICO DE LA JUSHMCHL" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white fw-bold">Subtítulo / Introducción General</label>
+                                    <input type="text" class="form-control" id="diag_subtitle" placeholder="Análisis integral del modelo de negocio, core business y diagnóstico interno y externo institucional." required>
+                                </div>
+
+                                <!-- 2.1 Descripción del Negocio -->
+                                <div class="col-12 border-top border-secondary pt-3">
+                                    <h5 class="text-primary-custom font-heading fw-bold mb-3">
+                                        <i class="bi bi-briefcase me-2"></i>2.1. Descripción del Negocio
+                                    </h5>
+                                    <div class="mb-3">
+                                        <label class="form-label text-white">Texto Descriptivo Principal</label>
+                                        <textarea class="form-control" id="diag_intro" rows="3" required></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <label class="form-label text-white fw-bold mb-0">Puntos Principales de las Funciones del Negocio (a, b, c, d, e...)</label>
+                                            <button type="button" class="btn btn-sm btn-outline-custom" onclick="addDiagnosticoFuncionRow()">
+                                                <i class="bi bi-plus-circle me-1"></i> + Agregar Función
+                                            </button>
+                                        </div>
+                                        <div id="diagFuncionesContainer" class="d-flex flex-column gap-2">
+                                            <!-- Dynamic Rows -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2.2 Core Business -->
+                                <div class="col-12 border-top border-secondary pt-3">
+                                    <h5 class="text-info font-heading fw-bold mb-2">
+                                        <i class="bi bi-cpu me-2"></i>2.2. El Core Business
+                                    </h5>
+                                    <label class="form-label text-white">Actividad Principal del Negocio</label>
+                                    <input type="text" class="form-control" id="diag_coreBusiness" placeholder="La Operación de la infraestructura Hidráulica: Distribución de Agua" required>
+                                </div>
+
+                                <!-- 2.3 Diagnóstico Interno -->
+                                <div class="col-md-6 border-top border-secondary pt-3">
+                                    <h5 class="text-warning font-heading fw-bold mb-2">
+                                        <i class="bi bi-house-gear me-2"></i>2.3. Diagnóstico Interno
+                                    </h5>
+                                    <label class="form-label text-white">Análisis Interno (Restructuración, Finanzas, TI, Infraestructura)</label>
+                                    <textarea class="form-control" id="diag_interno" rows="6" required></textarea>
+                                </div>
+
+                                <!-- 2.4 Diagnóstico Externo -->
+                                <div class="col-md-6 border-top border-secondary pt-3">
+                                    <h5 class="text-primary font-heading fw-bold mb-2">
+                                        <i class="bi bi-globe-americas me-2"></i>2.4. Diagnóstico Externo
+                                    </h5>
+                                    <label class="form-label text-white">Análisis Externo (Perspectivas Económicas, PIB, Empleo, Inversión)</label>
+                                    <textarea class="form-control" id="diag_externo" rows="6" required></textarea>
+                                </div>
+
+                                <!-- BOTÓN GUARDAR -->
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn btn-primary-custom px-4 py-2" id="saveDiagnosticoBtn">
+                                        <i class="bi bi-floppy-fill me-2"></i>Guardar Cambios del Diagnóstico
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- VISTA PREVIA DEL DIAGNÓSTICO -->
+                    <div class="card-custom">
+                        <h5 class="text-white font-heading fw-bold mb-3"><i class="bi bi-eye me-2"></i>Vista Previa de la Sección Diagnóstico</h5>
+                        <div class="p-3 rounded-3" style="background: rgba(0,0,0,0.4); border: 1px solid var(--glass-stroke);" id="adminDiagnosticoPreviewContainer">
+                            <!-- Live Preview -->
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content d-none" id="tab-normativas">
+                    <div class="card-custom">
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Normas / Normativas</h4>
+                        
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Selecciona la Normativa a Editar o Administrar</label>
+                            <div class="d-flex gap-2">
+                                <select class="form-select" id="normativaSelect" onchange="loadSelectedNormativa()">
+                                    <!-- Dynamic Options -->
+                                </select>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewNormativa()">+ Nueva Normativa</button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none" id="deleteNormativaBtn" onclick="deleteSelectedNormativa()">Eliminar</button>
+                            </div>
+                        </div>
+
+                        <form id="normativasForm" onsubmit="saveNormativa(event)">
+                            <div class="row g-3">
+                                <input type="hidden" id="normativa_id">
+                                <div class="col-12">
+                                    <label class="form-label text-white">Título de la Normativa</label>
+                                    <input type="text" class="form-control" id="normativa_title" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white">Descripción / Detalle</label>
+                                    <textarea class="form-control" id="normativa_description" rows="4" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white fw-bold d-flex align-items-center gap-2">
+                                        <span class="material-symbols-outlined fs-5 text-secondary-custom">attach_file</span>
+                                        Enlace al Documento (URL o Subir PDF)
+                                    </label>
+                                    <div class="row g-2">
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="normativa_documentUrl" placeholder="https://... o deja vacío si no hay documento">
+                                        </div>
+                                        <div class="col-md-3 d-flex align-items-end">
+                                            <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('normativa_documentUrl')">
+                                                <i class="bi bi-upload me-1"></i> Subir PDF
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-text text-white-50">Opcional: pega una URL o sube un archivo PDF. Se mostrará un botón "Ver" al lado de la normativa en el sitio.</div>
+                                </div>
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn btn-primary-custom" id="saveNormativaBtn">Guardar Cambios de Normativa</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB: NOTICIAS INSTITUCIONALES 
+                <div class="tab-content d-none" id="tab-noticias">
+                    <div class="card-custom">
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Noticias Institucionales</h4>
+                        
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Selecciona la Noticia a Editar o Administrar</label>
+                            <div class="d-flex gap-2">
+                                <select class="form-select" id="noticiaSelect" onchange="loadSelectedNoticia()">
+                                    <!-- Dynamic Options 
+                                </select>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewNoticia()">+ Nueva Noticia</button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none" id="deleteNoticiaBtn" onclick="deleteSelectedNoticia()">Eliminar</button>
+                            </div>
+                        </div>
+
+                        <form id="noticiasForm" onsubmit="saveNoticia(event)">
+                            <div class="row g-3">
+                                <input type="hidden" id="noticia_id">
+                                <div class="col-md-8">
+                                    <label class="form-label text-white">Título de la Noticia</label>
+                                    <input type="text" class="form-control" id="noticia_title" required placeholder="Ej. Reunión con Presidentes de Comisiones">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Categoría</label>
+                                    <select class="form-select" id="noticia_category">
+                                        <option value="Institucional">Institucional</option>
+                                        <option value="Capacitaciones">Capacitaciones</option>
+                                        <option value="Obras y Mantenimiento">Obras y Mantenimiento</option>
+                                        <option value="Eventos">Eventos</option>
+                                        <option value="Comunicados">Comunicados</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Fecha</label>
+                                    <input type="text" class="form-control" id="noticia_date" placeholder="DD/MM/AAAA">
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="form-label text-white">Imagen de la Noticia (Ruta o Subir)</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="noticia_imageUrl" placeholder="assets/img/canales.jpg">
+                                        <button class="btn btn-outline-light" type="button" onclick="triggerFileUpload('noticia_imageUrl')"><i class="bi bi-upload"></i> Subir</button>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white">Resumen / Contenido de la Noticia</label>
+                                    <textarea class="form-control" id="noticia_summary" rows="4" required placeholder="Descripción o resumen de la noticia..."></textarea>
+                                </div>
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn btn-primary-custom" id="saveNoticiaBtn">Guardar Noticia</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>-->
+
+                <!-- TAB: GALERIA INSTITUCIONAL -->
+                <div class="tab-content d-none" id="tab-galeria">
+                    <div class="card-custom">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="font-heading text-secondary-custom fw-bold mb-0">Galería Institucional</h4>
+                            <button class="btn btn-primary-custom btn-sm" onclick="openGaleriaModal()">+ Nueva Imagen</button>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-2 g-4" id="galeriaCardsContainer">
+                            <!-- Dynamic Cards -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: VIDEOS INSTITUCIONALES -->
+                <div class="tab-content d-none" id="tab-videos">
+                    <div class="card-custom">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="font-heading text-secondary-custom fw-bold mb-0">Videos Institucionales</h4>
+                            <button class="btn btn-primary-custom btn-sm" onclick="openVideoModal()">+ Nuevo Video</button>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="videosCardsContainer">
+                            <!-- Dynamic Cards -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: EVENTOS / CALENDARIO -->
+                <div class="tab-content d-none" id="tab-eventos">
+                    <div class="card-custom">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="font-heading text-secondary-custom fw-bold mb-0">Agende su Actividad / Calendario de Eventos</h4>
+                            <button class="btn btn-primary-custom btn-sm" onclick="openEventoModal()">+ Nuevo Evento</button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark table-borderless align-middle">
+                                <thead>
+                                    <tr class="border-bottom border-secondary">
+                                        <th scope="col" class="text-white py-3">Categoría / Etiqueta</th>
+                                        <th scope="col" class="text-white py-3">Título de la Actividad</th>
+                                        <th scope="col" class="text-white py-3">Fecha</th>
+                                        <th scope="col" class="text-white py-3">Lugar y Hora</th>
+                                        <th scope="col" class="text-white py-3 text-end">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="eventosTableBody">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: FUEGOS ARTIFICIALES / CELEBRACIONES -->
+                <div class="tab-content d-none" id="tab-fireworks">
+                    <div class="card-custom">
+                        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+                            <div>
+                                <h4 class="font-heading text-secondary-custom fw-bold mb-1">Efectos Especiales y Fuegos Artificiales</h4>
+                                <p class="text-white-50 fs-6 mb-0">Personalice el botón flotante y la animación de celebración en la página principal.</p>
+                            </div>
+                            <button type="button" class="btn btn-outline-custom d-inline-flex align-items-center gap-2" onclick="testFireworksInAdmin()">
+                                <span class="material-symbols-outlined text-warning fs-5">sparkles</span>
+                                Probar Explosión
+                            </button>
+                        </div>
+
+                        <form id="fireworksConfigForm" onsubmit="saveFireworksConfig(event)">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-check form-switch card-custom bg-black bg-opacity-25 p-3 ps-5 border-0 rounded-3 mb-2">
+                                        <input class="form-check-input fs-5" type="checkbox" id="fw_active" style="cursor: pointer;">
+                                        <label class="form-check-label text-white fw-bold fs-6 ms-2" for="fw_active" style="cursor: pointer;">
+                                            Activar Botón Flotante de Fuegos Artificiales en el Sitio Principal
+                                        </label>
+                                        <div class="text-secondary-custom small ms-2 mt-1">Muestra un botón interactivo redondo en la parte inferior izquierda para que los visitantes festejen con un clic.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label text-white fw-semibold">Temática / Ocasión Especial</label>
+                                    <select class="form-select" id="fw_theme" onchange="onFireworksThemeChange()">
+                                        <option value="fiestas_patrias">🇵🇪 Fiestas Patrias (Rojo y Blanco)</option>
+                                        <option value="aniversario">🏛️ Aniversario Institucional (Azul, Dorado y Blanco)</option>
+                                        <option value="ano_nuevo">✨ Año Nuevo (Dorado, Plata y Amarillo)</option>
+                                        <option value="eventos">🎉 Evento Especial / Multicolor (Fiesta)</option>
+                                        <option value="custom">🎨 Personalizado (Definir Colores)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label text-white fw-semibold">Texto Corto del Botón</label>
+                                    <input type="text" class="form-control" id="fw_buttonText" placeholder="Ej. Fiestas Patrias, Celebra, Aniversario" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label text-white fw-semibold">Mensaje Informativo / Tooltip del Botón</label>
+                                    <input type="text" class="form-control" id="fw_title" placeholder="Ej. ¡Celebra las Fiestas Patrias con Nosotros!" required>
+                                </div>
+
+                                <div class="col-12" id="fw_customColorsSection">
+                                    <label class="form-label text-white fw-semibold mb-2">Paleta de Colores de la Explosión (2 a 3 Colores)</label>
+                                    <div class="d-flex flex-wrap gap-4 align-items-center card-custom bg-black bg-opacity-25 p-3 border-0 rounded-3">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="text-white small fw-bold">Color 1:</label>
+                                            <input type="color" class="form-control form-control-color p-1" id="fw_color1" value="#dc2626" style="width: 44px; height: 38px; cursor: pointer;">
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="text-white small fw-bold">Color 2:</label>
+                                            <input type="color" class="form-control form-control-color p-1" id="fw_color2" value="#ffffff" style="width: 44px; height: 38px; cursor: pointer;">
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="text-white small fw-bold">Color 3:</label>
+                                            <input type="color" class="form-control form-control-color p-1" id="fw_color3" value="#b91c1c" style="width: 44px; height: 38px; cursor: pointer;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-4 text-end">
+                                    <button type="submit" class="btn btn-primary-custom px-4">Guardar Configuración de Fuegos Artificiales</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB: SEGURIDAD -->
+                <div class="tab-content d-none" id="tab-seguridad">
+                    <div class="card-custom">
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Actualizar Contraseña de Administrador</h4>
+                        <form id="changePasswordForm" onsubmit="saveNewPassword(event)">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Contraseña Actual</label>
+                                    <input type="password" class="form-control" id="pwd_current" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Nueva Contraseña</label>
+                                    <input type="password" class="form-control" id="pwd_new" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-white">Confirmar Nueva Contraseña</label>
+                                    <input type="password" class="form-control" id="pwd_confirm" required>
+                                </div>
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn btn-primary-custom">Actualizar Contraseña</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Universal Hidden File Input for uploading files -->
+    <input type="file" id="universalFileInput" style="display: none;" onchange="handleUniversalFileSelected()">
+
+
+
+    <!-- MODAL: CONVOCATORIA -->
+    <div class="modal fade" id="convocatoriaModal" tabindex="-1" aria-labelledby="convocatoriaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header">
+                    <h5 class="modal-title text-secondary-custom" id="convocatoriaModalLabel">Guardar Convocatoria</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="convocatoriaForm" onsubmit="saveConvocatoria(event)">
+                        <input type="hidden" id="conv_id">
+                        <div class="mb-3">
+                            <label class="form-label text-white">Título de la Convocatoria / Bases</label>
+                            <input type="text" class="form-control" id="conv_title" required>
+                        </div>
+                        <div class="row mb-3 g-2">
+                            <div class="col-md-9">
+                                <label class="form-label text-white">URL de Archivo Bases (PDF)</label>
+                                <input type="text" class="form-control" id="conv_fileUrl" required>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('conv_fileUrl')">Subir PDF</button>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-white">Estado de la Convocatoria</label>
+                            <select class="form-select" id="conv_status">
+                                <option value="vigente">Vigente</option>
+                                <option value="concluido">Concluido</option>
+                            </select>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: AVISO -->
+    <div class="modal fade" id="avisoModal" tabindex="-1" aria-labelledby="avisoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header">
+                    <h5 class="modal-title text-secondary-custom" id="avisoModalLabel">Guardar Anuncio / Aviso</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="avisoForm" onsubmit="saveAviso(event)">
+                        <input type="hidden" id="aviso_id">
+                        <div class="mb-3">
+                            <label class="form-label text-white">Título del Anuncio</label>
+                            <input type="text" class="form-control" id="av_title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white">Descripción Corta</label>
+                            <textarea class="form-control" id="av_description" rows="2" required></textarea>
+                        </div>
+                        <div class="row mb-4 g-2">
+                            <div class="col-md-9">
+                                <label class="form-label text-white">URL de la Imagen</label>
+                                <input type="text" class="form-control" id="av_imageUrl" required>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('av_imageUrl')">Subir Imagen</button>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch mb-4">
+                            <input class="form-check-input" type="checkbox" id="av_active" checked style="cursor: pointer;">
+                            <label class="form-check-label text-white fw-bold" for="av_active">Anuncio Activo (se muestra en la página principal)</label>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: GALERIA -->
+    <div class="modal fade" id="galeriaModal" tabindex="-1" aria-labelledby="galeriaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header">
+                    <h5 class="modal-title text-secondary-custom" id="galeriaModalLabel">Guardar Imagen en Galería</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="galeriaForm" onsubmit="saveGaleria(event)">
+                        <input type="hidden" id="gal_id">
+                        <div class="mb-3">
+                            <label class="form-label text-white">Título de la Imagen</label>
+                            <input type="text" class="form-control" id="gal_title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white">Descripción / Detalle</label>
+                            <textarea class="form-control" id="gal_description" rows="3" required></textarea>
+                        </div>
+                        <div class="row mb-4 g-2">
+                            <div class="col-md-9">
+                                <label class="form-label text-white">URL de la Imagen</label>
+                                <input type="text" class="form-control" id="gal_imageUrl" required>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('gal_imageUrl')">Subir Imagen</button>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: VIDEOS -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header">
+                    <h5 class="modal-title text-secondary-custom" id="videoModalLabel">Guardar Video Institucional</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="videoForm" onsubmit="saveVideo(event)">
+                        <input type="hidden" id="vid_id">
+                        <div class="mb-3">
+                            <label class="form-label text-white">Título del Video</label>
+                            <input type="text" class="form-control" id="vid_title" placeholder="Ej. 50 Años de Tinajones" required>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Categoría / Etiqueta Principal</label>
+                                <input type="text" class="form-control" id="vid_category" placeholder="Ej. Documental, Gestión Hídrica, Mantenimiento" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Subetiqueta / Autor</label>
+                                <input type="text" class="form-control" id="vid_tag" placeholder="Ej. JUSHMCHL, Operaciones, Obras">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white">Descripción / Resumen</label>
+                            <textarea class="form-control" id="vid_description" rows="3" placeholder="Resumen del contenido audiovisual..." required></textarea>
+                        </div>
+                        <div class="row mb-4 g-2">
+                            <div class="col-md-9">
+                                <label class="form-label text-white">URL del Video (YouTube o Archivo Subido)</label>
+                                <input type="text" class="form-control" id="vid_videoUrl" placeholder="https://www.youtube.com/watch?v=... o https://www.youtube.com/embed/..." required>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('vid_videoUrl')">Subir Video</button>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: EVENTO / CALENDARIO -->
+    <div class="modal fade" id="eventoModal" tabindex="-1" aria-labelledby="eventoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header">
+                    <h5 class="modal-title text-secondary-custom" id="eventoModalLabel">Guardar Actividad / Evento</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="eventoForm" onsubmit="saveEvento(event)">
+                        <input type="hidden" id="evt_id">
+                        <div class="mb-3">
+                            <label class="form-label text-white">Título de la Actividad</label>
+                            <input type="text" class="form-control" id="evt_title" placeholder="Ej. Asamblea General Extraordinaria" required>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Fecha del Evento</label>
+                                <input type="date" class="form-control" id="evt_eventDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Hora / Horario</label>
+                                <input type="text" class="form-control" id="evt_time" placeholder="Ej. 09:00 AM o Todo el día" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Categoría</label>
+                                <select class="form-select" id="evt_category" onchange="updateEventColorByCategory()">
+                                    <option value="Asambleas">Asambleas</option>
+                                    <option value="Capacitación">Capacitación</option>
+                                    <option value="Mantenimiento">Mantenimiento</option>
+                                    <option value="Vencimientos">Vencimientos</option>
+                                    <option value="General">General</option>
+                                    <option value="NUEVA">+ Nueva Categoría / Personalizada...</option>
+                                </select>
+                                <input type="text" class="form-control mt-2 d-none" id="evt_category_custom" placeholder="Escriba el nombre de la nueva categoría">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Etiqueta Corta (Badge)</label>
+                                <input type="text" class="form-control" id="evt_label" placeholder="Ej. Asamblea, Taller, Limpieza">
+                            </div>
+                        </div>
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-7">
+                                <label class="form-label text-white">Lugar / Ubicación</label>
+                                <input type="text" class="form-control" id="evt_location" placeholder="Ej. Auditorio Principal JUSHMCHL" required>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label text-white">Color Distintivo</label>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <select class="form-select" id="evt_color" onchange="onColorSelectChange()">
+                                        <option value="#2563eb">Azul (Asambleas / General)</option>
+                                        <option value="#ea580c">Naranja (Capacitación)</option>
+                                        <option value="#16a34a">Verde (Mantenimiento)</option>
+                                        <option value="#dc2626">Rojo (Vencimientos)</option>
+                                        <option value="#8b5cf6">Morado (Eventos Especiales)</option>
+                                        <option value="#06b6d4">Cían (Reuniones)</option>
+                                        <option value="#eab308">Amarillo (Alertas)</option>
+                                        <option value="CUSTOM">Color Personalizado...</option>
+                                    </select>
+                                    <input type="color" class="form-control form-control-color p-1" id="evt_color_picker" value="#2563eb" style="width: 48px; height: 38px; cursor: pointer; flex-shrink: 0;" title="Elegir color exacto" onchange="onColorPickerChange()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-white">Descripción / Detalle del Evento</label>
+                            <textarea class="form-control" id="evt_desc" rows="3" placeholder="Información relevante para los usuarios..." required></textarea>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: CONFIRMACIÓN CUSTOM -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+            <div class="modal-content card-custom border-0" style="background-color: #0b152d; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5 class="text-white font-heading fw-bold mb-3" id="confirmModalTitle">¿Está seguro?</h5>
+                    <p class="text-secondary-custom fs-6 mb-4" id="confirmModalMessage">Esta acción no se puede deshacer.</p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <button type="button" class="btn btn-outline-custom px-4" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger px-4" style="background-color: #dc3545; border:none" id="confirmModalBtn">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- JS Logic -->
+    <script>
+        let token = localStorage.getItem("admin_token") || "";
+        let currentUploadTargetId = "";
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Detectar si estamos en el entorno de desarrollo Node o en un hosting PHP
+        window.getApiUrl = function(route, id = null) {
+            const isDev = window.location.port === "3000" || window.location.hostname.includes("run.app") || window.location.hostname.includes("aistudio");
+            if (isDev) {
+                return id ? `/api/admin/${route}/${id}` : `/api/admin/${route}`;
+            } else {
+                const phpFile = route === "change-password" ? "change-password.php" : `${route}.php`;
+                return id ? `php-api/${phpFile}?id=${id}` : `php-api/${phpFile}`;
+            }
+        };
+        function getApiUrl(route, id = null) {
+            return window.getApiUrl(route, id);
+        }
+
+        function getAuthHeaders(isJson = true) {
+            const h = {
+                "Authorization": token,
+                "X-Authorization": token
+            };
+            if (isJson) {
+                h["Content-Type"] = "application/json";
+            }
+            return h;
+        }
+
+        // UI Modals
+        let convModal, avModal, galModal, vidModal, evtModal, confirmModal;
+
+        function showConfirm(title, message, onConfirmCallback) {
+            document.getElementById("confirmModalTitle").innerText = title;
+            document.getElementById("confirmModalMessage").innerText = message;
+            
+            const confirmBtn = document.getElementById("confirmModalBtn");
+            const newConfirmBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+            
+            newConfirmBtn.addEventListener("click", () => {
+                confirmModal.hide();
+                onConfirmCallback();
+            });
+            
+            confirmModal.show();
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            convModal = new bootstrap.Modal(document.getElementById("convocatoriaModal"));
+            avModal = new bootstrap.Modal(document.getElementById("avisoModal"));
+            galModal = new bootstrap.Modal(document.getElementById("galeriaModal"));
+            vidModal = new bootstrap.Modal(document.getElementById("videoModal"));
+            evtModal = new bootstrap.Modal(document.getElementById("eventoModal"));
+            confirmModal = new bootstrap.Modal(document.getElementById("confirmModal"));
+
+            if (token) {
+                showDashboard();
+            } else {
+                showLogin();
+            }
+        });
+
+        function showLogin() {
+            document.getElementById("loginFormSection").style.display = "block";
+            document.getElementById("dashboardSection").style.display = "none";
+            document.getElementById("logoutSection").classList.add("d-none");
+        }
+
+        function showDashboard() {
+            document.getElementById("loginFormSection").style.display = "none";
+            document.getElementById("dashboardSection").style.display = "block";
+            document.getElementById("logoutSection").classList.remove("d-none");
+
+            // Load initial data
+            loadGeneralConfig();
+            loadFireworksConfig();
+            loadConvocatorias();
+            loadComisiones();
+            loadAreas();
+            loadEstructura();
+            loadNormativas();
+            loadNoticias();
+            loadAvisos();
+            loadGaleria();
+            loadVideos();
+            loadEventos();
+            loadDiagnostico();
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorDiv = document.getElementById("loginError");
+
+            errorDiv.classList.add("d-none");
+
+            try {
+                const res = await fetch(getApiUrl("login"), {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    token = data.token;
+                    localStorage.setItem("admin_token", token);
+                    showDashboard();
+                } else {
+                    errorDiv.innerText = data.error || "Error al iniciar sesión";
+                    errorDiv.classList.remove("d-none");
+                }
+            } catch (err) {
+                errorDiv.innerText = "Error de red al conectar al servidor";
+                errorDiv.classList.remove("d-none");
+            }
+        }
+
+        function logout() {
+            token = "";
+            localStorage.removeItem("admin_token");
+            showLogin();
+        }
+
+        function showToast(message, isSuccess = true) {
+            const alertDiv = document.getElementById("apiAlert");
+            alertDiv.className = `alert ${isSuccess ? 'alert-success bg-primary-custom text-dark' : 'alert-danger'} mt-3`;
+            alertDiv.innerText = message;
+            alertDiv.classList.remove("d-none");
+            setTimeout(() => {
+                alertDiv.classList.add("d-none");
+            }, 4000);
+        }
+
+        // Switch Tab
+        function switchTab(tabId, element) {
+            document.querySelectorAll(".tab-content").forEach(el => el.classList.add("d-none"));
+            document.getElementById(`tab-${tabId}`).classList.remove("d-none");
+
+            document.querySelectorAll(".sidebar-menu .list-group-item").forEach(el => el.classList.remove("active"));
+            element.classList.add("active");
+        }
+
+        // 1. GENERAL CONFIG
+        async function loadGeneralConfig() {
+            try {
+                const res = await fetch(getApiUrl("config"));
+                const config = await res.json();
+
+                document.getElementById("site_pageTitle").value = config.pageTitle || "";
+                document.getElementById("site_pageSubtitle").value = config.pageSubtitle || "";
+                document.getElementById("site_mision").value = config.mision || "";
+                document.getElementById("site_vision").value = config.vision || "";
+                document.getElementById("site_historia").value = config.historia || "";
+                document.getElementById("site_heroBg").value = config.heroBg || "";
+                document.getElementById("site_contactEmail").value = config.contactEmail || "";
+                document.getElementById("site_contactPhone").value = config.contactPhone || "";
+                document.getElementById("site_contactAddress").value = config.contactAddress || "";
+            } catch (err) {
+                console.error("Error cargando configuración general", err);
+            }
+        }
+
+        async function saveGeneralConfig(e) {
+            e.preventDefault();
+            const payload = {
+                pageTitle: document.getElementById("site_pageTitle").value,
+                pageSubtitle: document.getElementById("site_pageSubtitle").value,
+                mision: document.getElementById("site_mision").value,
+                vision: document.getElementById("site_vision").value,
+                historia: document.getElementById("site_historia").value,
+                heroBg: document.getElementById("site_heroBg").value,
+                contactEmail: document.getElementById("site_contactEmail").value,
+                contactPhone: document.getElementById("site_contactPhone").value,
+                contactAddress: document.getElementById("site_contactAddress").value,
+            };
+
+            try {
+                const res = await fetch(getApiUrl("config"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    showToast("Configuración general guardada exitosamente");
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar configuración", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        // 1b. FIREWORKS CONFIG
+        let currentFireworksConfig = {};
+
+        async function loadFireworksConfig() {
+            try {
+                const res = await fetch(getApiUrl("config"));
+                const config = await res.json();
+                const fw = config.fireworks || {};
+                currentFireworksConfig = fw;
+
+                document.getElementById("fw_active").checked = fw.active !== false;
+                document.getElementById("fw_theme").value = fw.theme || "fiestas_patrias";
+                document.getElementById("fw_buttonText").value = fw.buttonText || fw.btnText || "Fiestas Patrias";
+                document.getElementById("fw_title").value = fw.title || fw.titleText || "¡Celebra las Fiestas Patrias con Nosotros!";
+                
+                document.getElementById("fw_color1").value = fw.customColor1 || "#dc2626";
+                document.getElementById("fw_color2").value = fw.customColor2 || "#ffffff";
+                document.getElementById("fw_color3").value = fw.customColor3 || "#b91c1c";
+
+                onFireworksThemeChange(true);
+            } catch (err) {
+                console.error("Error cargando configuración de fuegos artificiales", err);
+            }
+        }
+
+        function getThemeColors(theme) {
+            const c1 = document.getElementById("fw_color1").value || "#dc2626";
+            const c2 = document.getElementById("fw_color2").value || "#ffffff";
+            const c3 = document.getElementById("fw_color3").value || "#b91c1c";
+
+            if (theme === "fiestas_patrias") {
+                return [c1, c2, c3];
+            } else if (theme === "aniversario") {
+                return [c1, c2, c3, "#ffffff"];
+            } else if (theme === "ano_nuevo") {
+                return [c1, c2, c3, "#c0c0c0"];
+            } else if (theme === "eventos") {
+                return [c1, c2, c3, "#10b981", "#f59e0b", "#ef4444"];
+            } else {
+                return [c1, c2, c3];
+            }
+        }
+
+        function onFireworksThemeChange(isInitialLoad = false) {
+            const theme = document.getElementById("fw_theme").value;
+            const btnText = document.getElementById("fw_buttonText");
+            const titleText = document.getElementById("fw_title");
+
+            const color1 = document.getElementById("fw_color1");
+            const color2 = document.getElementById("fw_color2");
+            const color3 = document.getElementById("fw_color3");
+
+            // Update color picker values dynamically to match selected theme palette
+            if (theme === "fiestas_patrias") {
+                if (!isInitialLoad) {
+                    color1.value = "#dc2626";
+                    color2.value = "#ffffff";
+                    color3.value = "#b91c1c";
+                }
+                if (!isInitialLoad || !btnText.value) {
+                    btnText.value = "Fiestas Patrias";
+                    titleText.value = "¡Celebra las Fiestas Patrias con Nosotros!";
+                }
+            } else if (theme === "aniversario") {
+                if (!isInitialLoad) {
+                    color1.value = "#0a183a";
+                    color2.value = "#2563eb";
+                    color3.value = "#eab308";
+                }
+                if (!isInitialLoad || !btnText.value) {
+                    btnText.value = "Aniversario";
+                    titleText.value = "¡Feliz Aniversario JUSHMCHL!";
+                }
+            } else if (theme === "ano_nuevo") {
+                if (!isInitialLoad) {
+                    color1.value = "#ffd700";
+                    color2.value = "#eab308";
+                    color3.value = "#ffffff";
+                }
+                if (!isInitialLoad || !btnText.value) {
+                    btnText.value = "Año Nuevo";
+                    titleText.value = "¡Feliz y Próspero Año Nuevo!";
+                }
+            } else if (theme === "eventos") {
+                if (!isInitialLoad) {
+                    color1.value = "#ec4899";
+                    color2.value = "#8b5cf6";
+                    color3.value = "#3b82f6";
+                }
+                if (!isInitialLoad || !btnText.value) {
+                    btnText.value = "Evento Especial";
+                    titleText.value = "¡Celebra nuestro Evento Especial!";
+                }
+            } else if (theme === "custom") {
+                // Custom: do NOT overwrite colors - let user keep what they have
+                if (!isInitialLoad || !btnText.value) {
+                    if (!btnText.value) btnText.value = "Evento Especial";
+                    if (!titleText.value) titleText.value = "¡Celebra nuestro Evento Especial!";
+                }
+            }
+
+            // Show/hide custom color section
+            const customSection = document.getElementById("fw_customColorsSection");
+            if (customSection) {
+                customSection.style.display = "block"; // Always show color pickers
+            }
+        }
+
+        function triggerFireworksExplosion(colorsList) {
+            if (typeof confetti !== "function") return;
+
+            const duration = 3 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999999, colors: colorsList };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+                const particleCount = 50 * (timeLeft / duration);
+                
+                // Launch bursts from various origins across screen
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.4), y: Math.random() - 0.2 }
+                }));
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.6, 0.9), y: Math.random() - 0.2 }
+                }));
+            }, 250);
+        }
+
+        function testFireworksInAdmin() {
+            const theme = document.getElementById("fw_theme").value;
+            const colors = getThemeColors(theme);
+            triggerFireworksExplosion(colors);
+        }
+
+        async function saveFireworksConfig(e) {
+            e.preventDefault();
+            const theme = document.getElementById("fw_theme").value;
+            const fireworksObj = {
+                active: document.getElementById("fw_active").checked,
+                theme: theme,
+                buttonText: document.getElementById("fw_buttonText").value,
+                btnText: document.getElementById("fw_buttonText").value,
+                title: document.getElementById("fw_title").value,
+                titleText: document.getElementById("fw_title").value,
+                customColor1: document.getElementById("fw_color1").value,
+                customColor2: document.getElementById("fw_color2").value,
+                customColor3: document.getElementById("fw_color3").value
+            };
+
+            try {
+                const res = await fetch(getApiUrl("config"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify({ fireworks: fireworksObj })
+                });
+
+                if (res.ok) {
+                    showToast("Configuración de Fuegos Artificiales guardada exitosamente.");
+                    testFireworksInAdmin();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar configuración", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión al guardar", false);
+            }
+        }
+
+        function formatFileUrl(url) {
+            if (!url || url === '#' || url.trim() === '') return '#';
+            let clean = url.trim();
+            if (clean.startsWith('/uploads/')) {
+                clean = 'assets/uploads/' + clean.substring(9);
+            } else if (clean.startsWith('uploads/')) {
+                clean = 'assets/' + clean;
+            }
+            return encodeURI(clean);
+        }
+
+        // 2. CONVOCATORIAS
+        let convocatoriasList = [];
+        async function loadConvocatorias() {
+            try {
+                const res = await fetch(getApiUrl("convocatorias"));
+                convocatoriasList = await res.json();
+                renderConvocatorias();
+            } catch (err) {
+                console.error("Error cargando convocatorias", err);
+            }
+        }
+
+        function renderConvocatorias() {
+            const container = document.getElementById("convocatoriasTableBody");
+            container.innerHTML = "";
+
+            if (!Array.isArray(convocatoriasList)) {
+                console.error("Convocatorias list is not a valid array", convocatoriasList);
+                return;
+            }
+
+            convocatoriasList.forEach(c => {
+                const tr = document.createElement("tr");
+                const formattedPdf = formatFileUrl(c.fileUrl);
+                const hasPdf = c.fileUrl && c.fileUrl !== '#';
+                tr.innerHTML = `
+                    <td class="text-white">
+                        <span class="fw-semibold">${c.title}</span><br>
+                        <small class="text-secondary-custom">${c.fileUrl}</small>
+                    </td>
+                    <td>
+                        <span class="badge-status badge-${c.status}">${c.status.toUpperCase()}</span>
+                    </td>
+                    <td class="text-end">
+                        ${hasPdf ? `<a href="${formattedPdf}" target="_blank" class="btn btn-sm btn-outline-info me-2"><i class="bi bi-file-earmark-pdf me-1"></i>Ver PDF</a>` : ''}
+                        <button class="btn btn-sm btn-outline-custom me-2" onclick="editConvocatoria('${c.id}')">Editar</button>
+                        <button class="btn btn-sm btn-danger" style="background-color: #dc3545; border:none" onclick="deleteConvocatoria('${c.id}')">Eliminar</button>
+                    </td>
+                `;
+                container.appendChild(tr);
+            });
+        }
+
+        function openConvocatoriaModal() {
+            document.getElementById("conv_id").value = "";
+            document.getElementById("conv_title").value = "";
+            document.getElementById("conv_fileUrl").value = "";
+            document.getElementById("conv_status").value = "vigente";
+            convModal.show();
+        }
+
+        function editConvocatoria(id) {
+            const c = convocatoriasList.find(item => item.id === id);
+            if (c) {
+                document.getElementById("conv_id").value = c.id;
+                document.getElementById("conv_title").value = c.title;
+                document.getElementById("conv_fileUrl").value = c.fileUrl;
+                document.getElementById("conv_status").value = c.status;
+                convModal.show();
+            }
+        }
+
+        async function saveConvocatoria(e) {
+            e.preventDefault();
+            const id = document.getElementById("conv_id").value;
+            const payload = {
+                id: id || undefined,
+                title: document.getElementById("conv_title").value,
+                fileUrl: document.getElementById("conv_fileUrl").value,
+                status: document.getElementById("conv_status").value
+            };
+
+            try {
+                const res = await fetch(getApiUrl("convocatorias"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    showToast("Convocatoria guardada correctamente");
+                    convModal.hide();
+                    loadConvocatorias();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar convocatoria", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        function deleteConvocatoria(id) {
+            showConfirm(
+                "¿Eliminar Convocatoria?",
+                "¿Está seguro de eliminar esta convocatoria?",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("convocatorias"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Convocatoria eliminada correctamente");
+                            loadConvocatorias();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        // 3. COMISIONES
+        let comisionesList = [];
+        async function loadComisiones(selectedId = null) {
+            try {
+                const res = await fetch(getApiUrl("comisiones"));
+                comisionesList = await res.json();
+
+                const select = document.getElementById("comisionSelect");
+                select.innerHTML = "";
+
+                if (Array.isArray(comisionesList)) {
+                    // Ordenar alfabéticamente por nombre
+                    comisionesList.sort((a, b) => (a.name || "").localeCompare(b.name || "", "es", { sensitivity: "base" }));
+                    comisionesList.forEach(c => {
+                        const opt = document.createElement("option");
+                        opt.value = c.id;
+                        opt.innerText = c.name;
+                        select.appendChild(opt);
+                    });
+                    if (selectedId) {
+                        select.value = selectedId;
+                    }
+                    loadSelectedComision();
+                } else {
+                    console.error("La respuesta de comisiones no es una lista válida:", comisionesList);
+                }
+            } catch (err) {
+                console.error("Error cargando comisiones", err);
+            }
+        }
+
+        function loadSelectedComision() {
+            const id = document.getElementById("comisionSelect").value;
+            const c = comisionesList.find(item => item.id === id);
+            const deleteBtn = document.getElementById("deleteComisionBtn");
+            const saveBtn = document.getElementById("saveComisionBtn");
+            
+            if (c) {
+                document.getElementById("comision_id").value = c.id;
+                document.getElementById("comision_name").value = c.name;
+                document.getElementById("comision_description").value = c.description || "";
+                document.getElementById("comision_presidente").value = c.presidente || "";
+                document.getElementById("comision_direccion").value = c.direccion || "";
+                document.getElementById("comision_usuarios").value = c.usuarios || "";
+                document.getElementById("comision_area").value = c.area || "";
+                document.getElementById("comision_logo").value = c.logo || "";
+                document.getElementById("comision_cover").value = c.cover || "";
+                
+                deleteBtn.style.display = "inline-block";
+                saveBtn.innerText = "Guardar Cambios de Comisión";
+            } else {
+                deleteBtn.style.display = "none";
+            }
+        }
+
+        function prepareNewComision() {
+            document.getElementById("comision_id").value = "";
+            document.getElementById("comision_name").value = "";
+            document.getElementById("comision_description").value = "";
+            document.getElementById("comision_presidente").value = "";
+            document.getElementById("comision_direccion").value = "";
+            document.getElementById("comision_usuarios").value = "";
+            document.getElementById("comision_area").value = "";
+            document.getElementById("comision_logo").value = "";
+            document.getElementById("comision_cover").value = "";
+            
+            document.getElementById("deleteComisionBtn").style.display = "none";
+            document.getElementById("saveComisionBtn").innerText = "Crear Nueva Comisión";
+            
+            // Agregar una opción temporal o deseleccionar
+            const select = document.getElementById("comisionSelect");
+            // Deseleccionar
+            select.value = "";
+        }
+
+        function deleteSelectedComision() {
+            const id = document.getElementById("comision_id").value;
+            if (!id) {
+                showToast("No hay ninguna comisión seleccionada para eliminar", false);
+                return;
+            }
+            showConfirm(
+                "¿Eliminar Comisión?",
+                "¿Está seguro de eliminar esta comisión? Esta acción no se puede deshacer.",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("comisiones"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Comisión eliminada exitosamente");
+                            loadComisiones();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar comisión", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        async function saveComision(e) {
+            e.preventDefault();
+            const id = document.getElementById("comision_id").value;
+            const payload = {
+                id: id,
+                name: document.getElementById("comision_name").value,
+                description: document.getElementById("comision_description").value,
+                presidente: document.getElementById("comision_presidente").value,
+                direccion: document.getElementById("comision_direccion").value,
+                usuarios: document.getElementById("comision_usuarios").value,
+                area: document.getElementById("comision_area").value,
+                logo: document.getElementById("comision_logo").value,
+                cover: document.getElementById("comision_cover").value
+            };
+
+            try {
+                const res = await fetch(getApiUrl("comisiones"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast(id ? "Comisión actualizada con éxito" : "Comisión creada con éxito");
+                    let savedId = id;
+                    if (!savedId && data.id) {
+                        savedId = data.id;
+                    } else if (!savedId && data.comisiones && data.comisiones.length > 0) {
+                        savedId = data.comisiones[data.comisiones.length - 1].id;
+                    }
+                    loadComisiones(savedId);
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar cambios de comisión", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        // 4. ANUNCIOS / AVISOS
+        let avisosList = [];
+        let modalGlobalActive = true;
+
+        async function loadAvisos() {
+            try {
+                const [avisosRes, configRes] = await Promise.all([
+                    fetch(getApiUrl("avisos")).catch(() => null),
+                    fetch(getApiUrl("config")).catch(() => null)
+                ]);
+
+                if (avisosRes && avisosRes.ok) {
+                    avisosList = await avisosRes.json();
+                }
+                if (configRes && configRes.ok) {
+                    const cfg = await configRes.json();
+                    modalGlobalActive = cfg.modalAvisosActive !== false;
+                }
+
+                updateGlobalModalStatusUI();
+                renderAvisos();
+            } catch (err) {
+                console.error("Error cargando avisos", err);
+            }
+        }
+
+        function updateGlobalModalStatusUI() {
+            const btn = document.getElementById("globalAvisosModalToggleBtn");
+            const banner = document.getElementById("globalAvisosModalStatusBanner");
+            const icon = document.getElementById("globalAvisosIcon");
+            const title = document.getElementById("globalAvisosStatusTitle");
+            const desc = document.getElementById("globalAvisosStatusDesc");
+            const badge = document.getElementById("globalAvisosBadge");
+
+            if (!btn || !banner) return;
+
+            if (modalGlobalActive) {
+                btn.className = "btn btn-outline-danger btn-sm fw-bold px-3";
+                btn.innerHTML = "🚫 Desactivar Modal Completo";
+
+                banner.style.background = "rgba(25, 135, 84, 0.2)";
+                banner.style.borderColor = "rgba(25, 135, 84, 0.5)";
+
+                if (icon) {
+                    icon.className = "material-symbols-outlined fs-3 text-success";
+                    icon.textContent = "check_circle";
+                }
+                if (title) title.textContent = "Modal de Anuncios: ACTIVO";
+                if (desc) desc.textContent = "El modal emergente se mostrará automáticamente en la página principal a todos los visitantes.";
+                if (badge) {
+                    badge.className = "badge bg-success fs-6 px-3 py-2";
+                    badge.textContent = "Modal Visible";
+                }
+            } else {
+                btn.className = "btn btn-success btn-sm fw-bold px-3";
+                btn.innerHTML = "✅ Activar Modal Completo";
+
+                banner.style.background = "rgba(220, 53, 69, 0.2)";
+                banner.style.borderColor = "rgba(220, 53, 69, 0.5)";
+
+                if (icon) {
+                    icon.className = "material-symbols-outlined fs-3 text-danger";
+                    icon.textContent = "cancel";
+                }
+                if (title) title.textContent = "Modal de Anuncios: DESACTIVADO GLOBALMENTE";
+                if (desc) desc.textContent = "El modal emergente NO se mostrará en la página principal a ningún visitante.";
+                if (badge) {
+                    badge.className = "badge bg-danger fs-6 px-3 py-2";
+                    badge.textContent = "Modal Oculto";
+                }
+            }
+        }
+
+        async function toggleGlobalAvisosModal() {
+            try {
+                const res = await fetch(getApiUrl("avisos"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify({ action: "TOGGLE_MODAL_GLOBAL" })
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast(data.message || "Estado del modal actualizado");
+                    if (data.modalAvisosActive !== undefined) {
+                        modalGlobalActive = data.modalAvisosActive;
+                    }
+                    loadAvisos();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al cambiar estado del modal", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        function renderAvisos() {
+            const container = document.getElementById("avisosCardsContainer");
+            container.innerHTML = "";
+
+            if (!Array.isArray(avisosList)) {
+                console.error("Avisos list is not a valid array", avisosList);
+                return;
+            }
+
+            avisosList.forEach(a => {
+                const isActive = a.active !== false;
+                const col = document.createElement("div");
+                col.className = "col";
+                col.innerHTML = `
+                    <div class="card-custom h-100 d-flex flex-column gap-3 ${!isActive ? 'opacity-75 border-secondary' : ''}">
+                        <div class="position-relative">
+                            <img src="${a.imageUrl}" class="w-100 preview-img mb-2" style="max-height: 150px; width: 100%; object-fit: cover; max-width: none; border-radius: 8px;">
+                            <span class="position-absolute top-0 end-0 m-2 badge ${isActive ? 'bg-success' : 'bg-secondary'}" style="font-size: 0.75rem;">
+                                ${isActive ? 'Activo' : 'Desactivado'}
+                            </span>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-heading fw-bold mb-1">${a.title}</h5>
+                            <p class="text-secondary-custom fs-6 mb-0">${a.description}</p>
+                        </div>
+                        <div class="mt-auto d-flex gap-2 flex-wrap">
+                            <button class="btn btn-sm ${isActive ? 'btn-outline-warning' : 'btn-success'} flex-grow-1" onclick="toggleAvisoActive('${a.id}')">
+                                ${isActive ? '🚫 Desactivar' : '✅ Activar'}
+                            </button>
+                            <button class="btn btn-sm btn-outline-custom flex-grow-1" onclick="editAviso('${a.id}')">Editar</button>
+                            <button class="btn btn-sm btn-danger" style="background-color: #dc3545; border:none" onclick="deleteAviso('${a.id}')">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function openAvisoModal() {
+            document.getElementById("aviso_id").value = "";
+            document.getElementById("av_title").value = "";
+            document.getElementById("av_description").value = "";
+            document.getElementById("av_imageUrl").value = "";
+            const activeInput = document.getElementById("av_active");
+            if (activeInput) activeInput.checked = true;
+            avModal.show();
+        }
+
+        function editAviso(id) {
+            const a = avisosList.find(item => item.id === id);
+            if (a) {
+                document.getElementById("aviso_id").value = a.id;
+                document.getElementById("av_title").value = a.title;
+                document.getElementById("av_description").value = a.description;
+                document.getElementById("av_imageUrl").value = a.imageUrl;
+                const activeInput = document.getElementById("av_active");
+                if (activeInput) activeInput.checked = a.active !== false;
+                avModal.show();
+            }
+        }
+
+        async function toggleAvisoActive(id) {
+            try {
+                const res = await fetch(getApiUrl("avisos"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify({ action: "TOGGLE_ACTIVE", id: id })
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast(data.message || "Estado del anuncio actualizado");
+                    loadAvisos();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al cambiar estado del anuncio", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        async function saveAviso(e) {
+            e.preventDefault();
+            const id = document.getElementById("aviso_id").value;
+            const activeInput = document.getElementById("av_active");
+            const payload = {
+                id: id || undefined,
+                title: document.getElementById("av_title").value,
+                description: document.getElementById("av_description").value,
+                imageUrl: document.getElementById("av_imageUrl").value,
+                active: activeInput ? activeInput.checked : true
+            };
+
+            try {
+                const res = await fetch(getApiUrl("avisos"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    showToast("Anuncio guardado correctamente");
+                    avModal.hide();
+                    loadAvisos();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar anuncio", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        function deleteAviso(id) {
+            showConfirm(
+                "¿Eliminar Anuncio?",
+                "¿Está seguro de eliminar este anuncio?",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("avisos"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Anuncio eliminado correctamente");
+                            loadAvisos();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        // 4b. GALERÍA INSTITUCIONAL
+        let galeriaList = [];
+        async function loadGaleria() {
+            try {
+                const res = await fetch(getApiUrl("galeria"));
+                galeriaList = await res.json();
+                renderGaleria();
+            } catch (err) {
+                console.error("Error cargando galería", err);
+            }
+        }
+
+        function renderGaleria() {
+            const container = document.getElementById("galeriaCardsContainer");
+            if (!container) return;
+            container.innerHTML = "";
+
+            if (!Array.isArray(galeriaList)) {
+                console.error("Galeria list is not a valid array", galeriaList);
+                return;
+            }
+
+            galeriaList.forEach(g => {
+                const col = document.createElement("div");
+                col.className = "col";
+                col.innerHTML = `
+                    <div class="card-custom h-100 d-flex flex-column gap-3">
+                        <img src="${g.imageUrl}" class="w-100 preview-img mb-2" style="max-height: 180px; width: 100%; object-fit: cover; max-width: none; border-radius: 8px;">
+                        <div>
+                            <h5 class="text-white font-heading fw-bold">${g.title}</h5>
+                            <p class="text-secondary-custom fs-6 mb-0">${g.description}</p>
+                        </div>
+                        <div class="mt-auto d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-custom w-50" onclick="editGaleria('${g.id}')">Editar</button>
+                            <button class="btn btn-sm btn-danger w-50" style="background-color: #dc3545; border:none" onclick="deleteGaleriaItem('${g.id}')">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function openGaleriaModal() {
+            document.getElementById("gal_id").value = "";
+            document.getElementById("gal_title").value = "";
+            document.getElementById("gal_description").value = "";
+            document.getElementById("gal_imageUrl").value = "";
+            galModal.show();
+        }
+
+        function editGaleria(id) {
+            const g = galeriaList.find(item => item.id === id);
+            if (g) {
+                document.getElementById("gal_id").value = g.id;
+                document.getElementById("gal_title").value = g.title;
+                document.getElementById("gal_description").value = g.description;
+                document.getElementById("gal_imageUrl").value = g.imageUrl;
+                galModal.show();
+            }
+        }
+
+        async function saveGaleria(e) {
+            e.preventDefault();
+            const id = document.getElementById("gal_id").value;
+            const payload = {
+                id: id || undefined,
+                title: document.getElementById("gal_title").value,
+                description: document.getElementById("gal_description").value,
+                imageUrl: document.getElementById("gal_imageUrl").value
+            };
+
+            try {
+                const res = await fetch(getApiUrl("galeria"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    showToast("Imagen guardada en la galería correctamente");
+                    galModal.hide();
+                    loadGaleria();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar imagen", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        function deleteGaleriaItem(id) {
+            showConfirm(
+                "¿Eliminar Imagen?",
+                "¿Está seguro de eliminar esta imagen de la galería?",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("galeria"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Imagen eliminada correctamente");
+                            loadGaleria();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        // 4c. VIDEOS INSTITUCIONALES
+        let videosList = [];
+
+        function formatYouTubeUrlJS(url) {
+            if (!url) return '';
+            let cleanUrl = url.trim();
+            const iframeMatch = cleanUrl.match(/src=["']([^"']+)["']/i);
+            if (iframeMatch && iframeMatch[1]) cleanUrl = iframeMatch[1];
+            const match = cleanUrl.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts|live)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i);
+            if (match && match[1]) {
+                return `https://www.youtube.com/embed/${match[1]}`;
+            }
+            return cleanUrl;
+        }
+
+        async function loadVideos() {
+            try {
+                const res = await fetch(getApiUrl("videos"));
+                videosList = await res.json();
+                renderVideos();
+            } catch (err) {
+                console.error("Error cargando videos", err);
+            }
+        }
+
+        function renderVideos() {
+            const container = document.getElementById("videosCardsContainer");
+            if (!container) return;
+            container.innerHTML = "";
+
+            if (!Array.isArray(videosList)) {
+                console.error("Videos list is not a valid array", videosList);
+                return;
+            }
+
+            videosList.forEach(v => {
+                const col = document.createElement("div");
+                col.className = "col";
+                
+                let mediaHtml = '';
+                const cleanVideoUrl = formatYouTubeUrlJS(v.videoUrl);
+                if (cleanVideoUrl && (cleanVideoUrl.includes('youtube.com') || cleanVideoUrl.includes('youtu.be'))) {
+                    mediaHtml = `<div class="ratio ratio-16x9 mb-3 rounded-3 overflow-hidden shadow">
+                        <iframe src="${cleanVideoUrl}" title="${v.title}" allowfullscreen></iframe>
+                    </div>`;
+                } else {
+                    mediaHtml = `<video src="${v.videoUrl}" controls class="w-100 rounded-3 mb-3" style="max-height: 180px; object-fit: cover;"></video>`;
+                }
+
+                col.innerHTML = `
+                    <div class="card-custom h-100 d-flex flex-column gap-3">
+                        ${mediaHtml}
+                        <div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="badge bg-primary-custom text-dark fw-bold">${v.category || 'General'}</span>
+                                <span class="text-white-50 small">${v.tag || ''}</span>
+                            </div>
+                            <h5 class="text-white font-heading fw-bold">${v.title}</h5>
+                            <p class="text-secondary-custom fs-6 mb-0" style="font-size: 14px; line-height: 1.4;">${v.description}</p>
+                        </div>
+                        <div class="mt-auto d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-custom w-50" onclick="editVideo('${v.id}')">Editar</button>
+                            <button class="btn btn-sm btn-danger w-50" style="background-color: #dc3545; border:none" onclick="deleteVideoItem('${v.id}')">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function openVideoModal() {
+            document.getElementById("vid_id").value = "";
+            document.getElementById("vid_title").value = "";
+            document.getElementById("vid_category").value = "Documental";
+            document.getElementById("vid_tag").value = "JUSHMCHL";
+            document.getElementById("vid_description").value = "";
+            document.getElementById("vid_videoUrl").value = "";
+            vidModal.show();
+        }
+
+        function editVideo(id) {
+            const v = videosList.find(item => item.id === id);
+            if (v) {
+                document.getElementById("vid_id").value = v.id;
+                document.getElementById("vid_title").value = v.title;
+                document.getElementById("vid_category").value = v.category || "";
+                document.getElementById("vid_tag").value = v.tag || "";
+                document.getElementById("vid_description").value = v.description;
+                document.getElementById("vid_videoUrl").value = v.videoUrl;
+                vidModal.show();
+            }
+        }
+
+        async function saveVideo(e) {
+            e.preventDefault();
+            const id = document.getElementById("vid_id").value;
+            const payload = {
+                id: id || undefined,
+                title: document.getElementById("vid_title").value,
+                category: document.getElementById("vid_category").value,
+                tag: document.getElementById("vid_tag").value,
+                description: document.getElementById("vid_description").value,
+                videoUrl: document.getElementById("vid_videoUrl").value
+            };
+
+            try {
+                const res = await fetch(getApiUrl("videos"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    showToast("Video guardado correctamente");
+                    vidModal.hide();
+                    loadVideos();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar video", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        function deleteVideoItem(id) {
+            showConfirm(
+                "¿Eliminar Video?",
+                "¿Está seguro de eliminar este video institucional?",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("videos"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Video eliminado correctamente");
+                            loadVideos();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        // 4d. EVENTOS / CALENDARIO
+        let eventosList = [];
+        async function loadEventos() {
+            try {
+                const res = await fetch(getApiUrl("eventos"));
+                eventosList = await res.json();
+                renderEventos();
+            } catch (err) {
+                console.error("Error cargando eventos", err);
+            }
+        }
+
+        function renderEventos() {
+            const container = document.getElementById("eventosTableBody");
+            if (!container) return;
+            container.innerHTML = "";
+
+            if (!Array.isArray(eventosList)) {
+                console.error("Eventos list is not an array", eventosList);
+                return;
+            }
+
+            eventosList.forEach(e => {
+                const tr = document.createElement("tr");
+                const colorBadge = e.color || "#2563eb";
+                tr.innerHTML = `
+                    <td>
+                        <span class="badge" style="background-color: ${colorBadge}; color: #fff; font-size: 0.85rem; padding: 6px 12px; border-radius: 8px;">
+                            ${e.category || 'General'} ${e.label ? '(' + e.label + ')' : ''}
+                        </span>
+                    </td>
+                    <td class="text-white fw-bold">
+                        ${e.title}
+                    </td>
+                    <td class="text-secondary-custom">
+                        <i class="bi bi-calendar3 me-1"></i> ${e.date || e.eventDate || ''}
+                    </td>
+                    <td class="text-secondary-custom">
+                        <div><i class="bi bi-geo-alt me-1"></i> ${e.location || 'Sede Principal'}</div>
+                        <small class="text-muted"><i class="bi bi-clock me-1"></i> ${e.time || 'Todo el día'}</small>
+                    </td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-custom me-2" onclick="editEvento('${e.id}')">Editar</button>
+                        <button class="btn btn-sm btn-danger" style="background-color: #dc3545; border:none" onclick="deleteEventoItem('${e.id}')">Eliminar</button>
+                    </td>
+                `;
+                container.appendChild(tr);
+            });
+        }
+
+        function updateEventColorByCategory() {
+            const catSelect = document.getElementById("evt_category");
+            const catCustom = document.getElementById("evt_category_custom");
+            const colorSelect = document.getElementById("evt_color");
+            const colorPicker = document.getElementById("evt_color_picker");
+            const labelInput = document.getElementById("evt_label");
+
+            if (catSelect.value === "NUEVA") {
+                catCustom.classList.remove("d-none");
+                catCustom.focus();
+            } else {
+                catCustom.classList.add("d-none");
+            }
+
+            const cat = catSelect.value;
+            let targetColor = "";
+            if (cat === "Asambleas") {
+                targetColor = "#2563eb";
+                if (!labelInput.value) labelInput.value = "Asamblea";
+            } else if (cat === "Capacitación") {
+                targetColor = "#ea580c";
+                if (!labelInput.value) labelInput.value = "Taller";
+            } else if (cat === "Mantenimiento") {
+                targetColor = "#16a34a";
+                if (!labelInput.value) labelInput.value = "Limpieza";
+            } else if (cat === "Vencimientos") {
+                targetColor = "#dc2626";
+                if (!labelInput.value) labelInput.value = "Tarifa";
+            }
+
+            if (targetColor) {
+                colorSelect.value = targetColor;
+                colorPicker.value = targetColor;
+            }
+        }
+
+        function onColorSelectChange() {
+            const colorSelect = document.getElementById("evt_color");
+            const colorPicker = document.getElementById("evt_color_picker");
+            if (colorSelect.value !== "CUSTOM") {
+                colorPicker.value = colorSelect.value;
+            }
+        }
+
+        function onColorPickerChange() {
+            const colorSelect = document.getElementById("evt_color");
+            const colorPicker = document.getElementById("evt_color_picker");
+            const val = colorPicker.value;
+            let matched = false;
+            for (let opt of colorSelect.options) {
+                if (opt.value.toLowerCase() === val.toLowerCase()) {
+                    colorSelect.value = opt.value;
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched) {
+                colorSelect.value = "CUSTOM";
+            }
+        }
+
+        function openEventoModal() {
+            document.getElementById("evt_id").value = "";
+            document.getElementById("evt_title").value = "";
+            const todayStr = new Date().toISOString().split('T')[0];
+            document.getElementById("evt_eventDate").value = todayStr;
+            document.getElementById("evt_time").value = "09:00 AM";
+            
+            const catSelect = document.getElementById("evt_category");
+            const catCustom = document.getElementById("evt_category_custom");
+            catSelect.value = "Asambleas";
+            catCustom.value = "";
+            catCustom.classList.add("d-none");
+
+            document.getElementById("evt_label").value = "Asamblea";
+            document.getElementById("evt_location").value = "Auditorio Principal JUSHMCHL";
+            
+            document.getElementById("evt_color").value = "#2563eb";
+            document.getElementById("evt_color_picker").value = "#2563eb";
+            document.getElementById("evt_desc").value = "";
+            evtModal.show();
+        }
+
+        function editEvento(id) {
+            const e = eventosList.find(item => item.id === id);
+            if (e) {
+                document.getElementById("evt_id").value = e.id;
+                document.getElementById("evt_title").value = e.title;
+                document.getElementById("evt_eventDate").value = e.eventDate || (e.year && e.month !== undefined && e.day ? `${e.year}-${String(e.month + 1).padStart(2, '0')}-${String(e.day).padStart(2, '0')}` : "");
+                document.getElementById("evt_time").value = e.time || "";
+                
+                const catSelect = document.getElementById("evt_category");
+                const catCustom = document.getElementById("evt_category_custom");
+                const catVal = e.category || "General";
+                let foundCat = false;
+                for (let opt of catSelect.options) {
+                    if (opt.value === catVal) {
+                        catSelect.value = catVal;
+                        foundCat = true;
+                        break;
+                    }
+                }
+                if (!foundCat) {
+                    catSelect.value = "NUEVA";
+                    catCustom.value = catVal;
+                    catCustom.classList.remove("d-none");
+                } else {
+                    catCustom.value = "";
+                    catCustom.classList.add("d-none");
+                }
+
+                document.getElementById("evt_label").value = e.label || "";
+                document.getElementById("evt_location").value = e.location || "";
+                
+                const colorSelect = document.getElementById("evt_color");
+                const colorPicker = document.getElementById("evt_color_picker");
+                const colorVal = e.color || "#2563eb";
+                let foundColor = false;
+                for (let opt of colorSelect.options) {
+                    if (opt.value.toLowerCase() === colorVal.toLowerCase()) {
+                        colorSelect.value = opt.value;
+                        foundColor = true;
+                        break;
+                    }
+                }
+                if (!foundColor) {
+                    colorSelect.value = "CUSTOM";
+                }
+                colorPicker.value = colorVal;
+
+                document.getElementById("evt_desc").value = e.desc || "";
+                evtModal.show();
+            }
+        }
+
+        async function saveEvento(e) {
+            e.preventDefault();
+            const id = document.getElementById("evt_id").value;
+            
+            const catSelect = document.getElementById("evt_category");
+            const catCustom = document.getElementById("evt_category_custom");
+            let finalCategory = catSelect.value;
+            if (finalCategory === "NUEVA") {
+                finalCategory = catCustom.value.trim() || "General";
+            }
+
+            const colorSelect = document.getElementById("evt_color");
+            const colorPicker = document.getElementById("evt_color_picker");
+            let finalColor = colorSelect.value === "CUSTOM" ? colorPicker.value : colorSelect.value;
+            if (!finalColor) finalColor = colorPicker.value || "#2563eb";
+
+            const payload = {
+                id: id || undefined,
+                title: document.getElementById("evt_title").value,
+                eventDate: document.getElementById("evt_eventDate").value,
+                time: document.getElementById("evt_time").value,
+                category: finalCategory,
+                label: document.getElementById("evt_label").value || finalCategory,
+                location: document.getElementById("evt_location").value,
+                color: finalColor,
+                desc: document.getElementById("evt_desc").value
+            };
+
+            try {
+                const res = await fetch(getApiUrl("eventos"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    showToast("Evento guardado exitosamente");
+                    evtModal.hide();
+                    loadEventos();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar evento", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        function deleteEventoItem(id) {
+            showConfirm(
+                "¿Eliminar Evento?",
+                "¿Está seguro de eliminar esta actividad del calendario?",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("eventos"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Evento eliminado correctamente");
+                            loadEventos();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        // 5. FILE UPLOAD HANDLING
+        function triggerFileUpload(targetInputId) {
+            currentUploadTargetId = targetInputId;
+            document.getElementById("universalFileInput").click();
+        }
+
+        async function handleUniversalFileSelected() {
+            const fileInput = document.getElementById("universalFileInput");
+            if (!fileInput.files || fileInput.files.length === 0) return;
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const res = await fetch(getApiUrl("upload"), {
+                    method: "POST",
+                    headers: getAuthHeaders(false),
+                    body: formData
+                });
+                
+                const responseText = await res.text();
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch(e) {
+                    console.error("Respuesta del servidor no es JSON:", responseText);
+                    showToast("Error del servidor al subir. Verifica que el archivo no supere los 10MB.", false);
+                    return;
+                }
+
+                if (res.ok) {
+                    const finalUrl = data.fileUrl || data.url;
+                    if (finalUrl && currentUploadTargetId) {
+                        const targetElem = document.getElementById(currentUploadTargetId);
+                        if (targetElem) {
+                            targetElem.value = finalUrl;
+                        }
+                    }
+                    showToast(data.message || "Archivo subido y enlazado correctamente");
+                } else {
+                    showToast(data.error || "Error al subir archivo", false);
+                }
+            } catch (err) {
+                console.error("Error al subir archivo:", err);
+                showToast("Error de conexión al subir archivo. Revisa tu conexión a internet o el tamaño del archivo.", false);
+            } finally {
+                fileInput.value = ""; // Reset file selector
+            }
+        }
+
+        // 6. PASSWORD UPDATE
+        async function saveNewPassword(e) {
+            e.preventDefault();
+            const currentPassword = document.getElementById("pwd_current").value;
+            const newPassword = document.getElementById("pwd_new").value;
+            const confirmPassword = document.getElementById("pwd_confirm").value;
+
+            if (newPassword !== confirmPassword) {
+                showToast("La nueva contraseña y su confirmación no coinciden.", false);
+                return;
+            }
+
+            try {
+                const res = await fetch(getApiUrl("change-password"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify({ currentPassword, newPassword })
+                });
+                if (res.ok) {
+                    showToast("Contraseña actualizada exitosamente. Inicie sesión de nuevo.");
+                    logout();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al actualizar contraseña", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        // 7. AREAS
+        let areasList = [];
+
+        function setAreaColor(colorHex) {
+            const input = document.getElementById("area_color");
+            if (input) {
+                input.value = colorHex;
+                updateAreaColorPreview();
+            }
+        }
+
+        function updateAreaColorPreview() {
+            const input = document.getElementById("area_color");
+            const badge = document.getElementById("area_color_badge");
+            if (input && badge) {
+                const colorVal = input.value || "#20c997";
+                badge.style.backgroundColor = colorVal;
+            }
+        }
+
+        async function loadAreas(selectedId = null) {
+            try {
+                const res = await fetch(getApiUrl("areas"));
+                areasList = await res.json();
+
+                const select = document.getElementById("areaSelect");
+                select.innerHTML = "";
+
+                if (Array.isArray(areasList)) {
+                    // Ordenar alfabéticamente por título
+                    areasList.sort((a, b) => (a.title || "").localeCompare(b.title || "", "es", { sensitivity: "base" }));
+                    areasList.forEach(a => {
+                        const opt = document.createElement("option");
+                        opt.value = a.id;
+                        opt.innerText = a.title;
+                        select.appendChild(opt);
+                    });
+                    if (selectedId) {
+                        select.value = selectedId;
+                    }
+                    loadSelectedArea();
+                } else {
+                    console.error("La respuesta de áreas no es una lista válida o está vacía:", areasList);
+                }
+            } catch (err) {
+                console.error("Error cargando áreas", err);
+            }
+        }
+
+        function loadSelectedArea() {
+            const id = document.getElementById("areaSelect").value;
+            const a = areasList.find(item => item.id === id);
+            const deleteBtn = document.getElementById("deleteAreaBtn");
+            const saveBtn = document.getElementById("saveAreaBtn");
+
+            if (a) {
+                document.getElementById("area_id").value = a.id;
+                document.getElementById("area_title").value = a.title;
+                document.getElementById("area_description").value = a.description || "";
+                
+                const colorVal = (a.color && a.color.startsWith('#')) ? a.color : "#20c997";
+                document.getElementById("area_color").value = colorVal;
+                updateAreaColorPreview();
+
+                deleteBtn.style.display = "inline-block";
+                saveBtn.innerText = "Guardar Cambios del Área";
+            } else {
+                deleteBtn.style.display = "none";
+            }
+        }
+
+        function prepareNewArea() {
+            document.getElementById("area_id").value = "";
+            document.getElementById("area_title").value = "";
+            document.getElementById("area_description").value = "";
+            document.getElementById("area_color").value = "#20c997";
+            updateAreaColorPreview();
+
+            document.getElementById("deleteAreaBtn").style.display = "none";
+            document.getElementById("saveAreaBtn").innerText = "Crear Nueva Área";
+
+            const select = document.getElementById("areaSelect");
+            select.value = "";
+        }
+
+        function deleteSelectedArea() {
+            const id = document.getElementById("area_id").value;
+            if (!id) {
+                showToast("No hay ninguna área seleccionada para eliminar", false);
+                return;
+            }
+            showConfirm(
+                "¿Eliminar Área?",
+                "¿Está seguro de eliminar esta área institucional? Esta acción no se puede deshacer.",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("areas"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Área eliminada exitosamente");
+                            loadAreas();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar área", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        async function saveArea(e) {
+            e.preventDefault();
+            const id = document.getElementById("area_id").value;
+            const payload = {
+                id: id,
+                title: document.getElementById("area_title").value,
+                description: document.getElementById("area_description").value,
+                color: document.getElementById("area_color").value || "#20c997"
+            };
+
+            try {
+                const res = await fetch(getApiUrl("areas"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast(id ? "Área institucional actualizada con éxito" : "Área institucional creada con éxito");
+                    let savedId = id;
+                    if (!savedId && data.id) {
+                        savedId = data.id;
+                    } else if (!savedId && data.areas && data.areas.length > 0) {
+                        // Buscar la nueva área creada por su título o tomar la correspondiente
+                        const match = data.areas.find(a => a.title === payload.title);
+                        savedId = match ? match.id : data.areas[data.areas.length - 1].id;
+                    }
+                    loadAreas(savedId);
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar cambios de área", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        // 8. NORMATIVAS (Select & Update like Areas)
+        let normativasList = [];
+        async function loadNormativas(selectedId = null) {
+            try {
+                const res = await fetch(getApiUrl("normativas"));
+                normativasList = await res.json();
+                
+                const select = document.getElementById("normativaSelect");
+                select.innerHTML = "";
+                if (Array.isArray(normativasList)) {
+                    // Ordenar alfabéticamente por título
+                    normativasList.sort((a, b) => (a.title || "").localeCompare(b.title || "", "es", { sensitivity: "base" }));
+                    normativasList.forEach(n => {
+                        const opt = document.createElement("option");
+                        opt.value = n.id;
+                        opt.textContent = n.title;
+                        select.appendChild(opt);
+                    });
+                    if (selectedId) {
+                        select.value = selectedId;
+                    }
+                    loadSelectedNormativa();
+                } else {
+                    console.error("La respuesta de normativas no es una lista válida:", normativasList);
+                }
+            } catch (err) {
+                console.error("Error cargando normativas", err);
+            }
+        }
+
+        function loadSelectedNormativa() {
+            const id = document.getElementById("normativaSelect").value;
+            const n = normativasList.find(item => item.id === id);
+            const deleteBtn = document.getElementById("deleteNormativaBtn");
+            const saveBtn = document.getElementById("saveNormativaBtn");
+
+            if (n) {
+                document.getElementById("normativa_id").value = n.id;
+                document.getElementById("normativa_title").value = n.title;
+                document.getElementById("normativa_description").value = n.description || "";
+                document.getElementById("normativa_documentUrl").value = n.documentUrl || "";
+                
+                deleteBtn.style.display = "inline-block";
+                saveBtn.innerText = "Guardar Cambios de Normativa";
+            } else {
+                deleteBtn.style.display = "none";
+            }
+        }
+
+        function prepareNewNormativa() {
+            document.getElementById("normativa_id").value = "";
+            document.getElementById("normativa_title").value = "";
+            document.getElementById("normativa_description").value = "";
+            document.getElementById("normativa_documentUrl").value = "";
+
+            document.getElementById("deleteNormativaBtn").style.display = "none";
+            document.getElementById("saveNormativaBtn").innerText = "Crear Nueva Normativa";
+
+            const select = document.getElementById("normativaSelect");
+            select.value = "";
+        }
+
+        function deleteSelectedNormativa() {
+            const id = document.getElementById("normativa_id").value;
+            if (!id) {
+                showToast("No hay ninguna normativa seleccionada para eliminar", false);
+                return;
+            }
+            showConfirm(
+                "¿Eliminar Normativa?",
+                "¿Está seguro de eliminar esta normativa? Esta acción no se puede deshacer.",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("normativas"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Normativa eliminada exitosamente");
+                            loadNormativas();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar normativa", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        async function saveNormativa(e) {
+            e.preventDefault();
+            const id = document.getElementById("normativa_id").value;
+            const payload = {
+                id: id,
+                title: document.getElementById("normativa_title").value,
+                description: document.getElementById("normativa_description").value,
+                documentUrl: document.getElementById("normativa_documentUrl").value || ""
+            };
+
+            try {
+                const res = await fetch(getApiUrl("normativas"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast(id ? "Normativa institucional actualizada con éxito" : "Normativa institucional creada con éxito");
+                    let savedId = id;
+                    if (!savedId && data.id) {
+                        savedId = data.id;
+                    } else if (!savedId && data.normativas && data.normativas.length > 0) {
+                        savedId = data.normativas[data.normativas.length - 1].id;
+                    }
+                    loadNormativas(savedId);
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar cambios de normativa", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        // --- NOTICIAS INSTITUCIONALES CRUD ---
+        let adminNoticiasList = [];
+
+        async function loadNoticias(selectedId = null) {
+            try {
+                const res = await fetch(getApiUrl("noticias"));
+                adminNoticiasList = await res.json();
+                if (!Array.isArray(adminNoticiasList)) adminNoticiasList = [];
+
+                const select = document.getElementById("noticiaSelect");
+                if (!select) return;
+                select.innerHTML = "";
+
+                if (adminNoticiasList.length === 0) {
+                    select.innerHTML = '<option value="">-- No hay noticias guardadas --</option>';
+                    prepareNewNoticia();
+                    return;
+                }
+
+                adminNoticiasList.forEach(n => {
+                    const opt = document.createElement("option");
+                    opt.value = n.id;
+                    opt.textContent = `[${n.category || 'General'}] ${n.title}`;
+                    select.appendChild(opt);
+                });
+
+                if (selectedId && adminNoticiasList.some(n => n.id === selectedId)) {
+                    select.value = selectedId;
+                } else if (select.options.length > 0) {
+                    select.selectedIndex = 0;
+                }
+
+                loadSelectedNoticia();
+            } catch (err) {
+                console.error("Error cargando noticias:", err);
+            }
+        }
+
+        function loadSelectedNoticia() {
+            const select = document.getElementById("noticiaSelect");
+            if (!select || !select.value) {
+                prepareNewNoticia();
+                return;
+            }
+
+            const id = select.value;
+            const item = adminNoticiasList.find(n => n.id === id);
+            if (!item) return;
+
+            document.getElementById("noticia_id").value = item.id;
+            document.getElementById("noticia_title").value = item.title || "";
+            document.getElementById("noticia_category").value = item.category || "Institucional";
+            document.getElementById("noticia_date").value = item.date || "";
+            document.getElementById("noticia_imageUrl").value = item.imageUrl || "";
+            document.getElementById("noticia_summary").value = item.summary || "";
+
+            const saveBtn = document.getElementById("saveNoticiaBtn");
+            if (saveBtn) saveBtn.textContent = "Guardar Cambios de Noticia";
+
+            const delBtn = document.getElementById("deleteNoticiaBtn");
+            if (delBtn) delBtn.style.display = "inline-block";
+        }
+
+        function prepareNewNoticia() {
+            document.getElementById("noticia_id").value = "";
+            document.getElementById("noticia_title").value = "";
+            document.getElementById("noticia_category").value = "Institucional";
+            document.getElementById("noticia_date").value = new Date().toLocaleDateString("es-PE");
+            document.getElementById("noticia_imageUrl").value = "assets/img/canales.jpg";
+            document.getElementById("noticia_summary").value = "";
+
+            const saveBtn = document.getElementById("saveNoticiaBtn");
+            if (saveBtn) saveBtn.textContent = "Crear Nueva Noticia";
+
+            const delBtn = document.getElementById("deleteNoticiaBtn");
+            if (delBtn) delBtn.style.display = "none";
+        }
+
+        async function deleteSelectedNoticia() {
+            const id = document.getElementById("noticia_id").value;
+            if (!id) return;
+
+            showConfirm(
+                "¿Eliminar Noticia?",
+                "¿Desea eliminar permanentemente esta noticia?",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("noticias"), {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Authorization": token 
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Noticia eliminada exitosamente");
+                            loadNoticias();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar noticia", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        async function saveNoticia(e) {
+            e.preventDefault();
+            const id = document.getElementById("noticia_id").value;
+            const payload = {
+                id: id,
+                title: document.getElementById("noticia_title").value,
+                category: document.getElementById("noticia_category").value,
+                date: document.getElementById("noticia_date").value,
+                imageUrl: document.getElementById("noticia_imageUrl").value,
+                summary: document.getElementById("noticia_summary").value
+            };
+
+            try {
+                const res = await fetch(getApiUrl("noticias"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast(id ? "Noticia actualizada con éxito" : "Noticia creada con éxito");
+                    loadNoticias(id);
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar noticia", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        // 9. ESTRUCTURA ORGANIZACIONAL CRUD
+        let estructuraList = [];
+
+        async function loadEstructura(selectedId = null) {
+            try {
+                const res = await fetch(getApiUrl("estructura"));
+                estructuraList = await res.json();
+
+                const select = document.getElementById("estructuraSelect");
+                if (!select) return;
+                select.innerHTML = "";
+
+                if (Array.isArray(estructuraList)) {
+                    estructuraList.sort((a, b) => (a.code || "").localeCompare(b.code || "", "es", { sensitivity: "base" }));
+                    estructuraList.forEach(e => {
+                        const opt = document.createElement("option");
+                        opt.value = e.id;
+                        opt.textContent = `${e.code ? e.code + '. ' : ''}${e.title}`;
+                        select.appendChild(opt);
+                    });
+
+                    if (selectedId) {
+                        select.value = selectedId;
+                    }
+                    loadSelectedEstructuraOrgano();
+                    renderAdminEstructuraPreview();
+                }
+            } catch (err) {
+                console.error("Error cargando estructura organizacional:", err);
+            }
+        }
+
+        function loadSelectedEstructuraOrgano() {
+            const select = document.getElementById("estructuraSelect");
+            if (!select) return;
+            const id = select.value;
+            const organo = estructuraList.find(e => e.id === id);
+
+            const deleteBtn = document.getElementById("deleteEstructuraBtn");
+            const saveBtn = document.getElementById("saveEstructuraBtn");
+
+            if (organo) {
+                document.getElementById("estructura_id").value = organo.id;
+                document.getElementById("estructura_code").value = organo.code || "";
+                document.getElementById("estructura_title").value = organo.title || "";
+                document.getElementById("estructura_badge").value = organo.badge || "";
+                document.getElementById("estructura_icon").value = organo.icon || "bi-diagram-3-fill";
+                
+                const col = organo.color || "#0d6efd";
+                document.getElementById("estructura_color").value = col;
+                document.getElementById("estructura_color_hex").value = col;
+
+                updateEstructuraIconPreview();
+
+                // Render sub-items
+                const tbody = document.getElementById("estructuraItemsTableBody");
+                tbody.innerHTML = "";
+                const items = Array.isArray(organo.items) ? organo.items : [];
+                items.forEach(item => {
+                    addEstructuraItemRow(item.code || "", item.title || "");
+                });
+
+                if (items.length === 0) {
+                    addEstructuraItemRow();
+                }
+
+                if (deleteBtn) deleteBtn.style.display = "inline-block";
+                if (saveBtn) saveBtn.innerHTML = '<i class="bi bi-floppy-fill me-1"></i> Guardar Cambios del Órgano';
+            } else {
+                prepareNewEstructuraOrgano();
+            }
+        }
+
+        function addEstructuraItemRow(code = "", title = "") {
+            const tbody = document.getElementById("estructuraItemsTableBody");
+            if (!tbody) return;
+
+            const tr = document.createElement("tr");
+            tr.className = "estructura-item-row";
+            tr.innerHTML = `
+                <td>
+                    <input type="text" class="form-control form-control-sm item-code-input" value="${escapeHtml(code)}" placeholder="a.1" style="background: rgba(0,0,0,0.3); color:#fff;">
+                </td>
+                <td>
+                    <input type="text" class="form-control form-control-sm item-title-input" value="${escapeHtml(title)}" placeholder="Nombre de la Unidad Orgánica" required style="background: rgba(0,0,0,0.3); color:#fff;">
+                </td>
+                <td class="text-end">
+                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('tr').remove()" title="Eliminar fila">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        function getEstructuraItemsFromTable() {
+            const rows = document.querySelectorAll("#estructuraItemsTableBody .estructura-item-row");
+            const items = [];
+            rows.forEach(row => {
+                const code = row.querySelector(".item-code-input").value.trim();
+                const title = row.querySelector(".item-title-input").value.trim();
+                if (title) {
+                    items.push({ code, title });
+                }
+            });
+            return items;
+        }
+
+        function prepareNewEstructuraOrgano() {
+            document.getElementById("estructura_id").value = "";
+            document.getElementById("estructura_code").value = "";
+            document.getElementById("estructura_title").value = "";
+            document.getElementById("estructura_badge").value = "";
+            document.getElementById("estructura_icon").value = "bi-award-fill";
+            document.getElementById("estructura_color").value = "#0d6efd";
+            document.getElementById("estructura_color_hex").value = "#0d6efd";
+
+            updateEstructuraIconPreview();
+
+            const tbody = document.getElementById("estructuraItemsTableBody");
+            if (tbody) {
+                tbody.innerHTML = "";
+                addEstructuraItemRow();
+            }
+
+            const deleteBtn = document.getElementById("deleteEstructuraBtn");
+            const saveBtn = document.getElementById("saveEstructuraBtn");
+
+            if (deleteBtn) deleteBtn.style.display = "none";
+            if (saveBtn) saveBtn.innerHTML = '<i class="bi bi-plus-lg me-1"></i> Crear Nuevo Órgano';
+
+            const select = document.getElementById("estructuraSelect");
+            if (select) select.value = "";
+        }
+
+        function deleteSelectedEstructuraOrgano() {
+            const id = document.getElementById("estructura_id").value;
+            if (!id) {
+                showToast("Seleccione un órgano para eliminar", false);
+                return;
+            }
+
+            showConfirm(
+                "¿Eliminar Órgano?",
+                "¿Está seguro de eliminar este órgano de la estructura organizacional? Sus unidades orgánicas también se eliminarán.",
+                async () => {
+                    try {
+                        const res = await fetch(getApiUrl("estructura"), {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": token
+                            },
+                            body: JSON.stringify({ action: "DELETE", id: id })
+                        });
+                        if (res.ok) {
+                            showToast("Órgano eliminado exitosamente");
+                            loadEstructura();
+                        } else {
+                            const data = await res.json();
+                            showToast(data.error || "Error al eliminar órgano", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        async function saveEstructuraOrgano(e) {
+            e.preventDefault();
+            const id = document.getElementById("estructura_id").value;
+            const code = document.getElementById("estructura_code").value.trim();
+            const title = document.getElementById("estructura_title").value.trim();
+            const badge = document.getElementById("estructura_badge").value.trim();
+            const icon = document.getElementById("estructura_icon").value.trim();
+            const color = document.getElementById("estructura_color").value;
+
+            const items = getEstructuraItemsFromTable();
+
+            const payload = {
+                id: id || undefined,
+                code: code,
+                title: title,
+                badge: badge,
+                icon: icon,
+                color: color,
+                items: items
+            };
+
+            try {
+                const res = await fetch(getApiUrl("estructura"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast(id ? "Órgano actualizado exitosamente" : "Órgano creado exitosamente");
+                    let savedId = id;
+                    if (!savedId && data.id) {
+                        savedId = data.id;
+                    } else if (!savedId && data.estructura && data.estructura.length > 0) {
+                        const match = data.estructura.find(x => x.title === title);
+                        savedId = match ? match.id : data.estructura[data.estructura.length - 1].id;
+                    }
+                    loadEstructura(savedId);
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar el órgano", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        async function resetEstructuraToDefault() {
+            showConfirm(
+                "¿Restaurar Estructura por Defecto?",
+                "Esta opción reestablecerá la estructura organizacional completa (Órganos de Dirección, Asesoramiento, Línea y Desconcentrados).",
+                async () => {
+                    const defaultEstructura = [
+                        {
+                            id: "organo-a",
+                            code: "a",
+                            title: "Órganos de Dirección",
+                            badge: "Dirección",
+                            icon: "bi-award-fill",
+                            color: "#0d6efd",
+                            items: [
+                                { code: "a.1", title: "Asamblea General" },
+                                { code: "a.2", title: "Consejo Directivo" },
+                                { code: "a.3", title: "De la Presidencia" },
+                                { code: "a.4", title: "De la Gerencia" }
+                            ]
+                        },
+                        {
+                            id: "organo-b",
+                            code: "b",
+                            title: "Órganos de Asesoramiento",
+                            badge: "Asesoramiento",
+                            icon: "bi-shield-check",
+                            color: "#20c997",
+                            items: [
+                                { code: "b.1", title: "Dirección de Regulación y Asesoramiento Jurídico" },
+                                { code: "b.2", title: "Órganos de Apoyo" },
+                                { code: "b.3", title: "Dirección de Desarrollo Humano y Responsabilidad Social" },
+                                { code: "b.4", title: "Dirección de Administración de Servicios" }
+                            ]
+                        },
+                        {
+                            id: "organo-c",
+                            code: "c",
+                            title: "Órganos de Línea",
+                            badge: "Línea Operativa",
+                            icon: "bi-gear-wide-connected",
+                            color: "#198754",
+                            items: [
+                                { code: "c.1", title: "Dirección de Operación de la Infraestructura Hidráulica." },
+                                { code: "c.2", title: "Dirección de Mantenimiento de la Infraestructura Hidráulica" },
+                                { code: "c.3", title: "Dirección de Desarrollo de la Infraestructura Hidráulica" },
+                                { code: "c.4", title: "Dirección de Administración de la Tarifa del Agua." }
+                            ]
+                        },
+                        {
+                            id: "organo-d",
+                            code: "d",
+                            title: "Órganos Desconcentrados",
+                            badge: "Desconcentrados",
+                            icon: "bi-building-fill-gear",
+                            color: "#6f42c1",
+                            items: [
+                                { code: "d.1", title: "Escuela Técnica del Agro" },
+                                { code: "d.2", title: "Unidades de Negocio" }
+                            ]
+                        }
+                    ];
+
+                    try {
+                        const res = await fetch(getApiUrl("estructura"), {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": token
+                            },
+                            body: JSON.stringify({ estructura: defaultEstructura })
+                        });
+                        if (res.ok) {
+                            showToast("Estructura restaurada con éxito");
+                            loadEstructura();
+                        } else {
+                            showToast("Error al restaurar estructura", false);
+                        }
+                    } catch (err) {
+                        showToast("Error de conexión", false);
+                    }
+                }
+            );
+        }
+
+        function updateEstructuraIconPreview() {
+            const iconElem = document.getElementById("estructura_icon");
+            if (!iconElem) return;
+            const iconVal = iconElem.value.trim() || "bi-diagram-3-fill";
+            const preview = document.getElementById("estructuraIconPreview");
+            if (preview) {
+                preview.innerHTML = `<i class="bi ${iconVal}"></i>`;
+            }
+        }
+
+        function syncEstructuraHexFromColor() {
+            const c = document.getElementById("estructura_color").value;
+            document.getElementById("estructura_color_hex").value = c;
+        }
+
+        function syncEstructuraColorFromHex() {
+            const h = document.getElementById("estructura_color_hex").value.trim();
+            if (/^#[0-9A-F]{6}$/i.test(h)) {
+                document.getElementById("estructura_color").value = h;
+            }
+        }
+
+        function renderAdminEstructuraPreview() {
+            const container = document.getElementById("adminEstructuraPreviewContainer");
+            if (!container) return;
+            container.innerHTML = "";
+
+            if (!Array.isArray(estructuraList) || estructuraList.length === 0) {
+                container.innerHTML = `<div class="col-12"><div class="text-white-50 p-3 text-center">No hay órganos registrados en la estructura organizacional.</div></div>`;
+                return;
+            }
+
+            estructuraList.forEach(org => {
+                const col = document.createElement("div");
+                col.className = "col-md-6 col-lg-3";
+                const color = org.color || "#20c997";
+                const icon = org.icon || "bi-diagram-3-fill";
+                const items = Array.isArray(org.items) ? org.items : [];
+
+                let itemsListHtml = items.map(it => `
+                    <li class="small text-white-50 d-flex align-items-center gap-1">
+                        <span class="badge bg-secondary text-white" style="font-size: 10px;">${escapeHtml(it.code || '')}</span>
+                        <span>${escapeHtml(it.title)}</span>
+                    </li>
+                `).join("");
+
+                if (!itemsListHtml) {
+                    itemsListHtml = '<li class="small text-muted italic">Sin sub-unidades</li>';
+                }
+
+                col.innerHTML = `
+                    <div class="card-custom h-100 p-3" style="border-top: 3px solid ${color};">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:36px; height:36px; background:${color}22; color:${color}">
+                                <i class="bi ${icon} fs-5"></i>
+                            </div>
+                            <div>
+                                <span class="badge" style="background:${color}33; color:${color}">${escapeHtml(org.code || '')}</span>
+                                <h6 class="text-white fw-bold mb-0" style="font-size:0.9rem;">${escapeHtml(org.title)}</h6>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled mb-0 d-flex flex-column gap-1 mt-2">
+                            ${itemsListHtml}
+                        </ul>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        // 10. DIAGNÓSTICO INSTITUCIONAL
+        async function loadDiagnostico() {
+            try {
+                const res = await fetch(getApiUrl("diagnostico"));
+                if (!res.ok) return;
+                const data = await res.json();
+
+                if (data) {
+                    const titleElem = document.getElementById("diag_title");
+                    const subtitleElem = document.getElementById("diag_subtitle");
+                    const introElem = document.getElementById("diag_intro");
+                    const coreElem = document.getElementById("diag_coreBusiness");
+                    const internoElem = document.getElementById("diag_interno");
+                    const externoElem = document.getElementById("diag_externo");
+
+                    if (titleElem) titleElem.value = data.title || "2. DIAGNÓSTICO DE LA JUSHMCHL";
+                    if (subtitleElem) subtitleElem.value = data.subtitle || "";
+                    if (coreElem) coreElem.value = data.coreBusiness || "";
+                    if (internoElem) internoElem.value = data.diagnosticoInterno || "";
+                    if (externoElem) externoElem.value = data.diagnosticoExterno || "";
+
+                    if (data.descripcionNegocio) {
+                        if (introElem) introElem.value = data.descripcionNegocio.intro || "";
+                        
+                        const container = document.getElementById("diagFuncionesContainer");
+                        if (container) {
+                            container.innerHTML = "";
+                            const funciones = Array.isArray(data.descripcionNegocio.funciones) ? data.descripcionNegocio.funciones : [];
+                            funciones.forEach(func => {
+                                addDiagnosticoFuncionRow(func);
+                            });
+                            if (funciones.length === 0) {
+                                addDiagnosticoFuncionRow();
+                            }
+                        }
+                    }
+
+                    renderAdminDiagnosticoPreview(data);
+                }
+            } catch (err) {
+                console.error("Error cargando diagnóstico:", err);
+            }
+        }
+
+        function addDiagnosticoFuncionRow(val = "") {
+            const container = document.getElementById("diagFuncionesContainer");
+            if (!container) return;
+
+            const div = document.createElement("div");
+            div.className = "d-flex gap-2 align-items-center diag-funcion-row";
+            div.innerHTML = `
+                <input type="text" class="form-control form-control-sm diag-funcion-input" value="${escapeHtml(val)}" placeholder="Escriba una función o punto del negocio..." required style="background: rgba(0,0,0,0.3); color: #fff;">
+                <button type="button" class="btn btn-sm btn-outline-danger flex-shrink-0" onclick="this.closest('.diag-funcion-row').remove()" title="Eliminar fila">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            `;
+            container.appendChild(div);
+        }
+
+        function getDiagnosticoFuncionesFromUI() {
+            const inputs = document.querySelectorAll(".diag-funcion-input");
+            const funcs = [];
+            inputs.forEach(input => {
+                const val = input.value.trim();
+                if (val) funcs.push(val);
+            });
+            return funcs;
+        }
+
+        async function saveDiagnostico(e) {
+            e.preventDefault();
+            const saveBtn = document.getElementById("saveDiagnosticoBtn");
+            if (saveBtn) saveBtn.disabled = true;
+
+            const title = document.getElementById("diag_title").value.trim();
+            const subtitle = document.getElementById("diag_subtitle").value.trim();
+            const intro = document.getElementById("diag_intro").value.trim();
+            const funciones = getDiagnosticoFuncionesFromUI();
+            const coreBusiness = document.getElementById("diag_coreBusiness").value.trim();
+            const diagnosticoInterno = document.getElementById("diag_interno").value.trim();
+            const diagnosticoExterno = document.getElementById("diag_externo").value.trim();
+
+            const payload = {
+                title,
+                subtitle,
+                descripcionNegocio: {
+                    intro,
+                    funciones
+                },
+                coreBusiness,
+                diagnosticoInterno,
+                diagnosticoExterno
+            };
+
+            try {
+                const res = await fetch(getApiUrl("diagnostico"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast("Diagnóstico institucional guardado con éxito");
+                    if (data.diagnostico) {
+                        renderAdminDiagnosticoPreview(data.diagnostico);
+                    } else {
+                        loadDiagnostico();
+                    }
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || "Error al guardar el diagnóstico", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión al guardar diagnóstico", false);
+            } finally {
+                if (saveBtn) saveBtn.disabled = false;
+            }
+        }
+
+        function renderAdminDiagnosticoPreview(data) {
+            const container = document.getElementById("adminDiagnosticoPreviewContainer");
+            if (!container) return;
+
+            const funciones = data.descripcionNegocio && Array.isArray(data.descripcionNegocio.funciones) ? data.descripcionNegocio.funciones : [];
+            const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+            
+            const funcionesHtml = funciones.map((f, idx) => `
+                <li class="small text-white-50 d-flex align-items-start gap-2">
+                    <span class="badge bg-primary text-dark fw-bold rounded-circle d-inline-flex align-items-center justify-content-center" style="width:20px; height:20px; font-size:10px;">${letters[idx % letters.length]}</span>
+                    <span>${escapeHtml(f)}</span>
+                </li>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="text-center mb-3">
+                    <h5 class="text-white fw-bold font-heading mb-1">${escapeHtml(data.title || "2. DIAGNÓSTICO DE LA JUSHMCHL")}</h5>
+                    <p class="text-white-50 small mb-0">${escapeHtml(data.subtitle || "")}</p>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="p-3 rounded bg-black bg-opacity-40 border border-secondary">
+                            <h6 class="text-primary-custom fw-bold mb-2"><i class="bi bi-briefcase me-1"></i>2.1 Descripción del Negocio</h6>
+                            <p class="small text-white-50 mb-2">${escapeHtml(data.descripcionNegocio ? data.descripcionNegocio.intro : '')}</p>
+                            <ul class="list-unstyled mb-0 d-flex flex-column gap-1">
+                                ${funcionesHtml}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column gap-2">
+                        <div class="p-3 rounded bg-black bg-opacity-40 border border-secondary">
+                            <h6 class="text-info fw-bold mb-1"><i class="bi bi-cpu me-1"></i>2.2 Core Business</h6>
+                            <p class="small text-white mb-0 fw-bold">${escapeHtml(data.coreBusiness || '')}</p>
+                        </div>
+                        <div class="p-3 rounded bg-black bg-opacity-40 border border-secondary flex-grow-1">
+                            <h6 class="text-warning fw-bold mb-1"><i class="bi bi-house-gear me-1"></i>2.3 Diagnóstico Interno</h6>
+                            <p class="small text-white-50 mb-0">${escapeHtml(data.diagnosticoInterno || '')}</p>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="p-3 rounded bg-black bg-opacity-40 border border-secondary">
+                            <h6 class="text-primary fw-bold mb-1"><i class="bi bi-globe-americas me-1"></i>2.4 Diagnóstico Externo</h6>
+                            <p class="small text-white-50 mb-0">${escapeHtml(data.diagnosticoExterno || '')}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+
+</html>
