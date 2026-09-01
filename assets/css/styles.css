@@ -59,7 +59,9 @@ body {
 h1, h2, h3, h4, h5, h6, p .font-heading {
     font-family: 'Montserrat', sans-serif;
 }
-
+.lista-empresas li::marker {
+    color: #a6e358;
+}
 p {
     text-align: justify;
     color: white;
