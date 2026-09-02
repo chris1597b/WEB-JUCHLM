@@ -116,7 +116,8 @@
             color: #ffffff !important;
         }
 
-        .form-control:focus, .form-select:focus {
+        .form-control:focus,
+        .form-select:focus {
             background: rgba(255, 255, 255, 0.08);
             border-color: var(--primary);
             color: #fff;
@@ -324,7 +325,8 @@
                                     <input type="text" class="form-control" id="site_heroBg">
                                 </div>
                                 <div class="col-md-2 d-flex align-items-end">
-                                    <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('site_heroBg')">Subir</button>
+                                    <button type="button" class="btn btn-outline-custom w-100"
+                                        onclick="triggerFileUpload('site_heroBg')">Subir</button>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label text-white">Email de Contacto</label>
@@ -339,7 +341,8 @@
                                     <input type="text" class="form-control" id="site_contactAddress">
                                 </div>
                                 <div class="col-12 mt-4 text-end">
-                                    <button type="submit" class="btn btn-primary-custom">Guardar Cambios Generales</button>
+                                    <button type="submit" class="btn btn-primary-custom">Guardar Cambios
+                                        Generales</button>
                                 </div>
                             </div>
                         </form>
@@ -351,11 +354,15 @@
                     <div class="card-custom">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="font-heading text-secondary-custom fw-bold mb-0">Administrar Convocatorias</h4>
-                            <button class="btn btn-primary-custom btn-sm fw-bold px-3" onclick="openConvocatoriaModal()">+ Nueva Convocatoria</button>
+                            <button class="btn btn-primary-custom btn-sm fw-bold px-3"
+                                onclick="openConvocatoriaModal()">+ Nueva Convocatoria</button>
                         </div>
-                        <div class="alert bg-black bg-opacity-25 border-0 text-white-50 small mb-4 d-flex align-items-center gap-2">
+                        <div
+                            class="alert bg-black bg-opacity-25 border-0 text-white-50 small mb-4 d-flex align-items-center gap-2">
                             <span class="material-symbols-outlined text-primary-custom fs-5">info</span>
-                            <span>Para publicar o modificar convocatorias, use el botón <strong>+ Nueva Convocatoria</strong> o <strong>Editar</strong>, complete el formulario y presione <strong>Guardar Cambios</strong> en la ventana modal.</span>
+                            <span>Para publicar o modificar convocatorias, use el botón <strong>+ Nueva
+                                    Convocatoria</strong> o <strong>Editar</strong>, complete el formulario y presione
+                                <strong>Guardar Cambios</strong> en la ventana modal.</span>
                         </div>
 
                         <div class="table-responsive">
@@ -378,16 +385,21 @@
                 <!-- TAB: COMISIONES -->
                 <div class="tab-content d-none" id="tab-comisiones">
                     <div class="card-custom">
-                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Comisiones de Usuarios</h4>
-                        
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Comisiones de Usuarios
+                        </h4>
+
                         <div class="mb-4">
-                            <label class="form-label text-white fw-bold">Selecciona la Comisión a Editar o Administrar</label>
+                            <label class="form-label text-white fw-bold">Selecciona la Comisión a Editar o
+                                Administrar</label>
                             <div class="d-flex gap-2">
                                 <select class="form-select" id="comisionSelect" onchange="loadSelectedComision()">
                                     <!-- Dynamic Options -->
                                 </select>
-                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewComision()">+ Nueva Comisión</button>
-                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none" id="deleteComisionBtn" onclick="deleteSelectedComision()">Eliminar</button>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3"
+                                    onclick="prepareNewComision()">+ Nueva Comisión</button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3"
+                                    style="background-color: #dc3545; border:none" id="deleteComisionBtn"
+                                    onclick="deleteSelectedComision()">Eliminar</button>
                             </div>
                         </div>
 
@@ -423,17 +435,20 @@
                                     <input type="text" class="form-control" id="comision_logo">
                                 </div>
                                 <div class="col-md-4 d-flex align-items-end">
-                                    <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('comision_logo')">Subir Logo</button>
+                                    <button type="button" class="btn btn-outline-custom w-100"
+                                        onclick="triggerFileUpload('comision_logo')">Subir Logo</button>
                                 </div>
                                 <div class="col-md-8">
                                     <label class="form-label text-white">URL de Portada / Imagen de Fondo</label>
                                     <input type="text" class="form-control" id="comision_cover">
                                 </div>
                                 <div class="col-md-4 d-flex align-items-end">
-                                    <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('comision_cover')">Subir Portada</button>
+                                    <button type="button" class="btn btn-outline-custom w-100"
+                                        onclick="triggerFileUpload('comision_cover')">Subir Portada</button>
                                 </div>
                                 <div class="col-12 text-end mt-4">
-                                    <button type="submit" class="btn btn-primary-custom" id="saveComisionBtn">Guardar Cambios de Comisión</button>
+                                    <button type="submit" class="btn btn-primary-custom" id="saveComisionBtn">Guardar
+                                        Cambios de Comisión</button>
                                 </div>
                             </div>
                         </form>
@@ -445,24 +460,35 @@
                     <div class="card-custom">
                         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                             <div>
-                                <h4 class="font-heading text-secondary-custom fw-bold mb-1">Carrusel de Anuncios / Avisos</h4>
-                                <p class="text-white-50 small mb-0">Administra los anuncios y la activación del modal emergente de la página principal.</p>
+                                <h4 class="font-heading text-secondary-custom fw-bold mb-1">Carrusel de Anuncios /
+                                    Avisos</h4>
+                                <p class="text-white-50 small mb-0">Administra los anuncios y la activación del modal
+                                    emergente de la página principal.</p>
                             </div>
                             <div class="d-flex gap-2 flex-wrap">
-                                <button id="globalAvisosModalToggleBtn" class="btn btn-outline-danger btn-sm fw-bold px-3" onclick="toggleGlobalAvisosModal()">
+                                <button id="globalAvisosModalToggleBtn"
+                                    class="btn btn-outline-danger btn-sm fw-bold px-3"
+                                    onclick="toggleGlobalAvisosModal()">
                                     🚫 Desactivar Modal Completo
                                 </button>
-                                <button class="btn btn-primary-custom btn-sm px-3" onclick="openAvisoModal()">+ Nuevo Anuncio</button>
+                                <button class="btn btn-primary-custom btn-sm px-3" onclick="openAvisoModal()">+ Nuevo
+                                    Anuncio</button>
                             </div>
                         </div>
 
                         <!-- Global Status Banner -->
-                        <div id="globalAvisosModalStatusBanner" class="alert d-flex align-items-center justify-content-between mb-4 p-3 rounded-3" style="background: rgba(25, 135, 84, 0.2); border: 1px solid rgba(25, 135, 84, 0.4); color: #fff;">
+                        <div id="globalAvisosModalStatusBanner"
+                            class="alert d-flex align-items-center justify-content-between mb-4 p-3 rounded-3"
+                            style="background: rgba(25, 135, 84, 0.2); border: 1px solid rgba(25, 135, 84, 0.4); color: #fff;">
                             <div class="d-flex align-items-center gap-2">
-                                <span class="material-symbols-outlined fs-3 text-success" id="globalAvisosIcon">check_circle</span>
+                                <span class="material-symbols-outlined fs-3 text-success"
+                                    id="globalAvisosIcon">check_circle</span>
                                 <div>
-                                    <strong id="globalAvisosStatusTitle" class="d-block fs-6">Modal de Anuncios: ACTIVO</strong>
-                                    <span id="globalAvisosStatusDesc" class="small opacity-75">El modal emergente se mostrará automáticamente en la página principal cuando haya anuncios activos.</span>
+                                    <strong id="globalAvisosStatusTitle" class="d-block fs-6">Modal de Anuncios:
+                                        ACTIVO</strong>
+                                    <span id="globalAvisosStatusDesc" class="small opacity-75">El modal emergente se
+                                        mostrará automáticamente en la página principal cuando haya anuncios
+                                        activos.</span>
                                 </div>
                             </div>
                             <span class="badge bg-success fs-6 px-3 py-2" id="globalAvisosBadge">Modal Visible</span>
@@ -477,16 +503,21 @@
                 <!-- TAB: AREAS -->
                 <div class="tab-content d-none" id="tab-areas">
                     <div class="card-custom">
-                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Áreas Institucionales</h4>
-                        
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Áreas Institucionales
+                        </h4>
+
                         <div class="mb-4">
-                            <label class="form-label text-white fw-bold">Selecciona el Área a Editar o Administrar</label>
+                            <label class="form-label text-white fw-bold">Selecciona el Área a Editar o
+                                Administrar</label>
                             <div class="d-flex gap-2">
                                 <select class="form-select" id="areaSelect" onchange="loadSelectedArea()">
                                     <!-- Dynamic Options -->
                                 </select>
-                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewArea()">+ Nueva Área</button>
-                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none" id="deleteAreaBtn" onclick="deleteSelectedArea()">Eliminar</button>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3"
+                                    onclick="prepareNewArea()">+ Nueva Área</button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3"
+                                    style="background-color: #dc3545; border:none" id="deleteAreaBtn"
+                                    onclick="deleteSelectedArea()">Eliminar</button>
                             </div>
                         </div>
 
@@ -495,7 +526,8 @@
                                 <input type="hidden" id="area_id">
                                 <div class="col-md-5">
                                     <label class="form-label text-white fw-bold">Título del Área</label>
-                                    <input type="text" class="form-control" id="area_title" placeholder="Ej. Área de Infraestructura Hidráulica" required>
+                                    <input type="text" class="form-control" id="area_title"
+                                        placeholder="Ej. Área de Infraestructura Hidráulica" required>
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label text-white fw-bold">Ícono del Área</label>
@@ -505,12 +537,14 @@
                                             class="btn w-100 d-flex align-items-center gap-2 justify-content-between"
                                             style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.2); color:#fff; border-radius:8px; height:38px;">
                                             <span class="d-flex align-items-center gap-2">
-                                                <i id="area_icon_preview" class="bi bi-gear" style="font-size:1.2rem;"></i>
+                                                <i id="area_icon_preview" class="bi bi-gear"
+                                                    style="font-size:1.2rem;"></i>
                                                 <span id="area_icon_label" class="small text-white-50">bi-gear</span>
                                             </span>
                                             <i class="bi bi-chevron-down small"></i>
                                         </button>
-                                        <div id="iconPickerDropdown" style="display:none; position:absolute; z-index:999; top:42px; left:0; right:0; background:rgba(10,20,50,0.98); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px; max-height:220px; overflow-y:auto; box-shadow: 0 8px 32px rgba(0,0,0,0.6);">
+                                        <div id="iconPickerDropdown"
+                                            style="display:none; position:absolute; z-index:999; top:42px; left:0; right:0; background:rgba(10,20,50,0.98); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px; max-height:220px; overflow-y:auto; box-shadow: 0 8px 32px rgba(0,0,0,0.6);">
                                             <div class="d-flex flex-wrap gap-1" id="iconPickerGrid">
                                                 <!-- Populated by JS -->
                                             </div>
@@ -518,20 +552,39 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label text-white fw-bold d-flex justify-content-between align-items-center mb-2">
+                                    <label
+                                        class="form-label text-white fw-bold d-flex justify-content-between align-items-center mb-2">
                                         <span>Paleta / Color de Sección</span>
-                                        <span id="area_color_badge" class="badge rounded-pill px-2 py-1" style="background-color: #20c997; color: #fff;">Color Área</span>
+                                        <span id="area_color_badge" class="badge rounded-pill px-2 py-1"
+                                            style="background-color: #20c997; color: #fff;">Color Área</span>
                                     </label>
                                     <div class="d-flex gap-2 align-items-center">
-                                        <input type="color" class="form-control form-control-color p-1" id="area_color" value="#20c997" title="Color Personalizado" style="width: 44px; height: 38px; cursor: pointer;" onchange="updateAreaColorPreview()">
+                                        <input type="color" class="form-control form-control-color p-1" id="area_color"
+                                            value="#20c997" title="Color Personalizado"
+                                            style="width: 44px; height: 38px; cursor: pointer;"
+                                            onchange="updateAreaColorPreview()">
                                         <div class="d-flex gap-1 flex-wrap">
-                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#20c997; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#20c997')" title="Turquesa"></button>
-                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#0d6efd; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#0d6efd')" title="Azul"></button>
-                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#198754; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#198754')" title="Verde"></button>
-                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#ffc107; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#ffc107')" title="Amarillo"></button>
-                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#dc3545; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#dc3545')" title="Rojo"></button>
-                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#6f42c1; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#6f42c1')" title="Púrpura"></button>
-                                            <button type="button" class="btn btn-sm rounded-circle p-0" style="width:24px; height:24px; background-color:#fd7e14; border:1px solid rgba(255,255,255,0.7);" onclick="setAreaColor('#fd7e14')" title="Naranja"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0"
+                                                style="width:24px; height:24px; background-color:#20c997; border:1px solid rgba(255,255,255,0.7);"
+                                                onclick="setAreaColor('#20c997')" title="Turquesa"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0"
+                                                style="width:24px; height:24px; background-color:#0d6efd; border:1px solid rgba(255,255,255,0.7);"
+                                                onclick="setAreaColor('#0d6efd')" title="Azul"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0"
+                                                style="width:24px; height:24px; background-color:#198754; border:1px solid rgba(255,255,255,0.7);"
+                                                onclick="setAreaColor('#198754')" title="Verde"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0"
+                                                style="width:24px; height:24px; background-color:#ffc107; border:1px solid rgba(255,255,255,0.7);"
+                                                onclick="setAreaColor('#ffc107')" title="Amarillo"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0"
+                                                style="width:24px; height:24px; background-color:#dc3545; border:1px solid rgba(255,255,255,0.7);"
+                                                onclick="setAreaColor('#dc3545')" title="Rojo"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0"
+                                                style="width:24px; height:24px; background-color:#6f42c1; border:1px solid rgba(255,255,255,0.7);"
+                                                onclick="setAreaColor('#6f42c1')" title="Púrpura"></button>
+                                            <button type="button" class="btn btn-sm rounded-circle p-0"
+                                                style="width:24px; height:24px; background-color:#fd7e14; border:1px solid rgba(255,255,255,0.7);"
+                                                onclick="setAreaColor('#fd7e14')" title="Naranja"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -540,7 +593,8 @@
                                     <textarea class="form-control" id="area_description" rows="4" required></textarea>
                                 </div>
                                 <div class="col-12 text-end mt-4">
-                                    <button type="submit" class="btn btn-primary-custom" id="saveAreaBtn">Guardar Cambios del Área</button>
+                                    <button type="submit" class="btn btn-primary-custom" id="saveAreaBtn">Guardar
+                                        Cambios del Área</button>
                                 </div>
                             </div>
                         </form>
@@ -552,10 +606,15 @@
                     <div class="card-custom mb-4">
                         <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
                             <div>
-                                <h4 class="font-heading text-secondary-custom fw-bold mb-1"><i class="bi bi-diagram-3-fill me-2"></i>Estructura Organizacional (Organigrama)</h4>
-                                <p class="text-white-50 fs-6 mb-0">Gestione los órganos principales y sus respectivas unidades orgánicas que conforman el organigrama institucional.</p>
+                                <h4 class="font-heading text-secondary-custom fw-bold mb-1"><i
+                                        class="bi bi-diagram-3-fill me-2"></i>Estructura Organizacional (Organigrama)
+                                </h4>
+                                <p class="text-white-50 fs-6 mb-0">Gestione los órganos principales y sus respectivas
+                                    unidades orgánicas que conforman el organigrama institucional.</p>
                             </div>
-                            <button type="button" class="btn btn-outline-custom btn-sm d-inline-flex align-items-center gap-2" onclick="resetEstructuraToDefault()">
+                            <button type="button"
+                                class="btn btn-outline-custom btn-sm d-inline-flex align-items-center gap-2"
+                                onclick="resetEstructuraToDefault()">
                                 <span class="material-symbols-outlined fs-5 text-warning">restart_alt</span>
                                 Restaurar Valores por Defecto
                             </button>
@@ -564,13 +623,17 @@
                         <div class="mb-4">
                             <label class="form-label text-white fw-bold">Seleccionar Órgano para Editar</label>
                             <div class="d-flex gap-2 flex-wrap">
-                                <select class="form-select" id="estructuraSelect" onchange="loadSelectedEstructuraOrgano()" style="max-width: 400px;">
+                                <select class="form-select" id="estructuraSelect"
+                                    onchange="loadSelectedEstructuraOrgano()" style="max-width: 400px;">
                                     <!-- Dynamic Options -->
                                 </select>
-                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewEstructuraOrgano()">
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3"
+                                    onclick="prepareNewEstructuraOrgano()">
                                     <i class="bi bi-plus-lg me-1"></i> + Nuevo Órgano
                                 </button>
-                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none;" id="deleteEstructuraBtn" onclick="deleteSelectedEstructuraOrgano()">
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3"
+                                    style="background-color: #dc3545; border:none;" id="deleteEstructuraBtn"
+                                    onclick="deleteSelectedEstructuraOrgano()">
                                     <i class="bi bi-trash-fill me-1"></i> Eliminar Órgano
                                 </button>
                             </div>
@@ -581,38 +644,51 @@
                             <div class="row g-3">
                                 <div class="col-md-3">
                                     <label class="form-label text-white">Código / Letra (ej. a, b, c)</label>
-                                    <input type="text" class="form-control" id="estructura_code" placeholder="a" required>
+                                    <input type="text" class="form-control" id="estructura_code" placeholder="a"
+                                        required>
                                 </div>
                                 <div class="col-md-9">
-                                    <label class="form-label text-white">Título del Órgano (ej. Órganos de Dirección)</label>
-                                    <input type="text" class="form-control" id="estructura_title" placeholder="Órganos de Dirección" required>
+                                    <label class="form-label text-white">Título del Órgano (ej. Órganos de
+                                        Dirección)</label>
+                                    <input type="text" class="form-control" id="estructura_title"
+                                        placeholder="Órganos de Dirección" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label text-white">Etiqueta Resumen / Badge</label>
-                                    <input type="text" class="form-control" id="estructura_badge" placeholder="Dirección">
+                                    <input type="text" class="form-control" id="estructura_badge"
+                                        placeholder="Dirección">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label text-white">Icono (Bootstrap Icon Class)</label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-black text-white border-secondary" id="estructuraIconPreview">
+                                        <span class="input-group-text bg-black text-white border-secondary"
+                                            id="estructuraIconPreview">
                                             <i class="bi bi-diagram-3-fill"></i>
                                         </span>
-                                        <input type="text" class="form-control" id="estructura_icon" placeholder="bi-award-fill" oninput="updateEstructuraIconPreview()">
+                                        <input type="text" class="form-control" id="estructura_icon"
+                                            placeholder="bi-award-fill" oninput="updateEstructuraIconPreview()">
                                     </div>
-                                    <div class="form-text text-white-50">Ej: bi-award-fill, bi-shield-check, bi-gear-wide-connected, bi-building-fill-gear</div>
+                                    <div class="form-text text-white-50">Ej: bi-award-fill, bi-shield-check,
+                                        bi-gear-wide-connected, bi-building-fill-gear</div>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label text-white">Color Distintivo del Órgano</label>
                                     <div class="d-flex align-items-center gap-2">
-                                        <input type="color" class="form-control form-control-color p-1" id="estructura_color" value="#0d6efd" style="width: 50px; height: 38px; cursor: pointer;" oninput="syncEstructuraHexFromColor()">
-                                        <input type="text" class="form-control" id="estructura_color_hex" value="#0d6efd" oninput="syncEstructuraColorFromHex()">
+                                        <input type="color" class="form-control form-control-color p-1"
+                                            id="estructura_color" value="#0d6efd"
+                                            style="width: 50px; height: 38px; cursor: pointer;"
+                                            oninput="syncEstructuraHexFromColor()">
+                                        <input type="text" class="form-control" id="estructura_color_hex"
+                                            value="#0d6efd" oninput="syncEstructuraColorFromHex()">
                                     </div>
                                 </div>
 
                                 <div class="col-12 mt-4">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <h5 class="text-secondary-custom font-heading fw-bold mb-0">Unidades Orgánicas (Sub-elementos)</h5>
-                                        <button type="button" class="btn btn-sm btn-outline-custom" onclick="addEstructuraItemRow()">
+                                        <h5 class="text-secondary-custom font-heading fw-bold mb-0">Unidades Orgánicas
+                                            (Sub-elementos)</h5>
+                                        <button type="button" class="btn btn-sm btn-outline-custom"
+                                            onclick="addEstructuraItemRow()">
                                             <i class="bi bi-plus-circle me-1"></i> + Agregar Unidad Orgánica
                                         </button>
                                     </div>
@@ -643,7 +719,8 @@
 
                     <!-- Vista previa visual de la estructura completa -->
                     <div class="card-custom">
-                        <h5 class="font-heading text-white fw-bold mb-3"><i class="bi bi-eye-fill me-2 text-primary-custom"></i>Vista Previa del Organigrama</h5>
+                        <h5 class="font-heading text-white fw-bold mb-3"><i
+                                class="bi bi-eye-fill me-2 text-primary-custom"></i>Vista Previa del Organigrama</h5>
                         <div class="row g-3" id="adminEstructuraPreviewContainer">
                             <!-- Preview cards -->
                         </div>
@@ -659,8 +736,27 @@
                                     <i class="bi bi-graph-up-arrow me-2"></i>2. Diagnóstico de la JUSHMCHL
                                 </h4>
                                 <p class="text-white-50 fs-6 mb-0">
-                                    Administre y actualice la descripción del negocio, core business y diagnósticos interno y externo. Los cambios se sincronizan en tiempo real con la base de datos y la página pública.
+                                    Administre y actualice la descripción del negocio, core business y diagnósticos
+                                    interno y externo. Los cambios se sincronizan en tiempo real con la base de datos y
+                                    la página pública.
                                 </p>
+                            </div>
+                        </div>
+
+                        <!-- Sección Diagnóstico Toggle Banner -->
+                        <div id="diagnosticoSectionStatusBanner" class="alert d-flex align-items-center justify-content-between mb-4 p-3 rounded-3" style="background: rgba(25, 135, 84, 0.2); border: 1px solid rgba(25, 135, 84, 0.4); color: #fff;">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="material-symbols-outlined fs-3 text-success" id="diagnosticoSectionIcon">visibility</span>
+                                <div>
+                                    <strong id="diagnosticoSectionStatusTitle" class="d-block fs-6">Sección "Diagnóstico Institucional": VISIBLE</strong>
+                                    <span id="diagnosticoSectionStatusDesc" class="small opacity-75">Esta sección se mostrará en la página principal.</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="badge bg-success fs-6 px-3 py-2" id="diagnosticoSectionBadge">Visible</span>
+                                <button id="diagnosticoSectionToggleBtn" class="btn btn-outline-danger btn-sm fw-bold px-3" onclick="toggleDiagnosticoSection()">
+                                    🚫 Ocultar Sección
+                                </button>
                             </div>
                         </div>
 
@@ -669,11 +765,15 @@
                                 <!-- Título y Subtítulo General -->
                                 <div class="col-md-6">
                                     <label class="form-label text-white fw-bold">Título Principal de la Sección</label>
-                                    <input type="text" class="form-control" id="diag_title" placeholder="2. DIAGNÓSTICO DE LA JUSHMCHL" required>
+                                    <input type="text" class="form-control" id="diag_title"
+                                        placeholder="2. DIAGNÓSTICO DE LA JUSHMCHL" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label text-white fw-bold">Subtítulo / Introducción General</label>
-                                    <input type="text" class="form-control" id="diag_subtitle" placeholder="Análisis integral del modelo de negocio, core business y diagnóstico interno y externo institucional." required>
+                                    <label class="form-label text-white fw-bold">Subtítulo / Introducción
+                                        General</label>
+                                    <input type="text" class="form-control" id="diag_subtitle"
+                                        placeholder="Análisis integral del modelo de negocio, core business y diagnóstico interno y externo institucional."
+                                        required>
                                 </div>
 
                                 <!-- 2.1 Descripción del Negocio -->
@@ -688,8 +788,10 @@
 
                                     <div class="mb-3">
                                         <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <label class="form-label text-white fw-bold mb-0">Puntos Principales de las Funciones del Negocio (a, b, c, d, e...)</label>
-                                            <button type="button" class="btn btn-sm btn-outline-custom" onclick="addDiagnosticoFuncionRow()">
+                                            <label class="form-label text-white fw-bold mb-0">Puntos Principales de las
+                                                Funciones del Negocio (a, b, c, d, e...)</label>
+                                            <button type="button" class="btn btn-sm btn-outline-custom"
+                                                onclick="addDiagnosticoFuncionRow()">
                                                 <i class="bi bi-plus-circle me-1"></i> + Agregar Función
                                             </button>
                                         </div>
@@ -705,7 +807,9 @@
                                         <i class="bi bi-cpu me-2"></i>2.2. El Core Business
                                     </h5>
                                     <label class="form-label text-white">Actividad Principal del Negocio</label>
-                                    <input type="text" class="form-control" id="diag_coreBusiness" placeholder="La Operación de la infraestructura Hidráulica: Distribución de Agua" required>
+                                    <input type="text" class="form-control" id="diag_coreBusiness"
+                                        placeholder="La Operación de la infraestructura Hidráulica: Distribución de Agua"
+                                        required>
                                 </div>
 
                                 <!-- 2.3 Diagnóstico Interno -->
@@ -713,7 +817,8 @@
                                     <h5 class="text-warning font-heading fw-bold mb-2">
                                         <i class="bi bi-house-gear me-2"></i>2.3. Diagnóstico Interno
                                     </h5>
-                                    <label class="form-label text-white">Análisis Interno (Restructuración, Finanzas, TI, Infraestructura)</label>
+                                    <label class="form-label text-white">Análisis Interno (Restructuración, Finanzas,
+                                        TI, Infraestructura)</label>
                                     <textarea class="form-control" id="diag_interno" rows="6" required></textarea>
                                 </div>
 
@@ -722,13 +827,15 @@
                                     <h5 class="text-primary font-heading fw-bold mb-2">
                                         <i class="bi bi-globe-americas me-2"></i>2.4. Diagnóstico Externo
                                     </h5>
-                                    <label class="form-label text-white">Análisis Externo (Perspectivas Económicas, PIB, Empleo, Inversión)</label>
+                                    <label class="form-label text-white">Análisis Externo (Perspectivas Económicas, PIB,
+                                        Empleo, Inversión)</label>
                                     <textarea class="form-control" id="diag_externo" rows="6" required></textarea>
                                 </div>
 
                                 <!-- BOTÓN GUARDAR -->
                                 <div class="col-12 text-end mt-4">
-                                    <button type="submit" class="btn btn-primary-custom px-4 py-2" id="saveDiagnosticoBtn">
+                                    <button type="submit" class="btn btn-primary-custom px-4 py-2"
+                                        id="saveDiagnosticoBtn">
                                         <i class="bi bi-floppy-fill me-2"></i>Guardar Cambios del Diagnóstico
                                     </button>
                                 </div>
@@ -738,8 +845,11 @@
 
                     <!-- VISTA PREVIA DEL DIAGNÓSTICO -->
                     <div class="card-custom">
-                        <h5 class="text-white font-heading fw-bold mb-3"><i class="bi bi-eye me-2"></i>Vista Previa de la Sección Diagnóstico</h5>
-                        <div class="p-3 rounded-3" style="background: rgba(0,0,0,0.4); border: 1px solid var(--glass-stroke);" id="adminDiagnosticoPreviewContainer">
+                        <h5 class="text-white font-heading fw-bold mb-3"><i class="bi bi-eye me-2"></i>Vista Previa de
+                            la Sección Diagnóstico</h5>
+                        <div class="p-3 rounded-3"
+                            style="background: rgba(0,0,0,0.4); border: 1px solid var(--glass-stroke);"
+                            id="adminDiagnosticoPreviewContainer">
                             <!-- Live Preview -->
                         </div>
                     </div>
@@ -747,15 +857,19 @@
                 <div class="tab-content d-none" id="tab-normativas">
                     <div class="card-custom">
                         <h4 class="font-heading text-secondary-custom fw-bold mb-4">Administrar Normas / Normativas</h4>
-                        
+
                         <div class="mb-4">
-                            <label class="form-label text-white fw-bold">Selecciona la Normativa a Editar o Administrar</label>
+                            <label class="form-label text-white fw-bold">Selecciona la Normativa a Editar o
+                                Administrar</label>
                             <div class="d-flex gap-2">
                                 <select class="form-select" id="normativaSelect" onchange="loadSelectedNormativa()">
                                     <!-- Dynamic Options -->
                                 </select>
-                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3" onclick="prepareNewNormativa()">+ Nueva Normativa</button>
-                                <button type="button" class="btn btn-danger flex-shrink-0 px-3" style="background-color: #dc3545; border:none" id="deleteNormativaBtn" onclick="deleteSelectedNormativa()">Eliminar</button>
+                                <button type="button" class="btn btn-primary-custom flex-shrink-0 px-3"
+                                    onclick="prepareNewNormativa()">+ Nueva Normativa</button>
+                                <button type="button" class="btn btn-danger flex-shrink-0 px-3"
+                                    style="background-color: #dc3545; border:none" id="deleteNormativaBtn"
+                                    onclick="deleteSelectedNormativa()">Eliminar</button>
                             </div>
                         </div>
 
@@ -768,27 +882,33 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label text-white">Descripción / Detalle</label>
-                                    <textarea class="form-control" id="normativa_description" rows="4" required></textarea>
+                                    <textarea class="form-control" id="normativa_description" rows="4"
+                                        required></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label text-white fw-bold d-flex align-items-center gap-2">
-                                        <span class="material-symbols-outlined fs-5 text-secondary-custom">attach_file</span>
+                                        <span
+                                            class="material-symbols-outlined fs-5 text-secondary-custom">attach_file</span>
                                         Enlace al Documento (URL o Subir PDF)
                                     </label>
                                     <div class="row g-2">
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="normativa_documentUrl" placeholder="https://... o deja vacío si no hay documento">
+                                            <input type="text" class="form-control" id="normativa_documentUrl"
+                                                placeholder="https://... o deja vacío si no hay documento">
                                         </div>
                                         <div class="col-md-3 d-flex align-items-end">
-                                            <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('normativa_documentUrl')">
+                                            <button type="button" class="btn btn-outline-custom w-100"
+                                                onclick="triggerFileUpload('normativa_documentUrl')">
                                                 <i class="bi bi-upload me-1"></i> Subir PDF
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="form-text text-white-50">Opcional: pega una URL o sube un archivo PDF. Se mostrará un botón "Ver" al lado de la normativa en el sitio.</div>
+                                    <div class="form-text text-white-50">Opcional: pega una URL o sube un archivo PDF.
+                                        Se mostrará un botón "Ver" al lado de la normativa en el sitio.</div>
                                 </div>
                                 <div class="col-12 text-end mt-4">
-                                    <button type="submit" class="btn btn-primary-custom" id="saveNormativaBtn">Guardar Cambios de Normativa</button>
+                                    <button type="submit" class="btn btn-primary-custom" id="saveNormativaBtn">Guardar
+                                        Cambios de Normativa</button>
                                 </div>
                             </div>
                         </form>
@@ -856,7 +976,8 @@
                     <div class="card-custom">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="font-heading text-secondary-custom fw-bold mb-0">Galería Institucional</h4>
-                            <button class="btn btn-primary-custom btn-sm" onclick="openGaleriaModal()">+ Nueva Imagen</button>
+                            <button class="btn btn-primary-custom btn-sm" onclick="openGaleriaModal()">+ Nueva
+                                Imagen</button>
                         </div>
 
                         <div class="row row-cols-1 row-cols-md-2 g-4" id="galeriaCardsContainer">
@@ -870,7 +991,8 @@
                     <div class="card-custom">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="font-heading text-secondary-custom fw-bold mb-0">Videos Institucionales</h4>
-                            <button class="btn btn-primary-custom btn-sm" onclick="openVideoModal()">+ Nuevo Video</button>
+                            <button class="btn btn-primary-custom btn-sm" onclick="openVideoModal()">+ Nuevo
+                                Video</button>
                         </div>
 
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="videosCardsContainer">
@@ -883,8 +1005,10 @@
                 <div class="tab-content d-none" id="tab-eventos">
                     <div class="card-custom">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h4 class="font-heading text-secondary-custom fw-bold mb-0">Agende su Actividad / Calendario de Eventos</h4>
-                            <button class="btn btn-primary-custom btn-sm" onclick="openEventoModal()">+ Nuevo Evento</button>
+                            <h4 class="font-heading text-secondary-custom fw-bold mb-0">Agende su Actividad / Calendario
+                                de Eventos</h4>
+                            <button class="btn btn-primary-custom btn-sm" onclick="openEventoModal()">+ Nuevo
+                                Evento</button>
                         </div>
 
                         <div class="table-responsive">
@@ -911,10 +1035,13 @@
                     <div class="card-custom">
                         <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
                             <div>
-                                <h4 class="font-heading text-secondary-custom fw-bold mb-1">Efectos Especiales y Fuegos Artificiales</h4>
-                                <p class="text-white-50 fs-6 mb-0">Personalice el botón flotante y la animación de celebración en la página principal.</p>
+                                <h4 class="font-heading text-secondary-custom fw-bold mb-1">Efectos Especiales y Fuegos
+                                    Artificiales</h4>
+                                <p class="text-white-50 fs-6 mb-0">Personalice el botón flotante y la animación de
+                                    celebración en la página principal.</p>
                             </div>
-                            <button type="button" class="btn btn-outline-custom d-inline-flex align-items-center gap-2" onclick="testFireworksInAdmin()">
+                            <button type="button" class="btn btn-outline-custom d-inline-flex align-items-center gap-2"
+                                onclick="testFireworksInAdmin()">
                                 <span class="material-symbols-outlined text-warning fs-5">sparkles</span>
                                 Probar Explosión
                             </button>
@@ -923,12 +1050,17 @@
                         <form id="fireworksConfigForm" onsubmit="saveFireworksConfig(event)">
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <div class="form-check form-switch card-custom bg-black bg-opacity-25 p-3 ps-5 border-0 rounded-3 mb-2">
-                                        <input class="form-check-input fs-5" type="checkbox" id="fw_active" style="cursor: pointer;">
-                                        <label class="form-check-label text-white fw-bold fs-6 ms-2" for="fw_active" style="cursor: pointer;">
+                                    <div
+                                        class="form-check form-switch card-custom bg-black bg-opacity-25 p-3 ps-5 border-0 rounded-3 mb-2">
+                                        <input class="form-check-input fs-5" type="checkbox" id="fw_active"
+                                            style="cursor: pointer;">
+                                        <label class="form-check-label text-white fw-bold fs-6 ms-2" for="fw_active"
+                                            style="cursor: pointer;">
                                             Activar Botón Flotante de Fuegos Artificiales en el Sitio Principal
                                         </label>
-                                        <div class="text-secondary-custom small ms-2 mt-1">Muestra un botón interactivo redondo en la parte inferior izquierda para que los visitantes festejen con un clic.</div>
+                                        <div class="text-secondary-custom small ms-2 mt-1">Muestra un botón interactivo
+                                            redondo en la parte inferior izquierda para que los visitantes festejen con
+                                            un clic.</div>
                                     </div>
                                 </div>
 
@@ -936,7 +1068,8 @@
                                     <label class="form-label text-white fw-semibold">Temática / Ocasión Especial</label>
                                     <select class="form-select" id="fw_theme" onchange="onFireworksThemeChange()">
                                         <option value="fiestas_patrias">🇵🇪 Fiestas Patrias (Rojo y Blanco)</option>
-                                        <option value="aniversario">🏛️ Aniversario Institucional (Azul, Dorado y Blanco)</option>
+                                        <option value="aniversario">🏛️ Aniversario Institucional (Azul, Dorado y
+                                            Blanco)</option>
                                         <option value="ano_nuevo">✨ Año Nuevo (Dorado, Plata y Amarillo)</option>
                                         <option value="eventos">🎉 Evento Especial / Multicolor (Fiesta)</option>
                                         <option value="custom">🎨 Personalizado (Definir Colores)</option>
@@ -945,34 +1078,46 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label text-white fw-semibold">Texto Corto del Botón</label>
-                                    <input type="text" class="form-control" id="fw_buttonText" placeholder="Ej. Fiestas Patrias, Celebra, Aniversario" required>
+                                    <input type="text" class="form-control" id="fw_buttonText"
+                                        placeholder="Ej. Fiestas Patrias, Celebra, Aniversario" required>
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label text-white fw-semibold">Mensaje Informativo / Tooltip del Botón</label>
-                                    <input type="text" class="form-control" id="fw_title" placeholder="Ej. ¡Celebra las Fiestas Patrias con Nosotros!" required>
+                                    <label class="form-label text-white fw-semibold">Mensaje Informativo / Tooltip del
+                                        Botón</label>
+                                    <input type="text" class="form-control" id="fw_title"
+                                        placeholder="Ej. ¡Celebra las Fiestas Patrias con Nosotros!" required>
                                 </div>
 
                                 <div class="col-12" id="fw_customColorsSection">
-                                    <label class="form-label text-white fw-semibold mb-2">Paleta de Colores de la Explosión (2 a 3 Colores)</label>
-                                    <div class="d-flex flex-wrap gap-4 align-items-center card-custom bg-black bg-opacity-25 p-3 border-0 rounded-3">
+                                    <label class="form-label text-white fw-semibold mb-2">Paleta de Colores de la
+                                        Explosión (2 a 3 Colores)</label>
+                                    <div
+                                        class="d-flex flex-wrap gap-4 align-items-center card-custom bg-black bg-opacity-25 p-3 border-0 rounded-3">
                                         <div class="d-flex align-items-center gap-2">
                                             <label class="text-white small fw-bold">Color 1:</label>
-                                            <input type="color" class="form-control form-control-color p-1" id="fw_color1" value="#dc2626" style="width: 44px; height: 38px; cursor: pointer;">
+                                            <input type="color" class="form-control form-control-color p-1"
+                                                id="fw_color1" value="#dc2626"
+                                                style="width: 44px; height: 38px; cursor: pointer;">
                                         </div>
                                         <div class="d-flex align-items-center gap-2">
                                             <label class="text-white small fw-bold">Color 2:</label>
-                                            <input type="color" class="form-control form-control-color p-1" id="fw_color2" value="#ffffff" style="width: 44px; height: 38px; cursor: pointer;">
+                                            <input type="color" class="form-control form-control-color p-1"
+                                                id="fw_color2" value="#ffffff"
+                                                style="width: 44px; height: 38px; cursor: pointer;">
                                         </div>
                                         <div class="d-flex align-items-center gap-2">
                                             <label class="text-white small fw-bold">Color 3:</label>
-                                            <input type="color" class="form-control form-control-color p-1" id="fw_color3" value="#b91c1c" style="width: 44px; height: 38px; cursor: pointer;">
+                                            <input type="color" class="form-control form-control-color p-1"
+                                                id="fw_color3" value="#b91c1c"
+                                                style="width: 44px; height: 38px; cursor: pointer;">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12 mt-4 text-end">
-                                    <button type="submit" class="btn btn-primary-custom px-4">Guardar Configuración de Fuegos Artificiales</button>
+                                    <button type="submit" class="btn btn-primary-custom px-4">Guardar Configuración de
+                                        Fuegos Artificiales</button>
                                 </div>
                             </div>
                         </form>
@@ -982,7 +1127,8 @@
                 <!-- TAB: SEGURIDAD -->
                 <div class="tab-content d-none" id="tab-seguridad">
                     <div class="card-custom">
-                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Actualizar Contraseña de Administrador</h4>
+                        <h4 class="font-heading text-secondary-custom fw-bold mb-4">Actualizar Contraseña de
+                            Administrador</h4>
                         <form id="changePasswordForm" onsubmit="saveNewPassword(event)">
                             <div class="row g-3">
                                 <div class="col-md-4">
@@ -1015,12 +1161,14 @@
 
 
     <!-- MODAL: CONVOCATORIA -->
-    <div class="modal fade" id="convocatoriaModal" tabindex="-1" aria-labelledby="convocatoriaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="convocatoriaModal" tabindex="-1" aria-labelledby="convocatoriaModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content glass-card border-0">
                 <div class="modal-header">
                     <h5 class="modal-title text-secondary-custom" id="convocatoriaModalLabel">Guardar Convocatoria</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <form id="convocatoriaForm" onsubmit="saveConvocatoria(event)">
@@ -1035,7 +1183,8 @@
                                 <input type="text" class="form-control" id="conv_fileUrl" required>
                             </div>
                             <div class="col-md-3 d-flex align-items-end">
-                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('conv_fileUrl')">Subir PDF</button>
+                                <button type="button" class="btn btn-outline-custom w-100"
+                                    onclick="triggerFileUpload('conv_fileUrl')">Subir PDF</button>
                             </div>
                         </div>
                         <div class="mb-4">
@@ -1046,8 +1195,10 @@
                             </select>
                         </div>
                         <div class="text-end">
-                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                            <button type="button" class="btn btn-outline-custom me-2"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar
+                                Cambios</button>
                         </div>
                     </form>
                 </div>
@@ -1061,7 +1212,8 @@
             <div class="modal-content glass-card border-0">
                 <div class="modal-header">
                     <h5 class="modal-title text-secondary-custom" id="avisoModalLabel">Guardar Anuncio / Aviso</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <form id="avisoForm" onsubmit="saveAviso(event)">
@@ -1080,16 +1232,21 @@
                                 <input type="text" class="form-control" id="av_imageUrl" required>
                             </div>
                             <div class="col-md-3 d-flex align-items-end">
-                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('av_imageUrl')">Subir Imagen</button>
+                                <button type="button" class="btn btn-outline-custom w-100"
+                                    onclick="triggerFileUpload('av_imageUrl')">Subir Imagen</button>
                             </div>
                         </div>
                         <div class="form-check form-switch mb-4">
-                            <input class="form-check-input" type="checkbox" id="av_active" checked style="cursor: pointer;">
-                            <label class="form-check-label text-white fw-bold" for="av_active">Anuncio Activo (se muestra en la página principal)</label>
+                            <input class="form-check-input" type="checkbox" id="av_active" checked
+                                style="cursor: pointer;">
+                            <label class="form-check-label text-white fw-bold" for="av_active">Anuncio Activo (se
+                                muestra en la página principal)</label>
                         </div>
                         <div class="text-end">
-                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                            <button type="button" class="btn btn-outline-custom me-2"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar
+                                Cambios</button>
                         </div>
                     </form>
                 </div>
@@ -1103,7 +1260,8 @@
             <div class="modal-content glass-card border-0">
                 <div class="modal-header">
                     <h5 class="modal-title text-secondary-custom" id="galeriaModalLabel">Guardar Imagen en Galería</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <form id="galeriaForm" onsubmit="saveGaleria(event)">
@@ -1122,12 +1280,15 @@
                                 <input type="text" class="form-control" id="gal_imageUrl" required>
                             </div>
                             <div class="col-md-3 d-flex align-items-end">
-                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('gal_imageUrl')">Subir Imagen</button>
+                                <button type="button" class="btn btn-outline-custom w-100"
+                                    onclick="triggerFileUpload('gal_imageUrl')">Subir Imagen</button>
                             </div>
                         </div>
                         <div class="text-end">
-                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                            <button type="button" class="btn btn-outline-custom me-2"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar
+                                Cambios</button>
                         </div>
                     </form>
                 </div>
@@ -1141,41 +1302,51 @@
             <div class="modal-content glass-card border-0">
                 <div class="modal-header">
                     <h5 class="modal-title text-secondary-custom" id="videoModalLabel">Guardar Video Institucional</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <form id="videoForm" onsubmit="saveVideo(event)">
                         <input type="hidden" id="vid_id">
                         <div class="mb-3">
                             <label class="form-label text-white">Título del Video</label>
-                            <input type="text" class="form-control" id="vid_title" placeholder="Ej. 50 Años de Tinajones" required>
+                            <input type="text" class="form-control" id="vid_title"
+                                placeholder="Ej. 50 Años de Tinajones" required>
                         </div>
                         <div class="row mb-3 g-3">
                             <div class="col-md-6">
                                 <label class="form-label text-white">Categoría / Etiqueta Principal</label>
-                                <input type="text" class="form-control" id="vid_category" placeholder="Ej. Documental, Gestión Hídrica, Mantenimiento" required>
+                                <input type="text" class="form-control" id="vid_category"
+                                    placeholder="Ej. Documental, Gestión Hídrica, Mantenimiento" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label text-white">Subetiqueta / Autor</label>
-                                <input type="text" class="form-control" id="vid_tag" placeholder="Ej. JUSHMCHL, Operaciones, Obras">
+                                <input type="text" class="form-control" id="vid_tag"
+                                    placeholder="Ej. JUSHMCHL, Operaciones, Obras">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-white">Descripción / Resumen</label>
-                            <textarea class="form-control" id="vid_description" rows="3" placeholder="Resumen del contenido audiovisual..." required></textarea>
+                            <textarea class="form-control" id="vid_description" rows="3"
+                                placeholder="Resumen del contenido audiovisual..." required></textarea>
                         </div>
                         <div class="row mb-4 g-2">
                             <div class="col-md-9">
                                 <label class="form-label text-white">URL del Video (YouTube o Archivo Subido)</label>
-                                <input type="text" class="form-control" id="vid_videoUrl" placeholder="https://www.youtube.com/watch?v=... o https://www.youtube.com/embed/..." required>
+                                <input type="text" class="form-control" id="vid_videoUrl"
+                                    placeholder="https://www.youtube.com/watch?v=... o https://www.youtube.com/embed/..."
+                                    required>
                             </div>
                             <div class="col-md-3 d-flex align-items-end">
-                                <button type="button" class="btn btn-outline-custom w-100" onclick="triggerFileUpload('vid_videoUrl')">Subir Video</button>
+                                <button type="button" class="btn btn-outline-custom w-100"
+                                    onclick="triggerFileUpload('vid_videoUrl')">Subir Video</button>
                             </div>
                         </div>
                         <div class="text-end">
-                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                            <button type="button" class="btn btn-outline-custom me-2"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar
+                                Cambios</button>
                         </div>
                     </form>
                 </div>
@@ -1189,14 +1360,16 @@
             <div class="modal-content glass-card border-0">
                 <div class="modal-header">
                     <h5 class="modal-title text-secondary-custom" id="eventoModalLabel">Guardar Actividad / Evento</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <form id="eventoForm" onsubmit="saveEvento(event)">
                         <input type="hidden" id="evt_id">
                         <div class="mb-3">
                             <label class="form-label text-white">Título de la Actividad</label>
-                            <input type="text" class="form-control" id="evt_title" placeholder="Ej. Asamblea General Extraordinaria" required>
+                            <input type="text" class="form-control" id="evt_title"
+                                placeholder="Ej. Asamblea General Extraordinaria" required>
                         </div>
                         <div class="row mb-3 g-3">
                             <div class="col-md-6">
@@ -1205,7 +1378,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label text-white">Hora / Horario</label>
-                                <input type="text" class="form-control" id="evt_time" placeholder="Ej. 09:00 AM o Todo el día" required>
+                                <input type="text" class="form-control" id="evt_time"
+                                    placeholder="Ej. 09:00 AM o Todo el día" required>
                             </div>
                         </div>
                         <div class="row mb-3 g-3">
@@ -1219,17 +1393,20 @@
                                     <option value="General">General</option>
                                     <option value="NUEVA">+ Nueva Categoría / Personalizada...</option>
                                 </select>
-                                <input type="text" class="form-control mt-2 d-none" id="evt_category_custom" placeholder="Escriba el nombre de la nueva categoría">
+                                <input type="text" class="form-control mt-2 d-none" id="evt_category_custom"
+                                    placeholder="Escriba el nombre de la nueva categoría">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label text-white">Etiqueta Corta (Badge)</label>
-                                <input type="text" class="form-control" id="evt_label" placeholder="Ej. Asamblea, Taller, Limpieza">
+                                <input type="text" class="form-control" id="evt_label"
+                                    placeholder="Ej. Asamblea, Taller, Limpieza">
                             </div>
                         </div>
                         <div class="row mb-3 g-3">
                             <div class="col-md-7">
                                 <label class="form-label text-white">Lugar / Ubicación</label>
-                                <input type="text" class="form-control" id="evt_location" placeholder="Ej. Auditorio Principal JUSHMCHL" required>
+                                <input type="text" class="form-control" id="evt_location"
+                                    placeholder="Ej. Auditorio Principal JUSHMCHL" required>
                             </div>
                             <div class="col-md-5">
                                 <label class="form-label text-white">Color Distintivo</label>
@@ -1244,17 +1421,23 @@
                                         <option value="#eab308">Amarillo (Alertas)</option>
                                         <option value="CUSTOM">Color Personalizado...</option>
                                     </select>
-                                    <input type="color" class="form-control form-control-color p-1" id="evt_color_picker" value="#2563eb" style="width: 48px; height: 38px; cursor: pointer; flex-shrink: 0;" title="Elegir color exacto" onchange="onColorPickerChange()">
+                                    <input type="color" class="form-control form-control-color p-1"
+                                        id="evt_color_picker" value="#2563eb"
+                                        style="width: 48px; height: 38px; cursor: pointer; flex-shrink: 0;"
+                                        title="Elegir color exacto" onchange="onColorPickerChange()">
                                 </div>
                             </div>
                         </div>
                         <div class="mb-4">
                             <label class="form-label text-white">Descripción / Detalle del Evento</label>
-                            <textarea class="form-control" id="evt_desc" rows="3" placeholder="Información relevante para los usuarios..." required></textarea>
+                            <textarea class="form-control" id="evt_desc" rows="3"
+                                placeholder="Información relevante para los usuarios..." required></textarea>
                         </div>
                         <div class="text-end">
-                            <button type="button" class="btn btn-outline-custom me-2" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar Cambios</button>
+                            <button type="button" class="btn btn-outline-custom me-2"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn bg-primary-custom text-dark fw-bold px-4">💾 Guardar
+                                Cambios</button>
                         </div>
                     </form>
                 </div>
@@ -1265,16 +1448,20 @@
     <!-- MODAL: CONFIRMACIÓN CUSTOM -->
     <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
-            <div class="modal-content card-custom border-0" style="background-color: #0b152d; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
+            <div class="modal-content card-custom border-0"
+                style="background-color: #0b152d; border: 1px solid rgba(255, 255, 255, 0.1) !important;">
                 <div class="modal-body text-center p-4">
                     <div class="mb-3">
                         <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
                     </div>
                     <h5 class="text-white font-heading fw-bold mb-3" id="confirmModalTitle">¿Está seguro?</h5>
-                    <p class="text-secondary-custom fs-6 mb-4" id="confirmModalMessage">Esta acción no se puede deshacer.</p>
+                    <p class="text-secondary-custom fs-6 mb-4" id="confirmModalMessage">Esta acción no se puede
+                        deshacer.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <button type="button" class="btn btn-outline-custom px-4" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger px-4" style="background-color: #dc3545; border:none" id="confirmModalBtn">Eliminar</button>
+                        <button type="button" class="btn btn-outline-custom px-4"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger px-4" style="background-color: #dc3545; border:none"
+                            id="confirmModalBtn">Eliminar</button>
                     </div>
                 </div>
             </div>
@@ -1301,7 +1488,7 @@
         }
 
         // Detectar si estamos en el entorno de desarrollo Node o en un hosting PHP
-        window.getApiUrl = function(route, id = null) {
+        window.getApiUrl = function (route, id = null) {
             const isDev = window.location.port === "3000" || window.location.hostname.includes("run.app") || window.location.hostname.includes("aistudio");
             if (isDev) {
                 return id ? `/api/admin/${route}/${id}` : `/api/admin/${route}`;
@@ -1331,16 +1518,16 @@
         function showConfirm(title, message, onConfirmCallback) {
             document.getElementById("confirmModalTitle").innerText = title;
             document.getElementById("confirmModalMessage").innerText = message;
-            
+
             const confirmBtn = document.getElementById("confirmModalBtn");
             const newConfirmBtn = confirmBtn.cloneNode(true);
             confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
-            
+
             newConfirmBtn.addEventListener("click", () => {
                 confirmModal.hide();
                 onConfirmCallback();
             });
-            
+
             confirmModal.show();
         }
 
@@ -1508,7 +1695,7 @@
                 document.getElementById("fw_theme").value = fw.theme || "fiestas_patrias";
                 document.getElementById("fw_buttonText").value = fw.buttonText || fw.btnText || "Fiestas Patrias";
                 document.getElementById("fw_title").value = fw.title || fw.titleText || "¡Celebra las Fiestas Patrias con Nosotros!";
-                
+
                 document.getElementById("fw_color1").value = fw.customColor1 || "#dc2626";
                 document.getElementById("fw_color2").value = fw.customColor2 || "#ffffff";
                 document.getElementById("fw_color3").value = fw.customColor3 || "#b91c1c";
@@ -1613,13 +1800,13 @@
                 return Math.random() * (max - min) + min;
             }
 
-            const interval = setInterval(function() {
+            const interval = setInterval(function () {
                 const timeLeft = animationEnd - Date.now();
                 if (timeLeft <= 0) {
                     return clearInterval(interval);
                 }
                 const particleCount = 50 * (timeLeft / duration);
-                
+
                 // Launch bursts from various origins across screen
                 confetti(Object.assign({}, defaults, {
                     particleCount,
@@ -1788,9 +1975,9 @@
                     try {
                         const res = await fetch(getApiUrl("convocatorias"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -1844,7 +2031,7 @@
             const c = comisionesList.find(item => item.id === id);
             const deleteBtn = document.getElementById("deleteComisionBtn");
             const saveBtn = document.getElementById("saveComisionBtn");
-            
+
             if (c) {
                 document.getElementById("comision_id").value = c.id;
                 document.getElementById("comision_name").value = c.name;
@@ -1855,7 +2042,7 @@
                 document.getElementById("comision_area").value = c.area || "";
                 document.getElementById("comision_logo").value = c.logo || "";
                 document.getElementById("comision_cover").value = c.cover || "";
-                
+
                 deleteBtn.style.display = "inline-block";
                 saveBtn.innerText = "Guardar Cambios de Comisión";
             } else {
@@ -1873,10 +2060,10 @@
             document.getElementById("comision_area").value = "";
             document.getElementById("comision_logo").value = "";
             document.getElementById("comision_cover").value = "";
-            
+
             document.getElementById("deleteComisionBtn").style.display = "none";
             document.getElementById("saveComisionBtn").innerText = "Crear Nueva Comisión";
-            
+
             // Agregar una opción temporal o deseleccionar
             const select = document.getElementById("comisionSelect");
             // Deseleccionar
@@ -1896,9 +2083,9 @@
                     try {
                         const res = await fetch(getApiUrl("comisiones"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -1962,6 +2149,8 @@
         // 4. ANUNCIOS / AVISOS
         let avisosList = [];
         let modalGlobalActive = true;
+        let noticiasSectionActive = true;
+        let diagnosticoSectionActive = true;
 
         async function loadAvisos() {
             try {
@@ -1976,9 +2165,13 @@
                 if (configRes && configRes.ok) {
                     const cfg = await configRes.json();
                     modalGlobalActive = cfg.modalAvisosActive !== false;
+                    noticiasSectionActive = cfg.noticiasSectionActive !== false;
+                    diagnosticoSectionActive = cfg.diagnosticoSectionActive !== false;
                 }
 
                 updateGlobalModalStatusUI();
+                updateNoticiasSectionUI();
+                updateDiagnosticoSectionUI();
                 renderAvisos();
             } catch (err) {
                 console.error("Error cargando avisos", err);
@@ -2007,7 +2200,7 @@
                     icon.textContent = "check_circle";
                 }
                 if (title) title.textContent = "Modal de Anuncios: ACTIVO";
-                if (desc) desc.textContent = "El modal emergente se mostrará automáticamente en la página principal a todos los visitantes.";
+                if (desc) desc.textContent = "El modal emergente se mostrará automáticamente en la página principal cuando haya anuncios activos.";
                 if (badge) {
                     badge.className = "badge bg-success fs-6 px-3 py-2";
                     badge.textContent = "Modal Visible";
@@ -2032,6 +2225,68 @@
             }
         }
 
+        function updateNoticiasSectionUI() {
+            const btn = document.getElementById("noticiasSectionToggleBtn");
+            const banner = document.getElementById("noticiasSectionStatusBanner");
+            const icon = document.getElementById("noticiasSectionIcon");
+            const title = document.getElementById("noticiasSectionStatusTitle");
+            const desc = document.getElementById("noticiasSectionStatusDesc");
+            const badge = document.getElementById("noticiasSectionBadge");
+
+            if (!btn || !banner) return;
+
+            if (noticiasSectionActive) {
+                btn.className = "btn btn-outline-danger btn-sm fw-bold px-3";
+                btn.innerHTML = "🚫 Ocultar Sección";
+                banner.style.background = "rgba(25, 135, 84, 0.2)";
+                banner.style.borderColor = "rgba(25, 135, 84, 0.5)";
+                if (icon) { icon.className = "material-symbols-outlined fs-3 text-success"; icon.textContent = "newspaper"; }
+                if (title) title.textContent = "Sección \"Actualidad\" (Facebook): VISIBLE";
+                if (desc) desc.textContent = "La sección de noticias de Facebook se mostrará en la página principal.";
+                if (badge) { badge.className = "badge bg-success fs-6 px-3 py-2"; badge.textContent = "Visible"; }
+            } else {
+                btn.className = "btn btn-success btn-sm fw-bold px-3";
+                btn.innerHTML = "✅ Mostrar Sección";
+                banner.style.background = "rgba(220, 53, 69, 0.2)";
+                banner.style.borderColor = "rgba(220, 53, 69, 0.5)";
+                if (icon) { icon.className = "material-symbols-outlined fs-3 text-danger"; icon.textContent = "visibility_off"; }
+                if (title) title.textContent = "Sección \"Actualidad\": OCULTA";
+                if (desc) desc.textContent = "La sección de noticias NO se mostrará en la página principal.";
+                if (badge) { badge.className = "badge bg-danger fs-6 px-3 py-2"; badge.textContent = "Oculta"; }
+            }
+        }
+
+        function updateDiagnosticoSectionUI() {
+            const btn = document.getElementById("diagnosticoSectionToggleBtn");
+            const banner = document.getElementById("diagnosticoSectionStatusBanner");
+            const icon = document.getElementById("diagnosticoSectionIcon");
+            const title = document.getElementById("diagnosticoSectionStatusTitle");
+            const desc = document.getElementById("diagnosticoSectionStatusDesc");
+            const badge = document.getElementById("diagnosticoSectionBadge");
+
+            if (!btn || !banner) return;
+
+            if (diagnosticoSectionActive) {
+                btn.className = "btn btn-outline-danger btn-sm fw-bold px-3";
+                btn.innerHTML = "🚫 Ocultar Sección";
+                banner.style.background = "rgba(25, 135, 84, 0.2)";
+                banner.style.borderColor = "rgba(25, 135, 84, 0.5)";
+                if (icon) { icon.className = "material-symbols-outlined fs-3 text-success"; icon.textContent = "visibility"; }
+                if (title) title.textContent = "Sección \"Diagnóstico Institucional\": VISIBLE";
+                if (desc) desc.textContent = "Esta sección se mostrará en la página principal.";
+                if (badge) { badge.className = "badge bg-success fs-6 px-3 py-2"; badge.textContent = "Visible"; }
+            } else {
+                btn.className = "btn btn-success btn-sm fw-bold px-3";
+                btn.innerHTML = "✅ Mostrar Sección";
+                banner.style.background = "rgba(220, 53, 69, 0.2)";
+                banner.style.borderColor = "rgba(220, 53, 69, 0.5)";
+                if (icon) { icon.className = "material-symbols-outlined fs-3 text-danger"; icon.textContent = "visibility_off"; }
+                if (title) title.textContent = "Sección \"Diagnóstico Institucional\": OCULTA";
+                if (desc) desc.textContent = "Esta sección NO se mostrará en la página principal.";
+                if (badge) { badge.className = "badge bg-danger fs-6 px-3 py-2"; badge.textContent = "Oculta"; }
+            }
+        }
+
         async function toggleGlobalAvisosModal() {
             try {
                 const res = await fetch(getApiUrl("avisos"), {
@@ -2052,6 +2307,52 @@
                 } else {
                     const data = await res.json();
                     showToast(data.error || "Error al cambiar estado del modal", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        async function toggleNoticiasSection() {
+            try {
+                const newState = !noticiasSectionActive;
+                const res = await fetch(getApiUrl("config"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify({ noticiasSectionActive: newState })
+                });
+                if (res.ok) {
+                    noticiasSectionActive = newState;
+                    updateNoticiasSectionUI();
+                    showToast("Estado de sección Actualidad actualizado");
+                } else {
+                    showToast("Error al cambiar estado de sección", false);
+                }
+            } catch (err) {
+                showToast("Error de conexión", false);
+            }
+        }
+
+        async function toggleDiagnosticoSection() {
+            try {
+                const newState = !diagnosticoSectionActive;
+                const res = await fetch(getApiUrl("config"), {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify({ diagnosticoSectionActive: newState })
+                });
+                if (res.ok) {
+                    diagnosticoSectionActive = newState;
+                    updateDiagnosticoSectionUI();
+                    showToast("Estado de sección Diagnóstico actualizado");
+                } else {
+                    showToast("Error al cambiar estado de sección", false);
                 }
             } catch (err) {
                 showToast("Error de conexión", false);
@@ -2184,9 +2485,9 @@
                     try {
                         const res = await fetch(getApiUrl("avisos"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -2305,9 +2606,9 @@
                     try {
                         const res = await fetch(getApiUrl("galeria"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -2363,7 +2664,7 @@
             videosList.forEach(v => {
                 const col = document.createElement("div");
                 col.className = "col";
-                
+
                 let mediaHtml = '';
                 const cleanVideoUrl = formatYouTubeUrlJS(v.videoUrl);
                 if (cleanVideoUrl && (cleanVideoUrl.includes('youtube.com') || cleanVideoUrl.includes('youtu.be'))) {
@@ -2460,9 +2761,9 @@
                     try {
                         const res = await fetch(getApiUrl("videos"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -2597,7 +2898,7 @@
             const todayStr = new Date().toISOString().split('T')[0];
             document.getElementById("evt_eventDate").value = todayStr;
             document.getElementById("evt_time").value = "09:00 AM";
-            
+
             const catSelect = document.getElementById("evt_category");
             const catCustom = document.getElementById("evt_category_custom");
             catSelect.value = "Asambleas";
@@ -2606,7 +2907,7 @@
 
             document.getElementById("evt_label").value = "Asamblea";
             document.getElementById("evt_location").value = "Auditorio Principal JUSHMCHL";
-            
+
             document.getElementById("evt_color").value = "#2563eb";
             document.getElementById("evt_color_picker").value = "#2563eb";
             document.getElementById("evt_desc").value = "";
@@ -2620,7 +2921,7 @@
                 document.getElementById("evt_title").value = e.title;
                 document.getElementById("evt_eventDate").value = e.eventDate || (e.year && e.month !== undefined && e.day ? `${e.year}-${String(e.month + 1).padStart(2, '0')}-${String(e.day).padStart(2, '0')}` : "");
                 document.getElementById("evt_time").value = e.time || "";
-                
+
                 const catSelect = document.getElementById("evt_category");
                 const catCustom = document.getElementById("evt_category_custom");
                 const catVal = e.category || "General";
@@ -2643,7 +2944,7 @@
 
                 document.getElementById("evt_label").value = e.label || "";
                 document.getElementById("evt_location").value = e.location || "";
-                
+
                 const colorSelect = document.getElementById("evt_color");
                 const colorPicker = document.getElementById("evt_color_picker");
                 const colorVal = e.color || "#2563eb";
@@ -2668,7 +2969,7 @@
         async function saveEvento(e) {
             e.preventDefault();
             const id = document.getElementById("evt_id").value;
-            
+
             const catSelect = document.getElementById("evt_category");
             const catCustom = document.getElementById("evt_category_custom");
             let finalCategory = catSelect.value;
@@ -2723,9 +3024,9 @@
                     try {
                         const res = await fetch(getApiUrl("eventos"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -2763,12 +3064,12 @@
                     headers: getAuthHeaders(false),
                     body: formData
                 });
-                
+
                 const responseText = await res.text();
                 let data;
                 try {
                     data = JSON.parse(responseText);
-                } catch(e) {
+                } catch (e) {
                     console.error("Respuesta del servidor no es JSON:", responseText);
                     showToast("Error del servidor al subir. Verifica que el archivo no supere los 10MB.", false);
                     return;
@@ -2832,29 +3133,29 @@
 
         // === ICON PICKER ===
         const AREA_ICONS = [
-            'bi-gear','bi-gear-wide-connected','bi-gear-fill',
-            'bi-people-fill','bi-person-fill','bi-person-check-fill',
-            'bi-building','bi-building-fill','bi-buildings-fill',
-            'bi-wrench-adjustable','bi-tools','bi-hammer',
-            'bi-droplet-fill','bi-water','bi-tsunami',
-            'bi-graph-up-arrow','bi-bar-chart-fill','bi-pie-chart-fill',
-            'bi-clipboard-data-fill','bi-clipboard-pulse','bi-journal-check',
-            'bi-shield-fill-check','bi-shield-lock-fill','bi-shield-fill',
-            'bi-briefcase-fill','bi-briefcase','bi-archive-fill',
-            'bi-cpu-fill','bi-cpu','bi-diagram-3-fill',
-            'bi-lightbulb-fill','bi-star-fill','bi-award-fill',
-            'bi-house-fill','bi-house-door-fill','bi-tree-fill',
-            'bi-cash-stack','bi-bank','bi-coin',
-            'bi-truck-front-fill','bi-map-fill','bi-geo-alt-fill',
-            'bi-calendar-event-fill','bi-calendar-check-fill','bi-clock-fill',
-            'bi-envelope-fill','bi-telephone-fill','bi-chat-dots-fill',
-            'bi-camera-fill','bi-file-earmark-text-fill','bi-folder-fill',
-            'bi-check-circle-fill','bi-info-circle-fill','bi-exclamation-triangle-fill',
-            'bi-recycle','bi-infinity','bi-arrows-fullscreen',
-            'bi-activity','bi-heart-pulse-fill','bi-broadcast',
-            'bi-lock-fill','bi-key-fill','bi-fingerprint',
-            'bi-rulers','bi-compass-fill','bi-globe',
-            'bi-send-fill','bi-pin-map-fill','bi-signpost-split-fill'
+            'bi-gear', 'bi-gear-wide-connected', 'bi-gear-fill',
+            'bi-people-fill', 'bi-person-fill', 'bi-person-check-fill',
+            'bi-building', 'bi-building-fill', 'bi-buildings-fill',
+            'bi-wrench-adjustable', 'bi-tools', 'bi-hammer',
+            'bi-droplet-fill', 'bi-water', 'bi-tsunami',
+            'bi-graph-up-arrow', 'bi-bar-chart-fill', 'bi-pie-chart-fill',
+            'bi-clipboard-data-fill', 'bi-clipboard-pulse', 'bi-journal-check',
+            'bi-shield-fill-check', 'bi-shield-lock-fill', 'bi-shield-fill',
+            'bi-briefcase-fill', 'bi-briefcase', 'bi-archive-fill',
+            'bi-cpu-fill', 'bi-cpu', 'bi-diagram-3-fill',
+            'bi-lightbulb-fill', 'bi-star-fill', 'bi-award-fill',
+            'bi-house-fill', 'bi-house-door-fill', 'bi-tree-fill',
+            'bi-cash-stack', 'bi-bank', 'bi-coin',
+            'bi-truck-front-fill', 'bi-map-fill', 'bi-geo-alt-fill',
+            'bi-calendar-event-fill', 'bi-calendar-check-fill', 'bi-clock-fill',
+            'bi-envelope-fill', 'bi-telephone-fill', 'bi-chat-dots-fill',
+            'bi-camera-fill', 'bi-file-earmark-text-fill', 'bi-folder-fill',
+            'bi-check-circle-fill', 'bi-info-circle-fill', 'bi-exclamation-triangle-fill',
+            'bi-recycle', 'bi-infinity', 'bi-arrows-fullscreen',
+            'bi-activity', 'bi-heart-pulse-fill', 'bi-broadcast',
+            'bi-lock-fill', 'bi-key-fill', 'bi-fingerprint',
+            'bi-rulers', 'bi-compass-fill', 'bi-globe',
+            'bi-send-fill', 'bi-pin-map-fill', 'bi-signpost-split-fill'
         ];
 
         function initIconPicker() {
@@ -2877,9 +3178,9 @@
         function selectIcon(icon) {
             document.getElementById('area_icon').value = icon;
             const prev = document.getElementById('area_icon_preview');
-            const lbl  = document.getElementById('area_icon_label');
+            const lbl = document.getElementById('area_icon_label');
             if (prev) { prev.className = `bi ${icon}`; }
-            if (lbl)  { lbl.textContent = icon; }
+            if (lbl) { lbl.textContent = icon; }
             document.getElementById('iconPickerDropdown').style.display = 'none';
             // Highlight selected
             document.querySelectorAll('#iconPickerGrid button').forEach(b => {
@@ -2902,7 +3203,7 @@
         }
 
         // Close picker when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const wrap = document.querySelector('.area-icon-picker-wrap');
             if (wrap && !wrap.contains(e.target)) {
                 const dd = document.getElementById('iconPickerDropdown');
@@ -2913,9 +3214,9 @@
         // Helper: sync icon picker display when loading an area
         function syncIconPickerDisplay(icon) {
             const prev = document.getElementById('area_icon_preview');
-            const lbl  = document.getElementById('area_icon_label');
+            const lbl = document.getElementById('area_icon_label');
             if (prev) prev.className = `bi ${icon}`;
-            if (lbl)  lbl.textContent = icon;
+            if (lbl) lbl.textContent = icon;
         }
 
 
@@ -2978,7 +3279,7 @@
                 const loadedIcon = a.icon || "bi-gear";
                 document.getElementById("area_icon").value = loadedIcon;
                 syncIconPickerDisplay(loadedIcon);
-                
+
                 const colorVal = (a.color && a.color.startsWith('#')) ? a.color : "#20c997";
                 document.getElementById("area_color").value = colorVal;
                 updateAreaColorPreview();
@@ -3019,9 +3320,9 @@
                     try {
                         const res = await fetch(getApiUrl("areas"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -3086,7 +3387,7 @@
             try {
                 const res = await fetch(getApiUrl("normativas"));
                 normativasList = await res.json();
-                
+
                 const select = document.getElementById("normativaSelect");
                 select.innerHTML = "";
                 if (Array.isArray(normativasList)) {
@@ -3121,7 +3422,7 @@
                 document.getElementById("normativa_title").value = n.title;
                 document.getElementById("normativa_description").value = n.description || "";
                 document.getElementById("normativa_documentUrl").value = n.documentUrl || "";
-                
+
                 deleteBtn.style.display = "inline-block";
                 saveBtn.innerText = "Guardar Cambios de Normativa";
             } else {
@@ -3155,9 +3456,9 @@
                     try {
                         const res = await fetch(getApiUrl("normativas"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -3302,9 +3603,9 @@
                     try {
                         const res = await fetch(getApiUrl("noticias"), {
                             method: "POST",
-                            headers: { 
+                            headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token 
+                                "Authorization": token
                             },
                             body: JSON.stringify({ action: "DELETE", id: id })
                         });
@@ -3403,7 +3704,7 @@
                 document.getElementById("estructura_title").value = organo.title || "";
                 document.getElementById("estructura_badge").value = organo.badge || "";
                 document.getElementById("estructura_icon").value = organo.icon || "bi-diagram-3-fill";
-                
+
                 const col = organo.color || "#0d6efd";
                 document.getElementById("estructura_color").value = col;
                 document.getElementById("estructura_color_hex").value = col;
@@ -3753,7 +4054,7 @@
 
                     if (data.descripcionNegocio) {
                         if (introElem) introElem.value = data.descripcionNegocio.intro || "";
-                        
+
                         const container = document.getElementById("diagFuncionesContainer");
                         if (container) {
                             container.innerHTML = "";
@@ -3859,7 +4160,7 @@
 
             const funciones = data.descripcionNegocio && Array.isArray(data.descripcionNegocio.funciones) ? data.descripcionNegocio.funciones : [];
             const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-            
+
             const funcionesHtml = funciones.map((f, idx) => `
                 <li class="small text-white-50 d-flex align-items-start gap-2">
                     <span class="badge bg-primary text-dark fw-bold rounded-circle d-inline-flex align-items-center justify-content-center" style="width:20px; height:20px; font-size:10px;">${letters[idx % letters.length]}</span>

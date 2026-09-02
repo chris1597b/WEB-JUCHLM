@@ -24,6 +24,7 @@ if ($method === 'GET') {
             'vision' => 'Consolidarnos como una organización moderna y eficiente, referente a nivel internacional.',
             'historia' => 'La Junta de Usuarios Chancay Lambayeque fue constituida en mérito al Decreto Ley 17752...',
             'modalAvisosActive' => 1,
+            'diagnosticoSectionActive' => 1,
             'fireworksActive' => 1,
             'fireworksTheme' => 'fiestas_patrias',
             'fireworksTitleText' => '¡Fiestas Patrias!',
@@ -47,6 +48,7 @@ if ($method === 'GET') {
         "vision" => $config['vision'] ?? '',
         "historia" => $config['historia'] ?? '',
         "modalAvisosActive" => (bool)($config['modalAvisosActive'] ?? true),
+        "diagnosticoSectionActive" => (bool)($config['diagnosticoSectionActive'] ?? true),
         "fireworks" => [
             "active" => (bool)($config['fireworksActive'] ?? true),
             "theme" => $config['fireworksTheme'] ?? 'fiestas_patrias',
@@ -120,6 +122,18 @@ if ($method === 'POST') {
             ':color2' => $fireworksColor2,
             ':color3' => $fireworksColor3
         ]);
+    }
+
+    // Actualizar diagnosticoSectionActive si viene en el payload
+    if (isset($input['diagnosticoSectionActive'])) {
+        $diagnosticoSectionActive = $input['diagnosticoSectionActive'] ? 1 : 0;
+        try {
+            $pdo->exec("ALTER TABLE site_config ADD COLUMN IF NOT EXISTS diagnosticoSectionActive TINYINT(1) DEFAULT 1");
+        } catch (Exception $e) { /* column may already exist */ }
+        $pdo->prepare("UPDATE site_config SET diagnosticoSectionActive = :v WHERE id = 1")
+            ->execute([':v' => $diagnosticoSectionActive]);
+        echo json_encode(["message" => "Visibilidad del Diagnóstico actualizada"]);
+        exit();
     }
 
     // Actualizar configuración general
