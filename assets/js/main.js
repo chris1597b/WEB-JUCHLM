@@ -453,7 +453,7 @@ ${mensaje}`;
                      comisiones.forEach(com => {
                         const coverUrl = com.cover || 'assets/img/fondo/TINAJONES-1024x768.jpg';
                         const logoUrl = com.logo || 'assets/img/juchl.png';
-                        const desc = com.description || 'Comisión de regantes, promoviendo el uso eficiente del agua.';
+                        const desc = com.description || '';
                         
                         let extraDetailsHtml = "";
                         if (com.presidente) {
