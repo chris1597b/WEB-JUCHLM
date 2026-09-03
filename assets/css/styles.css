@@ -18,7 +18,7 @@ html {
 
 body {
     /*
-    background-color:  var(--surface);
+    background-color: var(--surface);
     background-image: url('assets/img/fondo aggricultura.png');
     background-size: cover;
     background-position: center;
@@ -30,47 +30,70 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     margin: 0;
-    padding: 0;*/
+    padding: 0;
+    */
+
     background-color: var(--deep-navy);
-    
+
     background-image:
-        
-        radial-gradient(ellipse at 20% 10%, rgba(130, 207, 255, 0.15) 0%, transparent 10%),
-        radial-gradient(ellipse at 80% 30%, rgba(183, 245, 104, 0.1) 0%, transparent 20%),
-        radial-gradient(ellipse at 60% 80%, rgba(200, 160, 255, 0.1) 0%, transparent 20%),
-        radial-gradient(ellipse at 60% 80%, rgba(200, 160, 255, 0.1) 0%, transparent 20%),
-        url('../img/fondo/TINAJONES-1024x768.jpg');
-    /*background-image:
-        
-        radial-gradient(ellipse at 20% 50%, rgba(130, 207, 255, 0.25) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 30%, rgba(183, 245, 104, 0.2) 0%, transparent 60%),
-        radial-gradient(ellipse at 60% 80%, rgba(200, 160, 255, 0.2) 0%, transparent 60%),
-        url('../img/fondo/TINAJONES-1024x768.jpg')*/
-    background-size: cover;
+        radial-gradient(
+            ellipse at 20% 50%,
+            rgba(130, 207, 255, 0.15) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 80% 30%,
+            rgba(183, 245, 104, 0.10) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 60% 80%,
+            rgba(200, 160, 255, 0.10) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 60% 80%,
+            rgba(200, 160, 255, 0.10) 0%,
+            transparent 50%
+        ),
+        url('../img/fondo/TINAJONES-1536x1152.jpg');
+
+    /*
+    Para un efecto más cinematográfico puedes activar:*/
+     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: var(--on-surface);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    
-    
 }
 
 
-
-h1, h2, h3, h4, h5, h6, p .font-heading {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p .font-heading {
     font-family: 'Montserrat', sans-serif;
 }
+
 .lista-empresas li::marker {
     color: #a6e358;
 }
+
 p {
     text-align: justify;
     color: white;
 }
 
-/* Typography Utilities */
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
 .text-primary-custom {
     color: var(--primary);
 }
@@ -114,19 +137,31 @@ p {
     color: var(--gris-texto);
 }
 
-/* Icons */
+
+/* ==========================================================================
+   ICONS
+   ========================================================================== */
+
 .material-symbols-outlined {
-    font-variation-settings: 'FILL'0, 'wght'400, 'GRAD'0, 'opsz'24;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
 }
 
-/* Glassmorphism */
+
+/* ==========================================================================
+   GLASSMORPHISM
+   ========================================================================== */
+
 .glass-card {
-    background: rgba(1, 31, 90, 0.583);
+    background: rgba(48, 88, 167, 0.329);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 24px;
-    box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
 }
 
@@ -135,23 +170,28 @@ p {
 }
 
 .ambient-glow:hover {
-    box-shadow: 0 20px 40px rgba(166, 227, 88, 0.2), 0 0 0 1px rgba(166, 227, 88, 0.3);
+    box-shadow:
+        0 20px 40px rgba(166, 227, 88, 0.15),
+        0 0 0 1px rgba(166, 227, 88, 0.10);
     transform: translateY(-4px);
-    background: rgba(18, 48, 105, 0.75);
-    border-color: rgba(166, 227, 88, 0.4) !important;
+    background: rgba(62, 61, 61, 0.278);
 }
 
-/* Custom Nav */
+
+/* ==========================================================================
+   CUSTOM NAV
+   ========================================================================== */
+
 .custom-navbar {
-    background: rgba(10, 24, 58, 0.75) !important;
+    background: rgba(48, 88, 167, 0.274) !important;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid var(--glass-stroke) !important;
     border-radius: 50px;
     top: 1.5rem;
     z-index: 1030;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .custom-navbar .navbar-nav {
@@ -178,8 +218,11 @@ p {
     }
 }
 
+
 /* Responsive navbar collapse on mobile */
+
 @media (max-width: 991.98px) {
+
     .custom-navbar {
         border-radius: 24px !important;
         width: calc(100% - 24px) !important;
@@ -187,14 +230,14 @@ p {
     }
 
     .custom-navbar .navbar-collapse {
-        background: rgba(8, 20, 50, 0.95);
+        background: rgba(48, 88, 167, 0.22);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 18px;
         padding: 1.25rem;
         margin-top: 0.75rem;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
     }
 
     .custom-navbar .navbar-nav .nav-link {
@@ -202,17 +245,23 @@ p {
     }
 }
 
+
 .custom-navbarsx {
     background: rgba(15, 56, 143, 0.286);
     backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 .nav-link {
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 0.05em;
-    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s,
+        box-shadow 0.3s;
 }
 
 .nav-link:hover {
@@ -231,13 +280,21 @@ p {
     color: var(--on-primary);
 }
 
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
 .btn-custom-pill {
     border-radius: 50px;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.05em;
     padding: 0.5rem 1.5rem;
-    transition: transform 0.2s ease-in-out, background-color 0.3s, color 0.3s;
+    transition:
+        transform 0.2s ease-in-out,
+        background-color 0.3s,
+        color 0.3s;
 }
 
 .btn-custom-pill:hover {
@@ -249,7 +306,11 @@ p {
     color: var(--on-primary) !important;
 }
 
-/* Modal Convocatoria */
+
+/* ==========================================================================
+   MODAL CONVOCATORIA
+   ========================================================================== */
+
 .table {
     margin-bottom: 0;
     border: none;
@@ -257,11 +318,13 @@ p {
 
 .table td {
     background: transparent !important;
-
 }
 
 
-/* Hero Section */
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -272,9 +335,7 @@ p {
 }
 
 .hero-bg-overlay {
-    /*background: linear-gradient(to bottom, rgba(10, 51, 133, 0.3), rgba(6, 117, 36, 0.09), rgba(8, 33, 84, 0.7));*/
-        background: linear-gradient(to bottom, rgba(10, 51, 133, 0.9), rgba(6, 117, 36, 0.09), rgba(8, 33, 84, 0.548));
-
+    background: linear-gradient(to bottom, rgba(10, 51, 133, 0.9), rgba(6, 117, 36, 0.09), rgba(8, 33, 84, 0.548));
     z-index: 1;
 }
 
@@ -305,7 +366,11 @@ p {
     box-shadow: 0 0 30px rgba(166, 227, 88, 0.4);
 }
 
-/* Timeline */
+
+/* ==========================================================================
+   TIMELINE
+   ========================================================================== */
+
 .timeline-item {
     position: relative;
 }
@@ -332,7 +397,11 @@ p {
     z-index: 1;
 }
 
-/* Forms */
+
+/* ==========================================================================
+   FORMS
+   ========================================================================== */
+
 .custom-input {
     background-color: rgba(255, 255, 255, 0.05);
     border: none;
@@ -355,7 +424,11 @@ p {
     color: white;
 }
 
-/* Scrollbar */
+
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -373,43 +446,41 @@ p {
     background: var(--primary);
 }
 
+
+/* ==========================================================================
+   SCROLL MARGINS
+   ========================================================================== */
+
 #nosotros {
     scroll-margin-top: 6rem;
-    /* margen al hacer scroll */
 }
 
 #areas {
     scroll-margin-top: 3rem;
-    /* margen al hacer scroll */
 }
 
 #noticias {
     scroll-margin-top: 3rem;
-    /* margen al hacer scroll */
 }
 
 #contacto {
     scroll-margin-top: 5rem;
-    /* margen al hacer scroll */
 }
+
+
+/* ==========================================================================
+   FACEBOOK
+   ========================================================================== */
 
 #fb-root {
     border-radius: 12px;
     overflow-y: hidden;
     width: 100%;
     height: 38rem;
-    overflow-y: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background: rgba(1, 31, 90, 0.583);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 24px;
-    box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
 }
 
 .fb-page {
@@ -417,7 +488,11 @@ p {
     overflow-y: hidden;
 }
 
-/* Custom Styles for Galería Slider & Funciones */
+
+/* ==========================================================================
+   GALERÍA SLIDER
+   ========================================================================== */
+
 #carouselGaleria {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -460,7 +535,11 @@ p {
     opacity: 1;
 }
 
-/* Scroll Margins for New Sections */
+
+/* ==========================================================================
+   SCROLL MARGINS FOR NEW SECTIONS
+   ========================================================================== */
+
 #galeria-institucional,
 #resumen-institucional,
 #videos-institucionales,
@@ -473,6 +552,11 @@ p {
     background-color: #000;
 }
 
+
+/* ==========================================================================
+   DARK GLASS CARD
+   ========================================================================== */
+
 .glass-card-dark {
     background: rgba(4, 12, 30, 0.85) !important;
     backdrop-filter: blur(28px) !important;
@@ -483,7 +567,11 @@ p {
     transition: all 0.3s ease;
 }
 
-/* Custom Interactive Calendar CSS (Image-Inspired Grid) */
+
+/* ==========================================================================
+   CUSTOM INTERACTIVE CALENDAR
+   ========================================================================== */
+
 .calendar-card {
     background: rgba(10, 25, 47, 0.45) !important;
     backdrop-filter: blur(30px) !important;
@@ -558,7 +646,9 @@ p {
     background: rgba(130, 207, 255, 0.1);
 }
 
-/* Event Types and Highlights */
+
+/* Event Types */
+
 .calendar-cell.has-event {
     cursor: pointer;
 }
@@ -592,7 +682,9 @@ p {
     box-shadow: 0 0 10px rgba(220, 38, 38, 0.6);
 }
 
-/* Underline Indicator lines */
+
+/* Underline Indicator Lines */
+
 .calendar-event-line {
     width: 18px;
     height: 3px;
@@ -617,7 +709,9 @@ p {
     background-color: #ef4444;
 }
 
-/* Day labels under day numbers */
+
+/* Day labels */
+
 .calendar-event-text {
     font-size: 9px;
     font-weight: 700;
@@ -647,7 +741,11 @@ p {
     color: #fca5a5;
 }
 
-/* Custom Glass Modal styles */
+
+/* ==========================================================================
+   CUSTOM GLASS MODAL
+   ========================================================================== */
+
 .glass-modal-overlay {
     position: fixed;
     top: 0;
@@ -683,13 +781,19 @@ p {
     transform: scale(1);
 }
 
+
 @media (min-width: 992px) {
+
     .border-lg-end {
         border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
     }
 }
 
-/* Floating Fireworks Button Styles */
+
+/* ==========================================================================
+   FLOATING FIREWORKS BUTTON
+   ========================================================================== */
+
 .fireworks-floating-btn-wrapper {
     position: fixed;
     bottom: 28px;
@@ -704,16 +808,18 @@ p {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(10, 24, 58, 0.75) !important;
+    background: rgba(48, 88, 167, 0.32) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(255, 255, 255, 0.12);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
@@ -736,8 +842,10 @@ p {
 
 .fireworks-btn-round:hover {
     transform: scale(1.15) rotate(8deg);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.5);
-    background: rgba(10, 24, 58, 0.88) !important;
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(255, 255, 255, 0.35);
+    background: rgba(48, 88, 167, 0.45) !important;
 }
 
 .fireworks-btn-round:active {
@@ -756,39 +864,53 @@ p {
 }
 
 @keyframes fireworksPulse {
+
     0% {
         transform: scale(1);
         opacity: 0.8;
     }
+
     100% {
         transform: scale(1.6);
         opacity: 0;
     }
 }
 
-/* Glass Card Themes for Floating Button */
+
+/* ==========================================================================
+   GLASS CARD THEMES FOR FLOATING BUTTON
+   ========================================================================== */
+
 .fireworks-theme-fiestas_patrias {
     border-color: rgba(239, 68, 68, 0.8) !important;
     color: #ef4444;
-    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35), 0 0 15px rgba(239, 68, 68, 0.25);
+    box-shadow:
+        0 8px 24px rgba(220, 38, 38, 0.35),
+        0 0 15px rgba(239, 68, 68, 0.25);
 }
 
 .fireworks-theme-aniversario {
     border-color: rgba(234, 179, 8, 0.8) !important;
     color: #facc15;
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35), 0 0 15px rgba(234, 179, 8, 0.3);
+    box-shadow:
+        0 8px 24px rgba(37, 99, 235, 0.35),
+        0 0 15px rgba(234, 179, 8, 0.3);
 }
 
 .fireworks-theme-ano_nuevo {
     border-color: rgba(250, 204, 21, 0.9) !important;
     color: #fde047;
-    box-shadow: 0 8px 24px rgba(234, 179, 8, 0.45), 0 0 18px rgba(255, 215, 0, 0.4);
+    box-shadow:
+        0 8px 24px rgba(234, 179, 8, 0.45),
+        0 0 18px rgba(255, 215, 0, 0.4);
 }
 
 .fireworks-theme-eventos {
     border-color: rgba(236, 72, 153, 0.8) !important;
     color: #f472b6;
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35), 0 0 15px rgba(236, 72, 153, 0.3);
+    box-shadow:
+        0 8px 24px rgba(139, 92, 246, 0.35),
+        0 0 15px rgba(236, 72, 153, 0.3);
 }
 
 .fireworks-theme-custom {
@@ -796,23 +918,27 @@ p {
     color: #ffffff;
 }
 
-/* Floating Hover Label Badge */
+
+/* ==========================================================================
+   FLOATING HOVER LABEL BADGE
+   ========================================================================== */
+
 .fireworks-btn-label {
     position: absolute;
     left: 54px;
     top: 50%;
     transform: translateY(-50%) translateX(-8px);
-    background: rgba(10, 24, 58, 0.92);
+    background: rgba(48, 88, 167, 0.42);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.20);
     color: #ffffff;
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
     white-space: nowrap;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -827,11 +953,14 @@ p {
     transform: translateY(-50%) translateX(0);
 }
 
+
 @media (max-width: 576px) {
+
     .fireworks-floating-btn-wrapper {
         bottom: 20px;
         left: 16px;
     }
+
     .fireworks-btn-label {
         font-size: 0.75rem;
         padding: 4px 10px;
@@ -841,32 +970,53 @@ p {
     }
 }
 
+
 /* ==========================================================================
-   Professional ScrollX / AOS Animation Enhancements
+   PROFESSIONAL SCROLLX / AOS ANIMATION ENHANCEMENTS
    ========================================================================== */
+
 [data-aos] {
     will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
 
+
 /* Hardware accelerated smooth scroll transitions */
+
 .glass-card[data-aos] {
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.3s ease, 
-                border-color 0.3s ease !important;
+    transition:
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease !important;
 }
+
 
 /* Custom scroll reveal delay utilities */
-.delay-100 { transition-delay: 0.1s !important; }
-.delay-200 { transition-delay: 0.2s !important; }
-.delay-300 { transition-delay: 0.3s !important; }
-.delay-400 { transition-delay: 0.4s !important; }
 
-/* Micro-interaction zoom on hover for animated cards */
-.ambient-glow[data-aos]:hover {
-    transform: translateY(-6px) scale(1.015) !important;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 0 20px rgba(183, 245, 104, 0.15) !important;
+.delay-100 {
+    transition-delay: 0.1s !important;
 }
 
+.delay-200 {
+    transition-delay: 0.2s !important;
+}
+
+.delay-300 {
+    transition-delay: 0.3s !important;
+}
+
+.delay-400 {
+    transition-delay: 0.4s !important;
+}
+
+
+/* Micro-interaction zoom on hover */
+
+.ambient-glow[data-aos]:hover {
+    transform: translateY(-6px) scale(1.015) !important;
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(183, 245, 104, 0.15) !important;
+}
