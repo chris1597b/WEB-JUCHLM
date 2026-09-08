@@ -544,7 +544,7 @@ ${mensaje}`;
                     // Actualizar cantidad de áreas en el título
                     const areasCountHeader = document.querySelector("#areas h2");
                     if (areasCountHeader) {
-                        areasCountHeader.innerText = `${areas.length} Áreas`;
+                        areasCountHeader.innerText = `${areas.length} Direcciones`;
                     }
                     
                     areas.forEach(area => {
