@@ -447,7 +447,7 @@ ${mensaje}`;
                     // Actualizar el título de la sección de comisiones
                     const comisionesCountHeader = document.querySelector("#comisiones h2");
                     if (comisionesCountHeader) {
-                        comisionesCountHeader.innerText = `${comisiones.length} Comisiones`;
+                        comisionesCountHeader.innerText = `${comisiones.length} Comisiones de Usuarios`;
                     }
                     
                      comisiones.forEach(com => {

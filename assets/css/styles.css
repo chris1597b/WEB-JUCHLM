@@ -511,7 +511,7 @@ background: radial-gradient(
 #fb-root {
     border-radius: 12px;
     overflow-y: hidden;
-    width: 100%;
+    width: 50%;
     height: 38rem;
     display: flex;
     justify-content: center;
