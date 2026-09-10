@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: sql104.infinityfree.com
--- Tiempo de generación: 01-09-2026 a las 17:40:39
--- Versión del servidor: 11.4.13-MariaDB
--- Versión de PHP: 7.2.22
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-09-2026 a las 22:13:41
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `if0_42578551_jushmchl_db`
 --
-CREATE DATABASE IF NOT EXISTS `if0_42578551_jushmchl_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `if0_42578551_jushmchl_db`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +27,6 @@ USE `if0_42578551_jushmchl_db`;
 -- Estructura de tabla para la tabla `areas`
 --
 
-DROP TABLE IF EXISTS `areas`;
 CREATE TABLE `areas` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -45,13 +41,13 @@ CREATE TABLE `areas` (
 --
 
 INSERT INTO `areas` (`id`, `title`, `description`, `icon`, `color`, `isMaterial`) VALUES
-('administracion', 'Direccion de Administración y Finanzas', 'Se encarga de gestionar los recursos financieros, materiales y humanos de la organización, asegurando el uso eficiente y transparente de los mismos.', 'bi-gear', '#20c997', 0),
-('area-1.78709266483E+12', 'Direccion de Desarrollo y control de Gestion', 'Planifica, coordina y supervisa los recursos y las actividades para asegurar que cumpla sus metas estratégicas de forma eficiente.', 'bi-gear', '#20c997', 0),
-('legal', 'Direccion de Asesoria Legal', 'se encarga de brindar apoyo jurídico a la organización, asegurando que las actividades y decisiones se realicen conforme al marco normativo vigente.', 'bi-gear', '#20c997', 0),
+('administracion', 'Direccion de Administración y Finanzas', 'Se encarga de gestionar los recursos financieros, materiales y humanos de la organización, asegurando el uso eficiente y transparente de los mismos.', 'bi-coin', '#0d6efd', 0),
+('area-1.78709266483E+12', 'Direccion de Desarrollo y control de Gestion', 'Planifica, coordina y supervisa los recursos y las actividades para asegurar que cumpla sus metas estratégicas de forma eficiente.', 'bi-gear', '#0d6efd', 0),
+('legal', 'Direccion de Asesoria Legal', 'se encarga de brindar apoyo jurídico a la organización, asegurando que las actividades y decisiones se realicen conforme al marco normativo vigente.', 'bi-gear', '#ffc107', 0),
 ('mantenimiento', 'Direccion de Mantenimiento de Infraestructura Hidraulica', 'Se dedica principalmente a conservar y rehabilitar la infraestructura hidráulica menor de la Junta de Usuarios Chancay Lambayeque.', 'bi-gear', '#20c997', 1),
-('operacion', 'Direccion de Operacion de la Infraestructura Hidraulica', 'Control y distribución precisa del agua según la demanda agrícola.', 'bi-gear', '#20c997', 0),
+('operacion', 'Direccion de Operacion de la Infraestructura Hidraulica', 'Control y distribución precisa del agua según la demanda agrícola.', 'bi-gear', '#0d6efd', 0),
 ('proyectos', 'Direccion de Desarrollo de Infraestructura Hidraulica', 'Se encarga de planificar, elaborar y supervisar los expedientes técnicos relacionados con el mantenimiento de la infraestructura hidráulica menor.', 'bi-gear', '#20c997', 0),
-('tarifare', 'Direccion de la administracion y Tarifa de agua', 'Se encarga de administrar y supervisar el cobro de las tarifas que los usuarios deben pagar por el uso del recurso hídrico.', 'bi-gear', '#20c997', 1);
+('tarifare', 'Direccion de la administracion y Tarifa de agua', 'Se encarga de administrar y supervisar el cobro de las tarifas que los usuarios deben pagar por el uso del recurso hídrico.', 'bi-gear', '#ffc107', 1);
 
 -- --------------------------------------------------------
 
@@ -59,7 +55,6 @@ INSERT INTO `areas` (`id`, `title`, `description`, `icon`, `color`, `isMaterial`
 -- Estructura de tabla para la tabla `avisos`
 --
 
-DROP TABLE IF EXISTS `avisos`;
 CREATE TABLE `avisos` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -82,7 +77,6 @@ INSERT INTO `avisos` (`id`, `title`, `description`, `imageUrl`, `active`, `creat
 -- Estructura de tabla para la tabla `comisiones`
 --
 
-DROP TABLE IF EXISTS `comisiones`;
 CREATE TABLE `comisiones` (
   `id` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -100,22 +94,22 @@ CREATE TABLE `comisiones` (
 --
 
 INSERT INTO `comisiones` (`id`, `name`, `logo`, `cover`, `description`, `presidente`, `direccion`, `usuarios`, `area`) VALUES
-('capote', 'Capote', 'assets/img/comisiones/Logos/capote.jpg', 'assets/img/comisiones/portadas/capote.jpg', 'Comisión de regantes del sector Capote, promoviendo el uso eficiente del agua.', 'GREGORIO GERONIMO QUIROZ NÚÑEZ', 'Calle San Martín S/N, Centro Poblado Capote, distrito de Picsi, Chiclayo', '+ 694', '+ 3819.2687 ha'),
-('chiclayo', 'Chiclayo', 'assets/img/comisiones/Logos/chiclayo.jpg', 'assets/img/comisiones/portadas/chiclayo.jpeg', 'Comisión de regantes de Chiclayo, abasteciendo de agua para la agricultura local.', 'FELIX FALEN SAMPEN', 'Calle Cajamarca N.° 410, Chiclayo', '+ 694', '+ 6596.4484 ha'),
-('chongoyape', 'Chongoyape', 'assets/img/comisiones/Logos/chongoyape.jpg', 'assets/img/comisiones/portadas/chongoyape.jpg', 'Comisión de regantes de Chongoyape, trabajando por el desarrollo del agro.', 'JOSE NELSIDO ESPINOZA CHAVEZ', 'Calle Schut y Saco N.° 02, esquina Simón Bolívar, Chongoyape, Lambayeque', '+ 1205', '+ 5739.0627 ha'),
-('eten', 'Eten', 'assets/img/comisiones/Logos/eten.jpg', 'assets/img/comisiones/portadas/eten.jpeg', 'Comisión de regantes de Eten, protegiendo los canales del valle.', 'FRANCISCO JAVIER ÑIQUEN MILLONES', 'Pedro Ruiz Nro. 648 Ciudad Eten', '+ 518', '+ 625.3509 ha'),
-('ferreñafe', 'Ferreñafe', 'assets/img/comisiones/Logos/ferreñafe.jpg', 'assets/img/comisiones/portadas/ferreñafe.jpeg', 'Comisión de regantes de Ferreñafe, optimizando la distribución hídrica.', 'ROGELIO PRIMO RAMOS', 'Av. Andrés A. Cáceres N.° 610, Urb. Ramiro Prialé, Ferreñafe', '+ 4339', '+ 14784.6498 ha'),
-('lambayeque', 'Lambayeque', 'assets/img/comisiones/Logos/lambayeque.jpg', 'assets/img/comisiones/portadas/lambayeque.jpeg', 'Comisión de regantes de Lambayeque, cuidando el recurso hídrico.', 'MERCEDES SANTAMARIA SUCLUPE', 'Calle Huáscar N.° 720, Lambayeque', '+ 2259', '+ 7284.3419 ha'),
-('laramada', 'La Ramada - Carniche', 'assets/img/comisiones/Logos/la ramada.jpg', 'assets/img/comisiones/portadas/la ramada.jpeg', 'Comisión de regantes de La Ramada, unida para el progreso agrícola.', 'DARIO SANCHEZ ZELADA', 'C.P. La Ramada Baja S/N, distrito de Llama, provincia de Chota, Cajamarca (referencia: a unos 20 minutos de Chongoyape)', '+ 493', '+ 1058.566 ha'),
-('mochumi', 'Mochumí', 'assets/img/comisiones/Logos/mochumi.jpeg', 'assets/img/comisiones/portadas/mochumi.jpeg', 'Comisión de regantes de Mochumí, apoyando el cultivo de arroz y legumbres.', 'EXEQUIEL CHAPOÑAN VIDAURRE', 'Calle Federico Villarreal N.° 098, Mochumí (Universidad Perú)', '+ 2367', '+ 4454.4083 ha'),
-('monsefu', 'Monsefú', 'assets/img/comisiones/Logos/monsefu.jpg', 'assets/img/comisiones/portadas/monsefu.jpeg', 'Comisión de regantes de Monsefú, herederos de una tradición agrícola.', 'JAIME ELIAS SALAZAR', 'Calle Simón Bolívar N.° 312, Monsefú', '+ 3754', '+ 7087.2347 ha'),
-('morrope', 'Mórrope', 'assets/img/comisiones/Logos/morrope.jpg', 'assets/img/comisiones/portadas/morrope.jpg', 'Comisión de regantes de Mórrope, cultivando en tierras féltiles con tecnología.', 'VICTORIO ACTOSTA TEJADA', 'Av. Los Incas N.° 390, distrito de Mórrope', '+ 6267', '+ 12839.8507 ha'),
-('muyfinca', 'Muy Finca', 'assets/img/comisiones/Logos/muy finca.jpg', 'assets/img/comisiones/portadas/muy finca.jpeg', 'Comisión de regantes de Muy Finca, garantizando agua oportuna para el campo.', 'JOSE JUSTINIANO FIGUEROA ROQUE', 'Calle 28 de Julio N.° 858, Mochumí', '+ 4321', '+ 11149.194 ha'),
-('pampagrande', 'Pampagrande', 'assets/img/comisiones/Logos/pampagrande.jpg', 'assets/img/comisiones/portadas/pampagrande.jpeg', 'Comisión de regantes de Pampagrande, gestionando sistemas de riego eficientes.', 'PABLO COBEÑAS SANCHEZ', 'Mz. 31, C.P. Collique Alto (3 Compuertas Collique Alto), Pucalá, Chiclayo', '+ 773', '+ 3763.0337 ha'),
-('pitipo', 'Pítipo', 'assets/img/comisiones/Logos/pitipo.jpeg', 'assets/img/comisiones/portadas/pitipo.jpeg', 'Comisión de regantes de Pítipo, impulsando la agroexportación sostenible.', 'JOSÉ DE LA CRUZ CARRANZA OLIVERA', 'Calle Augusta López Arenas N.° 106, Pítipo, Ferreñafe', '+ 839', '+ 3517.3952 ha'),
-('reque', 'Reque', 'assets/img/comisiones/Logos/reque.jpg', 'assets/img/comisiones/portadas/reque.jpeg', 'Comisión de regantes de Reque, comprometida con la distribución transparente del agua.', 'JOSE DEL CARMEN LIZA MAZA', 'Calle Real Nro. 452', '+ 829', '+ 2031.6876 ha'),
-('sasape', 'Sasape', 'assets/img/comisiones/Logos/sasape.jpeg', 'assets/img/comisiones/portadas/sasape.jpeg', 'Comisión de regantes de Sasape, trabajando de la mano con cada agricultor.', 'NICOLAS BALDERA ROJAS', 'Car. Panamericana Norte Nro. 803 Cas. Sasape', '+ 3318', '+ 4154.5784 ha'),
-('tucume', 'Túcume', 'assets/img/comisiones/Logos/tucume.jpeg', 'assets/img/comisiones/portadas/tucume.jpeg', 'Comisión de regantes de Túcume, preservando las fuentes de riego ancestrales.', 'MARCIAL BANCES SANDOVAL', 'Cal. Miguel Grau Nro. 0852 P.J. Federico Villareal', '+ 1228', '+ 1698.7261 ha');
+('capote', 'Capote', 'assets/img/comisiones/Logos/capote.jpg', 'assets/img/comisiones/portadas/capote.jpg', '', 'GREGORIO GERONIMO QUIROZ NÚÑEZ', 'Calle San Martín S/N, Centro Poblado Capote, distrito de Picsi, Chiclayo', '+ 694', '+ 3819.2687 ha'),
+('chiclayo', 'Chiclayo', 'assets/img/comisiones/Logos/chiclayo.jpg', 'assets/img/comisiones/portadas/chiclayo.jpeg', '', 'FELIX FALEN SAMPEN', 'Calle Cajamarca N.° 410, Chiclayo', '+ 694', '+ 6596.4484 ha'),
+('chongoyape', 'Chongoyape', 'assets/img/comisiones/Logos/chongoyape.jpg', 'assets/img/comisiones/portadas/chongoyape.jpg', '', 'JOSE NELSIDO ESPINOZA CHAVEZ', 'Calle Schut y Saco N.° 02, esquina Simón Bolívar, Chongoyape, Lambayeque', '+ 1205', '+ 5739.0627 ha'),
+('eten', 'Eten', 'assets/img/comisiones/Logos/eten.jpg', 'assets/img/comisiones/portadas/eten.jpeg', '', 'FRANCISCO JAVIER ÑIQUEN MILLONES', 'Pedro Ruiz Nro. 648 Ciudad Eten', '+ 518', '+ 625.3509 ha'),
+('ferreñafe', 'Ferreñafe', 'assets/img/comisiones/Logos/ferreñafe.jpg', 'assets/img/comisiones/portadas/ferreñafe.jpeg', '', 'ROGELIO PRIMO RAMOS', 'Av. Andrés A. Cáceres N.° 610, Urb. Ramiro Prialé, Ferreñafe', '+ 4339', '+ 14784.6498 ha'),
+('lambayeque', 'Lambayeque', 'assets/img/comisiones/Logos/lambayeque.jpg', 'assets/img/comisiones/portadas/lambayeque.jpeg', '', 'MERCEDES SANTAMARIA SUCLUPE', 'Calle Huáscar N.° 720, Lambayeque', '+ 2259', '+ 7284.3419 ha'),
+('laramada', 'La Ramada - Carniche', 'assets/img/comisiones/Logos/la ramada.jpg', 'assets/img/comisiones/portadas/la ramada.jpeg', '', 'DARIO SANCHEZ ZELADA', 'C.P. La Ramada Baja S/N, distrito de Llama, provincia de Chota, Cajamarca (referencia: a unos 20 minutos de Chongoyape)', '+ 493', '+ 1058.566 ha'),
+('mochumi', 'Mochumí', 'assets/img/comisiones/Logos/mochumi.jpeg', 'assets/img/comisiones/portadas/mochumi.jpeg', '', 'EXEQUIEL CHAPOÑAN VIDAURRE', 'Calle Federico Villarreal N.° 098, Mochumí (Universidad Perú)', '+ 2367', '+ 4454.4083 ha'),
+('monsefu', 'Monsefú', 'assets/img/comisiones/Logos/monsefu.jpg', 'assets/img/comisiones/portadas/monsefu.jpeg', '', 'JAIME ELIAS SALAZAR', 'Calle Simón Bolívar N.° 312, Monsefú', '+ 3754', '+ 7087.2347 ha'),
+('morrope', 'Mórrope', 'assets/img/comisiones/Logos/morrope.jpg', 'assets/img/comisiones/portadas/morrope.jpg', '', 'VICTORIO ACTOSTA TEJADA', 'Av. Los Incas N.° 390, distrito de Mórrope', '+ 6267', '+ 12839.8507 ha'),
+('muyfinca', 'Muy Finca', 'assets/img/comisiones/Logos/muy finca.jpg', 'assets/img/comisiones/portadas/muy finca.jpeg', '', 'JOSE JUSTINIANO FIGUEROA ROQUE', 'Calle 28 de Julio N.° 858, Mochumí', '+ 4321', '+ 11149.194 ha'),
+('pampagrande', 'Pampagrande', 'assets/img/comisiones/Logos/pampagrande.jpg', 'assets/img/comisiones/portadas/pampagrande.jpeg', '', 'PABLO COBEÑAS SANCHEZ', 'Mz. 31, C.P. Collique Alto (3 Compuertas Collique Alto), Pucalá, Chiclayo', '+ 773', '+ 3763.0337 ha'),
+('pitipo', 'Pítipo', 'assets/img/comisiones/Logos/pitipo.jpeg', 'assets/img/comisiones/portadas/pitipo.jpeg', '', 'JOSÉ DE LA CRUZ CARRANZA OLIVERA', 'Calle Augusta López Arenas N.° 106, Pítipo, Ferreñafe', '+ 839', '+ 3517.3952 ha'),
+('reque', 'Reque', 'assets/img/comisiones/Logos/reque.jpg', 'assets/img/comisiones/portadas/reque.jpeg', '', 'JOSE DEL CARMEN LIZA MAZA', 'Calle Real Nro. 452', '+ 829', '+ 2031.6876 ha'),
+('sasape', 'Sasape', 'assets/img/comisiones/Logos/sasape.jpeg', 'assets/img/comisiones/portadas/sasape.jpeg', '', 'NICOLAS BALDERA ROJAS', 'Car. Panamericana Norte Nro. 803 Cas. Sasape', '+ 3318', '+ 4154.5784 ha'),
+('tucume', 'Túcume', 'assets/img/comisiones/Logos/tucume.jpeg', 'assets/img/comisiones/portadas/tucume.jpeg', 'Comisión de regantes de Túcume.', 'MARCIAL BANCES SANDOVAL', 'Cal. Miguel Grau Nro. 0852 P.J. Federico Villareal', '+ 1228', '+ 1698.7261 ha');
 
 -- --------------------------------------------------------
 
@@ -123,7 +117,6 @@ INSERT INTO `comisiones` (`id`, `name`, `logo`, `cover`, `description`, `preside
 -- Estructura de tabla para la tabla `convocatorias`
 --
 
-DROP TABLE IF EXISTS `convocatorias`;
 CREATE TABLE `convocatorias` (
   `id` varchar(50) NOT NULL,
   `title` text NOT NULL,
@@ -149,7 +142,6 @@ INSERT INTO `convocatorias` (`id`, `title`, `fileUrl`, `status`, `created_at`) V
 -- Estructura de tabla para la tabla `diagnostico`
 --
 
-DROP TABLE IF EXISTS `diagnostico`;
 CREATE TABLE `diagnostico` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -174,7 +166,6 @@ INSERT INTO `diagnostico` (`id`, `title`, `subtitle`, `intro`, `funciones`, `cor
 -- Estructura de tabla para la tabla `estructura_organizacional`
 --
 
-DROP TABLE IF EXISTS `estructura_organizacional`;
 CREATE TABLE `estructura_organizacional` (
   `id` varchar(50) NOT NULL,
   `code` varchar(10) NOT NULL,
@@ -190,9 +181,9 @@ CREATE TABLE `estructura_organizacional` (
 --
 
 INSERT INTO `estructura_organizacional` (`id`, `code`, `title`, `badge`, `icon`, `color`, `items`) VALUES
-('organo-a', 'a', 'Órganos de Dirección', 'Dirección', 'bi-award-fill', '#0d6efd', '[{\"code\":\"a.1\",\"title\":\"Asamblea General\"},{\"code\":\"a.2\",\"title\":\"Consejo Directivo\"},{\"code\":\"a.3\",\"title\":\"De la Presidencia\"},{\"code\":\"a.4\",\"title\":\"De la Gerencia\"}]'),
-('organo-b', 'b', 'Órganos de Asesoramiento', 'Asesoramiento', 'bi-shield-check', '#20c997', '[{\"code\":\"b.1\",\"title\":\"Dirección de Regulación y Asesoramiento Jurídico\"},{\"code\":\"b.2\",\"title\":\"Órganos de Apoyo\"},{\"code\":\"b.3\",\"title\":\"Dirección de Desarrollo Humano y Responsabilidad Social\"},{\"code\":\"b.4\",\"title\":\"Dirección de Administración de Servicios\"}]'),
-('organo-c', 'c', 'Órganos de Línea', 'Línea Operativa', 'bi-gear-wide-connected', '#198754', '[{\"code\":\"c.1\",\"title\":\"Dirección de Operación de la Infraestructura Hidráulica\"},{\"code\":\"c.2\",\"title\":\"Dirección de Mantenimiento de la Infraestructura Hidráulica\"},{\"code\":\"c.3\",\"title\":\"Dirección de Desarrollo de la Infraestructura Hidráulica\"},{\"code\":\"c.4\",\"title\":\"Dirección de Administración de la Tarifa del Agua\"}]');
+('organo-1788883029711', 'b', 'Órganos de Asesoramiento', '', 'bi-award-fill', '#0d6efd', '[{\"code\":\"b.1\",\"title\":\"Direcci\\u00f3n de Asuntos Jur\\u00eddicos y Regulatorios\"}]'),
+('organo-1788883120225', 'a', 'Órganos de Apoyo', '', 'bi-award-fill', '#b10dfd', '[{\"code\":\"a.1\",\"title\":\"Direcci\\u00f3n de Administraci\\u00f3n y Finanzas\"},{\"code\":\"a.2\",\"title\":\"Direcci\\u00f3n de Control y Gesti\\u00f3n\"}]'),
+('organo-c', 'c', 'Órganos de Línea', 'Línea Operativa', 'bi-gear-wide-connected', '#198754', '[{\"code\":\"c.1\",\"title\":\"Direcci\\u00f3n de Operaci\\u00f3n de la Infraestructura Hidr\\u00e1ulica\"},{\"code\":\"c.2\",\"title\":\"Direcci\\u00f3n de Mantenimiento de la Infraestructura Hidr\\u00e1ulica\"},{\"code\":\"c.3\",\"title\":\"Direcci\\u00f3n de Desarrollo de la Infraestructura Hidr\\u00e1ulica\"},{\"code\":\"c.4\",\"title\":\"Direcci\\u00f3n de Administraci\\u00f3n de la Tarifa del Agua y Retribuci\\u00f3n Econ\\u00f3mica\"}]');
 
 -- --------------------------------------------------------
 
@@ -200,7 +191,6 @@ INSERT INTO `estructura_organizacional` (`id`, `code`, `title`, `badge`, `icon`,
 -- Estructura de tabla para la tabla `eventos`
 --
 
-DROP TABLE IF EXISTS `eventos`;
 CREATE TABLE `eventos` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -219,13 +209,19 @@ CREATE TABLE `eventos` (
   `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `eventos`
+--
+
+INSERT INTO `eventos` (`id`, `title`, `eventDate`, `day`, `month`, `year`, `date`, `time`, `location`, `category`, `color`, `badgeClass`, `label`, `desc`, `created_at`) VALUES
+('e-1788303248037', 'Asamblea General Extraordinaria', '2026-09-10', 10, 8, 2026, NULL, '09:00 AM', 'Auditorio Principal JUSHMCHL', 'Asambleas', '#2563eb', 'event-blue', 'Asamblea', 'No se olviden traer un cuarderno de apuntes', '2026-09-01 22:54:08');
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `galeria`
 --
 
-DROP TABLE IF EXISTS `galeria`;
 CREATE TABLE `galeria` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -239,9 +235,9 @@ CREATE TABLE `galeria` (
 --
 
 INSERT INTO `galeria` (`id`, `title`, `description`, `imageUrl`, `created_at`) VALUES
-('g-1.78578670591E+12', 'Trabajo e Innovación en Equipo', 'En la Junta de Usuarios creemos que la innovación, cuando se planifica estratégicamente, tiene el poder de generar grandes cambios.', 'assets/uploads/img_6a70f10b1a1176.87720941.jpg', '2026-08-03 19:51:46'),
-('g-1.78578684446E+12', 'Planificación y Diseño de Proyectos', 'Los ingenieros de la Junta de Usuarios del Sector Hidráulico Menor Chancay Lambayeque participan activamente en la planificación y elaboración de planos para proyectos de mejora de la infraestructura hidráulica.', 'assets/uploads/img_6a70f162d637a0.39179986.jpg', '2026-08-03 19:54:05'),
-('g-1.78578732034E+12', 'Supervisión y Coordinación de Obras en Beneficio del Agro', 'La Junta de Usuarios del Sector Hidráulico Menor Chancay Lambayeque realiza visitas técnicas y reuniones de coordinación en campo para supervisar el avance de las obras de infraestructura hidráulica con los actores involucrados.', 'assets/uploads/img_6a70f2df6e9887.49332760.jpg', '2026-08-03 20:01:59');
+('g-1.78578670591E+12', 'INSPECCIÓN DE CAMPO: PROYECTO DRENAJE PLUVIAL DE CHICLAYO', 'Inspección de drenes con representantes de la ANIN , para garantizar la adecuada integración del proyecto de drenaje pluvial con la infraestructura de riego existente', 'assets/uploads/img_6a70f10b1a1176.87720941.jpg', '2026-08-03 19:51:46'),
+('g-1788368643742', 'LA PREVENCIÓN ES TAREA DE TODOS', 'Personal técnico y administrativo participó del II Simulacro Nacional Multi peligro 2026, demostrando compromiso y responsabilidad en la adopción de medidas preventivas , ante posibles emergencias', 'assets/uploads/img_6a985702430066.60482227.jpeg', '2026-09-02 17:04:03'),
+('g-1788368824943', 'MANTENIMIENTO DE  CANALES', 'Personal de la Junta de Usuarios Chancay Lambayeque, realiza labores de mantenimiento en el canal Majín y Paredones, asegurando el buen funcionamiento de la infraestructura hidráulica y garantizando la distribución eficiente del recurso hídrico para los agricultores de la zona.', 'assets/uploads/img_6a9857b78294f8.44499547.jpg', '2026-09-02 17:07:04');
 
 -- --------------------------------------------------------
 
@@ -249,7 +245,6 @@ INSERT INTO `galeria` (`id`, `title`, `description`, `imageUrl`, `created_at`) V
 -- Estructura de tabla para la tabla `normativas`
 --
 
-DROP TABLE IF EXISTS `normativas`;
 CREATE TABLE `normativas` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -266,7 +261,9 @@ INSERT INTO `normativas` (`id`, `title`, `description`, `created_at`, `documentU
 ('n-1.78579117319E+12', 'Ley N.° 29338, Ley de Recursos Hídricos', 'Establece el marco legal para la gestión integrada, sostenible y participativa del agua, reconociéndola como un recurso de valor social, económico y ambiental.', '2026-08-03 21:06:12', 'https://www.minam.gob.pe/wp-content/uploads/2017/04/Ley-N%C2%B0-29338.pdf'),
 ('n-1.78579140127E+12', 'Ley N ° 31801', 'Ley que regula las organizaciones de usuarios de agua para el fortalecimiento de su participación en la gestión multisectorial de los recursos hídricos.', '2026-08-03 21:10:00', 'assets/uploads/img_6a96f56a674912.72047742.pdf'),
 ('n-1.78579143332E+12', 'Decreto Supremo N.° 001-2010-AG, Reglamento de la Ley N.° 29338, Ley de Recursos Hídricos.', 'El Decreto Supremo N.° 001-2010-AG aprueba el Reglamento de la Ley N.° 29338, Ley de Recursos Hídricos, estableciendo las normas específicas para la gestión integrada del agua en el Perú. Consta de 12 títulos, 287 artículos, 9 disposiciones complementarias finales y 10 transitorias, y es de aplicación a todas las entidades públicas y privadas que intervienen en la administración de recursos hídricos continentales.', '2026-08-03 21:10:32', 'assets/uploads/img_6a96fbbb8332e1.52091053.pdf'),
-('n-1.78827881377E+12', 'Resolucion Jefatural N° 155-2022-ANA', 'Que aprueba el reglamento de Operadores de Infraestructura Hidraulica', '2026-09-01 16:06:53', 'assets/uploads/img_6a96f7eca52646.73720442.pdf');
+('n-1.78827881377E+12', 'Resolucion Jefatural N° 155-2022-ANA', 'Que aprueba el reglamento de Operadores de Infraestructura Hidraulica', '2026-09-01 16:06:53', 'assets/uploads/img_6a96f7eca52646.73720442.pdf'),
+('n-1788883679457', 'Decreto Supremo N° 07-2024-MIDAGRI, Reglamento de la Ley N° 31801', 'Regula las organizaciones de usuarios de agua en el Perú. Su objetivo principal es fortalecer la participación de estas organizaciones en la gestión multisectorial y sostenible de los recursos hídricos.', '2026-09-08 16:07:59', ''),
+('n-1788883729621', 'Estatuto de la Junta de Usuarios Chancay Lambayeque', 'El Estatuto de la Junta de Usuarios Chancay Lambayeque es el documento normativo que regula la organización interna, funciones y responsabilidades de esta institución.', '2026-09-08 16:08:49', '');
 
 -- --------------------------------------------------------
 
@@ -274,7 +271,6 @@ INSERT INTO `normativas` (`id`, `title`, `description`, `created_at`, `documentU
 -- Estructura de tabla para la tabla `noticias`
 --
 
-DROP TABLE IF EXISTS `noticias`;
 CREATE TABLE `noticias` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -299,7 +295,6 @@ INSERT INTO `noticias` (`id`, `title`, `category`, `date`, `summary`, `imageUrl`
 -- Estructura de tabla para la tabla `site_config`
 --
 
-DROP TABLE IF EXISTS `site_config`;
 CREATE TABLE `site_config` (
   `id` int(11) NOT NULL,
   `adminPasswordHash` varchar(255) NOT NULL,
@@ -324,15 +319,16 @@ CREATE TABLE `site_config` (
   `fireworksSoundEnabled` tinyint(1) DEFAULT 0,
   `fireworksColor1` varchar(20) DEFAULT '#dc2626',
   `fireworksColor2` varchar(20) DEFAULT '#ffffff',
-  `fireworksColor3` varchar(20) DEFAULT '#b91c1c'
+  `fireworksColor3` varchar(20) DEFAULT '#b91c1c',
+  `diagnosticoSectionActive` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `site_config`
 --
 
-INSERT INTO `site_config` (`id`, `adminPasswordHash`, `pageTitle`, `pageSubtitle`, `heroTitle`, `heroText`, `heroBg`, `contactEmail`, `contactPhone`, `contactAddress`, `mision`, `vision`, `historia`, `modalAvisosActive`, `fireworksActive`, `fireworksTheme`, `fireworksTitleText`, `fireworksBtnText`, `fireworksSubText`, `fireworksDuration`, `fireworksSoundEnabled`, `fireworksColor1`, `fireworksColor2`, `fireworksColor3`) VALUES
-(1, '$2b$10$3KPpnlmOO08J55z5Kl44/OFrCcA9zKSKyFJwE5/xoX2L6seFCc9BC', 'Junta de Usuarios Chancay Lambayeque', 'JUSHMCHL Clase A', 'Junta de Usuarios del Sector Hidráulico Menor Chancay Lambayeque Clase A', 'Gestionamos de manera sostenible el recurso hídrico para potenciar el desarrollo agropecuario de nuestra región.', 'assets/uploads/img_6a70f252c2fe03.11543409.png', 'contacto@jushmchl.org.pe', '+51 74 233366', 'Av. Salaverry 123, Chiclayo, Perú', 'Somos una organización que brinda servicios de operación, mantenimiento de la infraestructura hidráulica menor y distribución del recurso hídrico para uso multisectorial, de calidad, desarrollando proyectos y programas de alto impacto, a favor de los usuarios agrarios, para contribuir a su desarrollo productivo.', 'Consolidarnos como una organización moderna y eficiente, referente a nivel internacional, para la mejora de la calidad a favor de los usuarios agrarios, de forma sostenible.', 'La Junta de Usuarios Chancay Lambayeque fue constituida en mérito al Decreto Ley 17752, Ley General de Aguas y reconocida mediante Resolución Ministerial Nº 5257-72-AG, del 13 de Octubre de 1972. La Junta de Usuarios es la Organización representativa de todos los usuarios y usuarias del agua con fines agrarios y otros usos: poblacional, energético, industrial, etc.\n\nLa institución está constituida por dieciséis (16) Comisiones de Usuarios, Catorce (15) en la zona Regulada: Chongoyape, Pampagrande, Ferreñafe, Pítipo, Capote, Lambayeque, Chiclayo, Monsefú, Reque, Eten, Mochumí, Muy Finca, Túcume, Sasape, Mórrope y una (1) en la no regulado que es La Ramada. Nuestra organización representa a 29,146 agricultores, que en conjunto conducen una superficie total de 119,586.6353 hectáreas bajo riego. Los principales cultivos son: Arroz, algodón, caña de azúcar, maíz amarillo duro, pastos, hortalizas, menestras entre otros.\n\nLa Junta de Usuarios, en sus inicios, desarrolló actividades netamente representativas, pero a partir de 1989 se le asignan responsabilidades mayores a través del D.S. 037-89-AG, al transferirle la distribución del agua y Operación y Mantenimiento de los Sistemas de Riego y Drenaje, en el caso del Valle Chancay-Lambayeque estas se hicieron efectivas a fines de 1992. A partir del 01 de Enero del 2005, la Junta de Usuarios desempeña el encargo de Operador de la Infraestructura Hidráulica Menor y tiene por finalidad canalizar en forma ordenada, la participación de los usuarios de agua en la gestión multisectorial y uso sostenible de los recursos hídricos.', 1, 1, 'custom', 'test', 'Evento Especial', 'Celebrando con la Junta de Usuarios', 4000, 0, '#2cdd4a', '#183ccd', '#dade02');
+INSERT INTO `site_config` (`id`, `adminPasswordHash`, `pageTitle`, `pageSubtitle`, `heroTitle`, `heroText`, `heroBg`, `contactEmail`, `contactPhone`, `contactAddress`, `mision`, `vision`, `historia`, `modalAvisosActive`, `fireworksActive`, `fireworksTheme`, `fireworksTitleText`, `fireworksBtnText`, `fireworksSubText`, `fireworksDuration`, `fireworksSoundEnabled`, `fireworksColor1`, `fireworksColor2`, `fireworksColor3`, `diagnosticoSectionActive`) VALUES
+(1, '$2b$10$3KPpnlmOO08J55z5Kl44/OFrCcA9zKSKyFJwE5/xoX2L6seFCc9BC', 'Junta de Usuarios Chancay Lambayeque', 'JUSHMCHL Clase A', 'Junta de Usuarios del Sector Hidráulico Menor Chancay Lambayeque Clase A', 'Gestionamos de manera sostenible el recurso hídrico para potenciar el desarrollo agropecuario de nuestra región.', 'assets/uploads/img_6a9ee2e8bfb2e9.51673072.png', 'contacto@jushmchl.org.pe', '+51 74 233366', 'Av. Salaverry 123, Chiclayo, Perú', 'Somos una organización que brinda servicios de operación, mantenimiento de la infraestructura hidráulica menor y distribución del recurso hídrico para uso multisectorial, de calidad, desarrollando proyectos y programas de alto impacto, a favor de los usuarios agrarios, para contribuir a su desarrollo productivo.', 'Consolidarnos como una organización moderna y eficiente, referente a nivel internacional, para la mejora de la calidad a favor de los usuarios agrarios, de forma sostenible.', 'La Junta de Usuarios Chancay Lambayeque fue constituida en mérito al Decreto Ley 17752, Ley General de Aguas y reconocida mediante Resolución Ministerial Nº 5257-72-AG, del 13 de Octubre de 1972. La Junta de Usuarios es la Organización representativa de todos los usuarios y usuarias del agua con fines agrarios y otros usos: poblacional, energético, industrial, etc.\n\nLa institución está constituida por dieciséis (16) Comisiones de Usuarios, Catorce (15) en la zona Regulada: Chongoyape, Pampagrande, Ferreñafe, Pítipo, Capote, Lambayeque, Chiclayo, Monsefú, Reque, Eten, Mochumí, Muy Finca, Túcume, Sasape, Mórrope y una (1) en la no regulado que es La Ramada. Nuestra organización representa a 29,146 agricultores, que en conjunto conducen una superficie total de 119,586.6353 hectáreas bajo riego. Los principales cultivos son: Arroz, algodón, caña de azúcar, maíz amarillo duro, pastos, hortalizas, menestras entre otros.\n\nLa Junta de Usuarios, en sus inicios, desarrolló actividades netamente representativas, pero a partir de 1989 se le asignan responsabilidades mayores a través del D.S. 037-89-AG, al transferirle la distribución del agua y Operación y Mantenimiento de los Sistemas de Riego y Drenaje, en el caso del Valle Chancay-Lambayeque estas se hicieron efectivas a fines de 1992. A partir del 01 de Enero del 2005, la Junta de Usuarios desempeña el encargo de Operador de la Infraestructura Hidráulica Menor y tiene por finalidad canalizar en forma ordenada, la participación de los usuarios de agua en la gestión multisectorial y uso sostenible de los recursos hídricos.', 1, 1, 'custom', '¡Colores de JUSHMCHL!', 'JUSHMCHL', 'Celebrando con la Junta de Usuarios', 4000, 0, '#80e109', '#2563eb', '#eab308', 0);
 
 -- --------------------------------------------------------
 
@@ -340,7 +336,6 @@ INSERT INTO `site_config` (`id`, `adminPasswordHash`, `pageTitle`, `pageSubtitle
 -- Estructura de tabla para la tabla `videos`
 --
 
-DROP TABLE IF EXISTS `videos`;
 CREATE TABLE `videos` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
