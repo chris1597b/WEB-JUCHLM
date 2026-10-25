@@ -14,6 +14,13 @@ define('DB_NAME', getenv('DB_NAME') ?: 'if0_42578551_jushmchl_db');
 define('DB_USER', getenv('DB_USER') ?: 'root');
 define('DB_PASS', getenv('DB_PASS') ?: '');
 define('DB_PORT', getenv('DB_PORT') ?: '3306');
+/*
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'juchlorg_principal');
+define('DB_USER', getenv('DB_USER') ?: 'juchlorg_chris');
+define('DB_PASS', getenv('DB_PASS') ?: 'vK[85FbYJ9p6eI[)');
+define('DB_PORT', getenv('DB_PORT') ?: '3306');
+*/
 //define('JWT_SECRET', getenv('JWT_SECRET') ?: 'jushmchl_secret_key_2026');
 
 // Configuración de CORS e Headers Globales

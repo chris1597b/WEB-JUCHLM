@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-09-2026 a las 22:13:41
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: sql104.infinityfree.com
+-- Tiempo de generación: 17-09-2026 a las 17:19:01
+-- Versión del servidor: 11.4.13-MariaDB
+-- Versión de PHP: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,6 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `if0_42578551_jushmchl_db`
 --
+/*
+CREATE DATABASE IF NOT EXISTS `if0_42578551_jushmchl_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `if0_42578551_jushmchl_db`;*/
 
 -- --------------------------------------------------------
 
@@ -27,13 +31,15 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `areas`
 --
 
-CREATE TABLE `areas` (
+DROP TABLE IF EXISTS `areas`;
+CREATE TABLE IF NOT EXISTS `areas` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `icon` varchar(100) DEFAULT NULL,
   `color` varchar(50) DEFAULT 'primary',
-  `isMaterial` tinyint(1) DEFAULT 0
+  `isMaterial` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -55,13 +61,15 @@ INSERT INTO `areas` (`id`, `title`, `description`, `icon`, `color`, `isMaterial`
 -- Estructura de tabla para la tabla `avisos`
 --
 
-CREATE TABLE `avisos` (
+DROP TABLE IF EXISTS `avisos`;
+CREATE TABLE IF NOT EXISTS `avisos` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `imageUrl` varchar(255) NOT NULL,
   `active` tinyint(1) DEFAULT 1,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -77,7 +85,8 @@ INSERT INTO `avisos` (`id`, `title`, `description`, `imageUrl`, `active`, `creat
 -- Estructura de tabla para la tabla `comisiones`
 --
 
-CREATE TABLE `comisiones` (
+DROP TABLE IF EXISTS `comisiones`;
+CREATE TABLE IF NOT EXISTS `comisiones` (
   `id` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
   `logo` varchar(255) DEFAULT NULL,
@@ -86,7 +95,8 @@ CREATE TABLE `comisiones` (
   `presidente` varchar(255) DEFAULT '',
   `direccion` varchar(255) DEFAULT '',
   `usuarios` varchar(100) DEFAULT '',
-  `area` varchar(100) DEFAULT ''
+  `area` varchar(100) DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -94,22 +104,22 @@ CREATE TABLE `comisiones` (
 --
 
 INSERT INTO `comisiones` (`id`, `name`, `logo`, `cover`, `description`, `presidente`, `direccion`, `usuarios`, `area`) VALUES
-('capote', 'Capote', 'assets/img/comisiones/Logos/capote.jpg', 'assets/img/comisiones/portadas/capote.jpg', '', 'GREGORIO GERONIMO QUIROZ NÚÑEZ', 'Calle San Martín S/N, Centro Poblado Capote, distrito de Picsi, Chiclayo', '+ 694', '+ 3819.2687 ha'),
-('chiclayo', 'Chiclayo', 'assets/img/comisiones/Logos/chiclayo.jpg', 'assets/img/comisiones/portadas/chiclayo.jpeg', '', 'FELIX FALEN SAMPEN', 'Calle Cajamarca N.° 410, Chiclayo', '+ 694', '+ 6596.4484 ha'),
-('chongoyape', 'Chongoyape', 'assets/img/comisiones/Logos/chongoyape.jpg', 'assets/img/comisiones/portadas/chongoyape.jpg', '', 'JOSE NELSIDO ESPINOZA CHAVEZ', 'Calle Schut y Saco N.° 02, esquina Simón Bolívar, Chongoyape, Lambayeque', '+ 1205', '+ 5739.0627 ha'),
-('eten', 'Eten', 'assets/img/comisiones/Logos/eten.jpg', 'assets/img/comisiones/portadas/eten.jpeg', '', 'FRANCISCO JAVIER ÑIQUEN MILLONES', 'Pedro Ruiz Nro. 648 Ciudad Eten', '+ 518', '+ 625.3509 ha'),
-('ferreñafe', 'Ferreñafe', 'assets/img/comisiones/Logos/ferreñafe.jpg', 'assets/img/comisiones/portadas/ferreñafe.jpeg', '', 'ROGELIO PRIMO RAMOS', 'Av. Andrés A. Cáceres N.° 610, Urb. Ramiro Prialé, Ferreñafe', '+ 4339', '+ 14784.6498 ha'),
-('lambayeque', 'Lambayeque', 'assets/img/comisiones/Logos/lambayeque.jpg', 'assets/img/comisiones/portadas/lambayeque.jpeg', '', 'MERCEDES SANTAMARIA SUCLUPE', 'Calle Huáscar N.° 720, Lambayeque', '+ 2259', '+ 7284.3419 ha'),
-('laramada', 'La Ramada - Carniche', 'assets/img/comisiones/Logos/la ramada.jpg', 'assets/img/comisiones/portadas/la ramada.jpeg', '', 'DARIO SANCHEZ ZELADA', 'C.P. La Ramada Baja S/N, distrito de Llama, provincia de Chota, Cajamarca (referencia: a unos 20 minutos de Chongoyape)', '+ 493', '+ 1058.566 ha'),
-('mochumi', 'Mochumí', 'assets/img/comisiones/Logos/mochumi.jpeg', 'assets/img/comisiones/portadas/mochumi.jpeg', '', 'EXEQUIEL CHAPOÑAN VIDAURRE', 'Calle Federico Villarreal N.° 098, Mochumí (Universidad Perú)', '+ 2367', '+ 4454.4083 ha'),
-('monsefu', 'Monsefú', 'assets/img/comisiones/Logos/monsefu.jpg', 'assets/img/comisiones/portadas/monsefu.jpeg', '', 'JAIME ELIAS SALAZAR', 'Calle Simón Bolívar N.° 312, Monsefú', '+ 3754', '+ 7087.2347 ha'),
-('morrope', 'Mórrope', 'assets/img/comisiones/Logos/morrope.jpg', 'assets/img/comisiones/portadas/morrope.jpg', '', 'VICTORIO ACTOSTA TEJADA', 'Av. Los Incas N.° 390, distrito de Mórrope', '+ 6267', '+ 12839.8507 ha'),
-('muyfinca', 'Muy Finca', 'assets/img/comisiones/Logos/muy finca.jpg', 'assets/img/comisiones/portadas/muy finca.jpeg', '', 'JOSE JUSTINIANO FIGUEROA ROQUE', 'Calle 28 de Julio N.° 858, Mochumí', '+ 4321', '+ 11149.194 ha'),
-('pampagrande', 'Pampagrande', 'assets/img/comisiones/Logos/pampagrande.jpg', 'assets/img/comisiones/portadas/pampagrande.jpeg', '', 'PABLO COBEÑAS SANCHEZ', 'Mz. 31, C.P. Collique Alto (3 Compuertas Collique Alto), Pucalá, Chiclayo', '+ 773', '+ 3763.0337 ha'),
-('pitipo', 'Pítipo', 'assets/img/comisiones/Logos/pitipo.jpeg', 'assets/img/comisiones/portadas/pitipo.jpeg', '', 'JOSÉ DE LA CRUZ CARRANZA OLIVERA', 'Calle Augusta López Arenas N.° 106, Pítipo, Ferreñafe', '+ 839', '+ 3517.3952 ha'),
-('reque', 'Reque', 'assets/img/comisiones/Logos/reque.jpg', 'assets/img/comisiones/portadas/reque.jpeg', '', 'JOSE DEL CARMEN LIZA MAZA', 'Calle Real Nro. 452', '+ 829', '+ 2031.6876 ha'),
-('sasape', 'Sasape', 'assets/img/comisiones/Logos/sasape.jpeg', 'assets/img/comisiones/portadas/sasape.jpeg', '', 'NICOLAS BALDERA ROJAS', 'Car. Panamericana Norte Nro. 803 Cas. Sasape', '+ 3318', '+ 4154.5784 ha'),
-('tucume', 'Túcume', 'assets/img/comisiones/Logos/tucume.jpeg', 'assets/img/comisiones/portadas/tucume.jpeg', 'Comisión de regantes de Túcume.', 'MARCIAL BANCES SANDOVAL', 'Cal. Miguel Grau Nro. 0852 P.J. Federico Villareal', '+ 1228', '+ 1698.7261 ha');
+('capote', 'Capote', 'assets/img/comisiones/Logos/capote.jpg', 'assets/img/comisiones/portadas/capote.jpg', 'Correo: cucapote@juchl.org.pe / Aniversario: 18 de Diciembre', 'GREGORIO GERONIMO QUIROZ NÚÑEZ', 'Calle San Martín S/N, Centro Poblado Capote, distrito de Picsi, Chiclayo', '+ 694', '+ 3819.2687 ha'),
+('chiclayo', 'Chiclayo', 'assets/img/comisiones/Logos/chiclayo.jpg', 'assets/img/comisiones/portadas/chiclayo.jpeg', 'Correo: cuchiclayo@juchl.org.pe / Aniversario: 01 de Diciembre', 'FELIX FALEN SAMPEN', 'Calle Cajamarca N.° 410, Chiclayo', '+ 694', '+ 6596.4484 ha'),
+('chongoyape', 'Chongoyape', 'assets/img/comisiones/Logos/chongoyape.jpg', 'assets/img/comisiones/portadas/chongoyape.jpg', 'Correo: cuchongoyape@juchl.org.pe / Aniversario: 14 de Agosto', 'JOSE NELSIDO ESPINOZA CHAVEZ', 'Calle Schut y Saco N.° 02, esquina Simón Bolívar, Chongoyape, Lambayeque', '+ 1205', '+ 5739.0627 ha'),
+('eten', 'Eten', 'assets/img/comisiones/Logos/eten.jpg', 'assets/img/comisiones/portadas/eten.jpeg', 'Correo : cueten@juchl.org.pe / Aniversario : 23 de Enero', 'FRANCISCO JAVIER ÑIQUEN MILLONES', 'Pedro Ruiz Nro. 648 Ciudad Eten', '+ 518', '+ 625.3509 ha'),
+('ferreñafe', 'Ferreñafe', 'assets/img/comisiones/Logos/ferreñafe.jpg', 'assets/img/comisiones/portadas/ferreñafe.jpeg', 'Correo: cuferrenafe@juchl.org.pe / Aniversario : 24 de Julio', 'ROGELIO PRIMO RAMOS', 'Av. Andrés A. Cáceres N.° 610, Urb. Ramiro Prialé, Ferreñafe', '+ 4339', '+ 14784.6498 ha'),
+('lambayeque', 'Lambayeque', 'assets/img/comisiones/Logos/lambayeque.jpg', 'assets/img/comisiones/portadas/lambayeque.jpeg', 'Correo: culambayeque@juchl.org.pe / Aniversario: 21 de Setiembre', 'MERCEDES SANTAMARIA SUCLUPE', 'Calle Huáscar N.° 720, Lambayeque', '+ 2259', '+ 7284.3419 ha'),
+('laramada', 'La Ramada - Carniche', 'assets/img/comisiones/Logos/la ramada.jpg', 'assets/img/comisiones/portadas/la ramada.jpeg', 'Correo: cularamada@juchl.org.pe / Aniversario: 13 de Junio', 'DARIO SANCHEZ ZELADA', 'C.P. La Ramada Baja S/N, distrito de Llama, provincia de Chota, Cajamarca (referencia: a unos 20 minutos de Chongoyape)', '+ 493', '+ 1058.566 ha'),
+('mochumi', 'Mochumí', 'assets/img/comisiones/Logos/mochumi.jpeg', 'assets/img/comisiones/portadas/mochumi.jpeg', 'Correo : cumochumi@juchl.org.pe / Aniversario : 03 de Diciembre', 'EXEQUIEL CHAPOÑAN VIDAURRE', 'Calle Federico Villarreal N.° 098, Mochumí (Universidad Perú)', '+ 2367', '+ 4454.4083 ha'),
+('monsefu', 'Monsefú', 'assets/img/comisiones/Logos/monsefu.jpg', 'assets/img/comisiones/portadas/monsefu.jpeg', 'Correo : cumonsefu@juchl.org.pe / Aniversario :  29 de noviembre', 'JAIME ELIAS SALAZAR', 'Calle Simón Bolívar N.° 312, Monsefú', '+ 3754', '+ 7087.2347 ha'),
+('morrope', 'Mórrope', 'assets/img/comisiones/Logos/morrope.jpg', 'assets/img/comisiones/portadas/morrope.jpg', 'Correo : cumorrope@juchl.org.pe / Aniversario : 27 de Setiembre', 'VICTORIO ACTOSTA TEJADA', 'Av. Los Incas N.° 390, distrito de Mórrope', '+ 6267', '+ 12839.8507 ha'),
+('muyfinca', 'Muy Finca', 'assets/img/comisiones/Logos/muy finca.jpg', 'assets/img/comisiones/portadas/muy finca.jpeg', 'Correo : cumochumi@juchl.org.pe / Aniversario : 03 de Diciembre', 'JOSE JUSTINIANO FIGUEROA ROQUE', 'Calle 28 de Julio N.° 858, Mochumí', '+ 4321', '+ 11149.194 ha'),
+('pampagrande', 'Pampagrande', 'assets/img/comisiones/Logos/pampagrande.jpg', 'assets/img/comisiones/portadas/pampagrande.jpeg', 'Correo : cupampagrande@juchl.org.pe / Aniversario : 16 de Enero', 'PABLO COBEÑAS SANCHEZ', 'Mz. 31, C.P. Collique Alto (3 Compuertas Collique Alto), Pucalá, Chiclayo', '+ 773', '+ 3763.0337 ha'),
+('pitipo', 'Pítipo', 'assets/img/comisiones/Logos/pitipo.jpeg', 'assets/img/comisiones/portadas/pitipo.jpeg', 'Correo : cupitipo@juchl.org.pe / Aniversario : 19 de enero', 'JOSÉ DE LA CRUZ CARRANZA OLIVERA', 'Calle Augusta López Arenas N.° 106, Pítipo, Ferreñafe', '+ 839', '+ 3517.3952 ha'),
+('reque', 'Reque', 'assets/img/comisiones/Logos/reque.jpg', 'assets/img/comisiones/portadas/reque.jpeg', 'Correo : cureque@juchl.org.pe / Aniversario : 28 de Mayo', 'JOSE DEL CARMEN LIZA MAZA', 'Calle Real Nro. 452', '+ 829', '+ 2031.6876 ha'),
+('sasape', 'Sasape', 'assets/img/comisiones/Logos/sasape.jpeg', 'assets/img/comisiones/portadas/sasape.jpeg', 'Correo : cusasape@juchl.org.pe / Aniversario : 24 de Junio', 'NICOLAS BALDERA ROJAS', 'Car. Panamericana Norte Nro. 803 Cas. Sasape', '+ 3318', '+ 4154.5784 ha'),
+('tucume', 'Túcume', 'assets/img/comisiones/Logos/tucume.jpeg', 'assets/img/comisiones/portadas/tucume.jpeg', 'Correo: cutucume@juchl.org.pe / Aniversario : 15 de Agosto', 'MARCIAL BANCES SANDOVAL', 'Cal. Miguel Grau Nro. 0852 P.J. Federico Villareal', '+ 1228', '+ 1698.7261 ha');
 
 -- --------------------------------------------------------
 
@@ -117,12 +127,14 @@ INSERT INTO `comisiones` (`id`, `name`, `logo`, `cover`, `description`, `preside
 -- Estructura de tabla para la tabla `convocatorias`
 --
 
-CREATE TABLE `convocatorias` (
+DROP TABLE IF EXISTS `convocatorias`;
+CREATE TABLE IF NOT EXISTS `convocatorias` (
   `id` varchar(50) NOT NULL,
   `title` text NOT NULL,
   `fileUrl` varchar(255) NOT NULL,
   `status` varchar(50) DEFAULT 'vigente',
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -142,16 +154,18 @@ INSERT INTO `convocatorias` (`id`, `title`, `fileUrl`, `status`, `created_at`) V
 -- Estructura de tabla para la tabla `diagnostico`
 --
 
-CREATE TABLE `diagnostico` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `diagnostico`;
+CREATE TABLE IF NOT EXISTS `diagnostico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) DEFAULT NULL,
   `intro` text DEFAULT NULL,
   `funciones` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `coreBusiness` text DEFAULT NULL,
   `diagnosticoInterno` text DEFAULT NULL,
-  `diagnosticoExterno` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `diagnosticoExterno` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `diagnostico`
@@ -166,14 +180,16 @@ INSERT INTO `diagnostico` (`id`, `title`, `subtitle`, `intro`, `funciones`, `cor
 -- Estructura de tabla para la tabla `estructura_organizacional`
 --
 
-CREATE TABLE `estructura_organizacional` (
+DROP TABLE IF EXISTS `estructura_organizacional`;
+CREATE TABLE IF NOT EXISTS `estructura_organizacional` (
   `id` varchar(50) NOT NULL,
   `code` varchar(10) NOT NULL,
   `title` varchar(255) NOT NULL,
   `badge` varchar(100) DEFAULT NULL,
   `icon` varchar(100) DEFAULT 'bi-diagram-3',
   `color` varchar(50) DEFAULT '#20c997',
-  `items` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+  `items` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -191,7 +207,8 @@ INSERT INTO `estructura_organizacional` (`id`, `code`, `title`, `badge`, `icon`,
 -- Estructura de tabla para la tabla `eventos`
 --
 
-CREATE TABLE `eventos` (
+DROP TABLE IF EXISTS `eventos`;
+CREATE TABLE IF NOT EXISTS `eventos` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `eventDate` date NOT NULL,
@@ -206,7 +223,8 @@ CREATE TABLE `eventos` (
   `badgeClass` varchar(50) DEFAULT 'event-blue',
   `label` varchar(100) DEFAULT 'Evento',
   `desc` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -222,12 +240,14 @@ INSERT INTO `eventos` (`id`, `title`, `eventDate`, `day`, `month`, `year`, `date
 -- Estructura de tabla para la tabla `galeria`
 --
 
-CREATE TABLE `galeria` (
+DROP TABLE IF EXISTS `galeria`;
+CREATE TABLE IF NOT EXISTS `galeria` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `imageUrl` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -245,12 +265,14 @@ INSERT INTO `galeria` (`id`, `title`, `description`, `imageUrl`, `created_at`) V
 -- Estructura de tabla para la tabla `normativas`
 --
 
-CREATE TABLE `normativas` (
+DROP TABLE IF EXISTS `normativas`;
+CREATE TABLE IF NOT EXISTS `normativas` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `documentUrl` varchar(512) DEFAULT ''
+  `documentUrl` varchar(512) DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -271,14 +293,16 @@ INSERT INTO `normativas` (`id`, `title`, `description`, `created_at`, `documentU
 -- Estructura de tabla para la tabla `noticias`
 --
 
-CREATE TABLE `noticias` (
+DROP TABLE IF EXISTS `noticias`;
+CREATE TABLE IF NOT EXISTS `noticias` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `category` varchar(100) DEFAULT 'Institucional',
   `date` varchar(50) DEFAULT NULL,
   `summary` text DEFAULT NULL,
   `imageUrl` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -295,8 +319,9 @@ INSERT INTO `noticias` (`id`, `title`, `category`, `date`, `summary`, `imageUrl`
 -- Estructura de tabla para la tabla `site_config`
 --
 
-CREATE TABLE `site_config` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `site_config`;
+CREATE TABLE IF NOT EXISTS `site_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `adminPasswordHash` varchar(255) NOT NULL,
   `pageTitle` varchar(255) DEFAULT 'Junta de Usuarios Chancay Lambayeque',
   `pageSubtitle` varchar(255) DEFAULT 'JUSHMCHL Clase A',
@@ -320,15 +345,16 @@ CREATE TABLE `site_config` (
   `fireworksColor1` varchar(20) DEFAULT '#dc2626',
   `fireworksColor2` varchar(20) DEFAULT '#ffffff',
   `fireworksColor3` varchar(20) DEFAULT '#b91c1c',
-  `diagnosticoSectionActive` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `diagnosticoSectionActive` tinyint(1) DEFAULT 1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `site_config`
 --
 
 INSERT INTO `site_config` (`id`, `adminPasswordHash`, `pageTitle`, `pageSubtitle`, `heroTitle`, `heroText`, `heroBg`, `contactEmail`, `contactPhone`, `contactAddress`, `mision`, `vision`, `historia`, `modalAvisosActive`, `fireworksActive`, `fireworksTheme`, `fireworksTitleText`, `fireworksBtnText`, `fireworksSubText`, `fireworksDuration`, `fireworksSoundEnabled`, `fireworksColor1`, `fireworksColor2`, `fireworksColor3`, `diagnosticoSectionActive`) VALUES
-(1, '$2b$10$3KPpnlmOO08J55z5Kl44/OFrCcA9zKSKyFJwE5/xoX2L6seFCc9BC', 'Junta de Usuarios Chancay Lambayeque', 'JUSHMCHL Clase A', 'Junta de Usuarios del Sector Hidráulico Menor Chancay Lambayeque Clase A', 'Gestionamos de manera sostenible el recurso hídrico para potenciar el desarrollo agropecuario de nuestra región.', 'assets/uploads/img_6a9ee2e8bfb2e9.51673072.png', 'contacto@jushmchl.org.pe', '+51 74 233366', 'Av. Salaverry 123, Chiclayo, Perú', 'Somos una organización que brinda servicios de operación, mantenimiento de la infraestructura hidráulica menor y distribución del recurso hídrico para uso multisectorial, de calidad, desarrollando proyectos y programas de alto impacto, a favor de los usuarios agrarios, para contribuir a su desarrollo productivo.', 'Consolidarnos como una organización moderna y eficiente, referente a nivel internacional, para la mejora de la calidad a favor de los usuarios agrarios, de forma sostenible.', 'La Junta de Usuarios Chancay Lambayeque fue constituida en mérito al Decreto Ley 17752, Ley General de Aguas y reconocida mediante Resolución Ministerial Nº 5257-72-AG, del 13 de Octubre de 1972. La Junta de Usuarios es la Organización representativa de todos los usuarios y usuarias del agua con fines agrarios y otros usos: poblacional, energético, industrial, etc.\n\nLa institución está constituida por dieciséis (16) Comisiones de Usuarios, Catorce (15) en la zona Regulada: Chongoyape, Pampagrande, Ferreñafe, Pítipo, Capote, Lambayeque, Chiclayo, Monsefú, Reque, Eten, Mochumí, Muy Finca, Túcume, Sasape, Mórrope y una (1) en la no regulado que es La Ramada. Nuestra organización representa a 29,146 agricultores, que en conjunto conducen una superficie total de 119,586.6353 hectáreas bajo riego. Los principales cultivos son: Arroz, algodón, caña de azúcar, maíz amarillo duro, pastos, hortalizas, menestras entre otros.\n\nLa Junta de Usuarios, en sus inicios, desarrolló actividades netamente representativas, pero a partir de 1989 se le asignan responsabilidades mayores a través del D.S. 037-89-AG, al transferirle la distribución del agua y Operación y Mantenimiento de los Sistemas de Riego y Drenaje, en el caso del Valle Chancay-Lambayeque estas se hicieron efectivas a fines de 1992. A partir del 01 de Enero del 2005, la Junta de Usuarios desempeña el encargo de Operador de la Infraestructura Hidráulica Menor y tiene por finalidad canalizar en forma ordenada, la participación de los usuarios de agua en la gestión multisectorial y uso sostenible de los recursos hídricos.', 1, 1, 'custom', '¡Colores de JUSHMCHL!', 'JUSHMCHL', 'Celebrando con la Junta de Usuarios', 4000, 0, '#80e109', '#2563eb', '#eab308', 0);
+(1, '$2b$10$3KPpnlmOO08J55z5Kl44/OFrCcA9zKSKyFJwE5/xoX2L6seFCc9BC', 'Junta de Usuarios Chancay Lambayeque', 'JUSHMCHL Clase A', 'Junta de Usuarios del Sector Hidráulico Menor Chancay Lambayeque Clase A', 'Gestionamos de manera sostenible el recurso hídrico para potenciar el desarrollo agropecuario de nuestra región.', 'assets/uploads/img_6aab1f4e8d38a5.45203445.png', 'contacto@jushmchl.org.pe', '+51 74 233366', 'Av. Salaverry 123, Chiclayo, Perú', 'Somos una organización que brinda servicios de operación, mantenimiento de la infraestructura hidráulica menor y distribución del recurso hídrico para uso multisectorial, de calidad, desarrollando proyectos y programas de alto impacto, a favor de los usuarios agrarios, para contribuir a su desarrollo productivo.', 'Consolidarnos como una organización moderna y eficiente, referente a nivel internacional, para la mejora de la calidad a favor de los usuarios agrarios, de forma sostenible.', 'La Junta de Usuarios Chancay Lambayeque fue constituida en mérito al Decreto Ley 17752, Ley General de Aguas y reconocida mediante Resolución Ministerial Nº 5257-72-AG, del 13 de Octubre de 1972. La Junta de Usuarios es la Organización representativa de todos los usuarios y usuarias del agua con fines agrarios y otros usos: poblacional, energético, industrial, etc.\n\nLa institución está constituida por dieciséis (16) Comisiones de Usuarios, Catorce (15) en la zona Regulada: Chongoyape, Pampagrande, Ferreñafe, Pítipo, Capote, Lambayeque, Chiclayo, Monsefú, Reque, Eten, Mochumí, Muy Finca, Túcume, Sasape, Mórrope y una (1) en la no regulado que es La Ramada. Nuestra organización representa a 29,146 agricultores, que en conjunto conducen una superficie total de 119,586.6353 hectáreas bajo riego. Los principales cultivos son: Arroz, algodón, caña de azúcar, maíz amarillo duro, pastos, hortalizas, menestras entre otros.\n\nLa Junta de Usuarios, en sus inicios, desarrolló actividades netamente representativas, pero a partir de 1989 se le asignan responsabilidades mayores a través del D.S. 037-89-AG, al transferirle la distribución del agua y Operación y Mantenimiento de los Sistemas de Riego y Drenaje, en el caso del Valle Chancay-Lambayeque estas se hicieron efectivas a fines de 1992. A partir del 01 de Enero del 2005, la Junta de Usuarios desempeña el encargo de Operador de la Infraestructura Hidráulica Menor y tiene por finalidad canalizar en forma ordenada, la participación de los usuarios de agua en la gestión multisectorial y uso sostenible de los recursos hídricos.', 1, 1, 'custom', '¡Colores de JUSHMCHL!', 'JUSHMCHL', 'Celebrando con la Junta de Usuarios', 4000, 0, '#80e109', '#2563eb', '#eab308', 0);
 
 -- --------------------------------------------------------
 
@@ -336,14 +362,16 @@ INSERT INTO `site_config` (`id`, `adminPasswordHash`, `pageTitle`, `pageSubtitle
 -- Estructura de tabla para la tabla `videos`
 --
 
-CREATE TABLE `videos` (
+DROP TABLE IF EXISTS `videos`;
+CREATE TABLE IF NOT EXISTS `videos` (
   `id` varchar(50) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `videoUrl` varchar(255) NOT NULL,
   `category` varchar(100) DEFAULT 'General',
   `tag` varchar(100) DEFAULT 'JUSHMCHL',
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -354,98 +382,6 @@ INSERT INTO `videos` (`id`, `title`, `description`, `videoUrl`, `category`, `tag
 ('v1', 'PLANTACIÓN DE ESPECIES FORESTALES DE PINO PATULA EN EL DISTRITO DE CHUGUR', 'RESULTADOS DEL CONVENIO DE LA JUNTA DE USUARIOS CHANCAY LAMBAYEQUE SOBRE “ADQUISICIÓN Y PLANTACIÓN DE ESPECIES FORESTALES DE PINO PATULA EN EL DISTRITO DE CHUGUR, PROVINCIA DE HUALGAYOC, REGIÓN CAJAMARCA – 2026”', 'https://www.youtube.com/embed/qDpgM2Q5_vk', 'Planificación', 'JUSHMCHL', '2026-07-31 21:29:23'),
 ('v2', '🚜 𝗘𝗡 𝗘𝗟 𝗖𝗔𝗠𝗣𝗢 𝗬 𝗖𝗢𝗡 𝗟𝗔 𝗚𝗘𝗡𝗧𝗘: 𝗘𝗦𝗖𝗨𝗖𝗛𝗔𝗠𝗢𝗦 𝗬 𝗥𝗘𝗦𝗢𝗟𝗩𝗘𝗠𝗢𝗦 𝗟𝗔𝗦 𝗡𝗘𝗖𝗘𝗦𝗜𝗗𝗔𝗗𝗘𝗦 𝗗𝗘 𝗡𝗨𝗘𝗦𝗧𝗥𝗢𝗦 𝗔𝗚𝗥𝗜𝗖𝗨𝗟𝗧𝗢𝗥𝗘𝗦', 'Hoy, nuestro presidente institucional lideró una importante reunión de trabajo con los agricultores del Comité de Usuarios de los sectores Adobe Recta y Adobe Brazo I, con el firme objetivo de escuchar de primera mano sus principales problemáticas y articular acciones inmediatas.', 'https://www.youtube.com/embed/OLfzYKVo4S8', 'Gestión Hídrica', 'Operaciones', '2026-07-31 21:29:23'),
 ('v3', 'Mantenimiento de Infraestructura', 'Trabajos de limpieza, descolmatación de canales y conservación preventiva de las obras hidráulicas menores del sector.', 'https://www.youtube.com/embed/D8wTu6F2xGM', 'Mantenimiento', 'Obras', '2026-07-31 21:29:23');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `areas`
---
-ALTER TABLE `areas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `avisos`
---
-ALTER TABLE `avisos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `comisiones`
---
-ALTER TABLE `comisiones`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `convocatorias`
---
-ALTER TABLE `convocatorias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `diagnostico`
---
-ALTER TABLE `diagnostico`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `estructura_organizacional`
---
-ALTER TABLE `estructura_organizacional`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `eventos`
---
-ALTER TABLE `eventos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `galeria`
---
-ALTER TABLE `galeria`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `normativas`
---
-ALTER TABLE `normativas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `noticias`
---
-ALTER TABLE `noticias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `site_config`
---
-ALTER TABLE `site_config`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `videos`
---
-ALTER TABLE `videos`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `diagnostico`
---
-ALTER TABLE `diagnostico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `site_config`
---
-ALTER TABLE `site_config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

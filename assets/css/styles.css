@@ -508,20 +508,39 @@ background: radial-gradient(
    FACEBOOK
    ========================================================================== */
 
+/* #fb-root: reservado por el SDK de Facebook. DEBE estar vacío y sin estilos visuales.
+   El SDK lo usa como punto de montaje interno. */
 #fb-root {
-    border-radius: 12px;
-    overflow-y: hidden;
-    width: 50%;
-    height: 38rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+    display: block;
 }
 
-.fb-page {
+/* Contenedor visual del widget (SEPARADO de #fb-root) */
+.fb-widget-wrapper {
+    width: 560px;
+    max-width: 100%;
+    min-height: 580px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4px;
+}
+
+/* El SDK inyecta un <span> y luego un <iframe> dentro de .fb-page */
+.fb-widget-wrapper .fb-page,
+.fb-widget-wrapper .fb-page > span,
+.fb-widget-wrapper .fb-page > span > iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 12px !important;
+}
+
+/* iframe directo si se usa como fallback */
+.fb-widget-wrapper iframe {
+    display: block;
+    border: none;
     border-radius: 12px;
-    overflow-y: hidden;
 }
 
 
