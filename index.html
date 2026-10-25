@@ -30,8 +30,28 @@
 
     <!-- Facebook SDK con App ID registrado -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v21.0&appId=2255031488379751">
+    <script>
+        // Carga controlada del Facebook SDK para evitar duplicados
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '2255031488379751',
+                xfbml: true,
+                version: 'v21.0'
+            });
+            // Forzar re-parseo del plugin después de inicialización
+            if (document.querySelector('.fb-page')) {
+                FB.XFBML.parse(document.querySelector('.fb-widget-wrapper'));
+            }
+        };
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return; // Evitar carga duplicada
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/es_LA/sdk.js';
+            js.crossOrigin = 'anonymous';
+            js.async = true; js.defer = true;
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
 
     <!-- Navigation -->
@@ -1349,7 +1369,7 @@
                         style="font-size: 14px; letter-spacing: 0.05em;">Ver todo <span
                             class="material-symbols-outlined fs-6">arrow_forward</span></a>
                 </div>
-                <div class="fb-widget-wrapper glass-card">
+                <div class="fb-widget-wrapper glass-card" id="fb-plugin-container">
                     <div class="fb-page"
                         data-href="https://www.facebook.com/jushmchl"
                         data-tabs="timeline"
@@ -1364,7 +1384,55 @@
                             <a href="https://www.facebook.com/jushmchl">Junta de Usuarios Chancay Lambayeque</a>
                         </blockquote>
                     </div>
+                    <!-- Fallback: se muestra si el SDK no carga en 8 segundos -->
+                    <div id="fb-fallback" class="d-none w-100 text-center p-5">
+                        <div class="mb-4">
+                            <span class="material-symbols-outlined text-secondary-custom" style="font-size: 56px;">public</span>
+                        </div>
+                        <h4 class="text-white font-heading fw-bold mb-2">Síguenos en Facebook</h4>
+                        <p class="text-white-50 mb-4" style="max-width: 400px; margin: 0 auto;">Visita nuestra página oficial para mantenerte al día con las últimas noticias y actividades de la JUSHMCHL.</p>
+                        <a href="https://www.facebook.com/jushmchl" target="_blank" rel="noopener noreferrer"
+                            class="btn bg-secondary-custom btn-custom-pill d-inline-flex align-items-center gap-2 px-4 py-3">
+                            <i class="bi bi-facebook"></i>
+                            <span>Ir a nuestra página de Facebook</span>
+                            <span class="material-symbols-outlined fs-6">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
+                <!-- Script de detección de fallback del plugin de Facebook -->
+                <script>
+                    (function() {
+                        var fbCheckTimeout = setTimeout(function() {
+                            var container = document.getElementById('fb-plugin-container');
+                            var fbPage = container ? container.querySelector('.fb-page') : null;
+                            var iframe = container ? container.querySelector('iframe') : null;
+                            // Si no hay iframe renderizado por el SDK, mostrar fallback
+                            if (!iframe && container) {
+                                var fallback = document.getElementById('fb-fallback');
+                                if (fallback) {
+                                    fallback.classList.remove('d-none');
+                                    if (fbPage) fbPage.style.display = 'none';
+                                }
+                            }
+                        }, 8000); // Esperar 8 segundos antes de mostrar fallback
+
+                        // Si el SDK carga correctamente, cancelar el fallback
+                        var originalFbAsyncInit = window.fbAsyncInit;
+                        window.fbAsyncInit = function() {
+                            if (originalFbAsyncInit) originalFbAsyncInit();
+                            // Verificar después de un breve delay si el iframe se renderizó
+                            setTimeout(function() {
+                                var container = document.getElementById('fb-plugin-container');
+                                var iframe = container ? container.querySelector('iframe') : null;
+                                if (iframe) {
+                                    clearTimeout(fbCheckTimeout);
+                                    var fallback = document.getElementById('fb-fallback');
+                                    if (fallback) fallback.classList.add('d-none');
+                                }
+                            }, 3000);
+                        };
+                    })();
+                </script>
 
 
             </div>
@@ -2445,8 +2513,7 @@
         </div>
     </div>
 
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0">
-    </script>
+    <!-- SDK de Facebook removido: se carga una sola vez al inicio del body con fbAsyncInit -->
 
     <!-- Floating Fireworks Client Script -->
     <script>
