@@ -1179,33 +1179,40 @@ background: radial-gradient(
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(166, 227, 88, 0.15);
-    border: 1px solid rgba(166, 227, 88, 0.3);
-    color: #fff;
-    width: 40px;
-    height: 40px;
+    border: none;
+    background: #10cd1953;
+    color: var(--on-primary);
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 10;
-    font-size: 1.25rem;
-    transition: all 0.2s ease;
+    z-index: 1000;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.25s ease;
 }
 
 .news-slider-btn:hover {
-    background: var(--primary);
+    background: var(--primary-fixed);
     color: var(--on-primary);
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    
+}
+
+.news-slider-btn:active {
+    transform: translateY(-50%) scale(0.92);
 }
 
 .news-slider-btn.prev {
-    left: -12px;
+    left: 12px;
 }
 
 .news-slider-btn.next {
-    right: -12px;
+    right: 12px;
 }
 
 /* Modal superposición */
@@ -1540,4 +1547,47 @@ background: radial-gradient(
     .news-title {
         font-size: 1.15rem;
     }
+}
+
+/* ==========================================================================
+   PERFORMANCE & IMAGE OPTIMIZATION
+   ========================================================================== */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    font-size: 0;
+}
+
+/* Evitar saltos de layout (CLS) mientras cargan las imágenes */
+img[loading="lazy"],
+img[loading="eager"] {
+    contain: intrinsic;
+}
+
+/* Secciones fuera del viewport inicial: renderizan diferido */
+#galeria-institucional,
+#resumen-institucional,
+#videos-institucionales,
+#calendario-eventos,
+#contacto,
+#noticias {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+}
+
+/* Tarjetas y contenedores aislados para repintado eficiente */
+.news-card,
+.glass-card,
+.calendar-cell {
+    contain: layout style paint;
+}
+
+/* Imagen de fondo del body: no bloquea el primer paint, se muestra cuando está lista */
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
