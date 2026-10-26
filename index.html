@@ -2798,6 +2798,11 @@
                 const translateX = -modalIndex * 100;
                 modalTrack.style.transform = "translateX(" + translateX + "%)";
                 actualizarDots();
+
+                // Activar tarjeta del modal con animación
+                modalCards.forEach((card, i) => {
+                    card.classList.toggle("active", i === modalIndex);
+                });
             }
 
             function abrirModal(index) {
@@ -2892,6 +2897,83 @@
             // 3. Preload de imagen de fondo crítica si el navegador lo soporta
             const bgImg = new Image();
             bgImg.src = 'assets/img/fondo/TINAJONES-1536x1152.jpg';
+        })();
+    </script>
+
+    <!-- Interacciones modernas: Reveal on Scroll, Parallax, Scroll Indicator -->
+    <script>
+        (function() {
+            // 1. Reveal on Scroll con Intersection Observer
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 2. Indicador de progreso de scroll
+            const createScrollIndicator = () => {
+                const indicator = document.createElement('div');
+                indicator.className = 'scroll-indicator';
+                document.body.appendChild(indicator);
+                return indicator;
+            };
+
+            const scrollIndicator = createScrollIndicator();
+
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                scrollIndicator.style.width = scrolled + '%';
+
+                // Parallax suave para elementos decorativos
+                const parallaxElements = document.querySelectorAll('.parallax-slow, .parallax-medium');
+                parallaxElements.forEach(el => {
+                    const speed = el.classList.contains('parallax-slow') ? 0.3 : 0.6;
+                    const y = -(winScroll * speed);
+                    el.style.setProperty('--scroll-y', y + 'px');
+                });
+            }, { passive: true });
+
+            // 3. Efecto hover mejorado en tarjetas de noticias (tactil)
+            document.querySelectorAll('.news-card').forEach(card => {
+                card.addEventListener('touchstart', () => {
+                    card.style.transform = 'scale(0.98)';
+                });
+                card.addEventListener('touchend', () => {
+                    card.style.transform = '';
+                });
+            });
+
+            // 4. Animación de entrada de la página
+            window.addEventListener('load', () => {
+                document.body.classList.add('page-enter');
+                document.querySelectorAll('.navbar').forEach(nav => {
+                    nav.classList.add('animate-fade-down');
+                });
+            });
+
+            // 5. Efecto de brillo en imágenes al hacer hover
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.filter = 'brightness(1.1)';
+                });
+                img.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.filter = '';
+                });
+            });
         })();
     </script>
 </body>

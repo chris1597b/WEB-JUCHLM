@@ -1591,3 +1591,1042 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
+
+/* ==========================================================================
+   ANIMACIONES Y MICRO-INTERACCIONES MODERNAS
+   ========================================================================== */
+
+/* Variables de animación */
+:root {
+    --anim-duration-fast: 0.2s;
+    --anim-duration-base: 0.4s;
+    --anim-duration-slow: 0.6s;
+    --anim-ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+    --anim-ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --anim-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   KEYFRAMES MODERNOS
+   ========================================================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(166, 227, 88, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(166, 227, 88, 0.5);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-2deg);
+    }
+    70% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   CLASES DE UTILIDAD PARA ANIMACIONES
+   ========================================================================== */
+
+.animate-fade-up {
+    animation: fadeUp var(--anim-duration-base) var(--anim-ease-out) forwards;
+}
+
+.animate-fade-down {
+    animation: fadeDown var(--anim-duration-base) var(--anim-ease-out) forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn var(--anim-duration-base) var(--anim-ease-out) forwards;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, #1a1a2e 25%, #2a2a3e 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+.animate-slide-left {
+    animation: slideInLeft var(--anim-duration-base) var(--anim-ease-out) forwards;
+}
+
+.animate-slide-right {
+    animation: slideInRight var(--anim-duration-base) var(--anim-ease-out) forwards;
+}
+
+.animate-pop-in {
+    animation: popIn var(--anim-duration-base) var(--anim-ease-out-back) forwards;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+}
+
+/* Delay utilities */
+.anim-delay-100 { animation-delay: 0.1s; }
+.anim-delay-200 { animation-delay: 0.2s; }
+.anim-delay-300 { animation-delay: 0.3s; }
+.anim-delay-400 { animation-delay: 0.4s; }
+.anim-delay-500 { animation-delay: 0.5s; }
+.anim-delay-600 { animation-delay: 0.6s; }
+
+/* ==========================================================================
+   REVEAL ON SCROLL (SIN JAVASCRIPT EXTRA)
+   ========================================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ==========================================================================
+   MEJORAS EN TARJETAS Y CONTENEDORES
+   ========================================================================== */
+
+.news-card,
+.glass-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.news-card::before,
+.glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transition: opacity var(--anim-duration-fast) var(--anim-ease-out);
+    pointer-events: none;
+}
+
+.news-card:hover::before,
+.glass-card:hover::before {
+    opacity: 1;
+}
+
+.news-card {
+    cursor: pointer;
+}
+
+.news-card:active {
+    transform: scale(0.98) !important;
+}
+
+.news-image {
+    transition: transform var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.news-card:hover .news-image {
+    transform: scale(1.05);
+}
+
+.news-content {
+    transition: transform var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-card:hover .news-content {
+    transform: translateY(-4px);
+}
+
+.news-title {
+    transition: color var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-card:hover .news-title {
+    color: var(--primary) !important;
+}
+
+.news-category {
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-card:hover .news-category {
+    transform: translateX(4px);
+    color: var(--primary-fixed) !important;
+}
+
+/* ==========================================================================
+   BOTONES MODERNOS
+   ========================================================================== */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-outline-light {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-outline-light:hover {
+    box-shadow: 0 0 20px rgba(255,255,255,0.15);
+}
+
+/* ==========================================================================
+   NAVEGACIÓN Y ENLACES
+   ========================================================================== */
+
+.nav-link {
+    position: relative;
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-brand {
+    transition: transform var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-brand img {
+    transition: transform var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.navbar-brand:hover img {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* ==========================================================================
+   SLIDER DE NOTICIAS MEJORADO
+   ========================================================================== */
+
+.noticias-slider-wrapper {
+    position: relative;
+    perspective: 1000px;
+}
+
+.noticias-track {
+    scroll-behavior: smooth;
+}
+
+.news-card {
+    scroll-snap-align: center;
+}
+
+.news-slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary);
+    border: 2px solid #fff;
+    color: var(--on-primary);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.noticias-slider-wrapper:hover .news-slider-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.news-slider-btn:hover {
+    background: var(--primary-fixed);
+    color: var(--on-primary);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.news-slider-btn:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.news-slider-btn.prev {
+    left: 12px;
+}
+
+.news-slider-btn.next {
+    right: 12px;
+}
+
+/* ==========================================================================
+   MODAL DE NOTICIAS MEJORADO
+   ========================================================================== */
+
+.news-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 9, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.news-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.news-modal {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    max-height: 95vh;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform var(--anim-duration-base) var(--anim-ease-out-back);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+}
+
+.news-modal-overlay.active .news-modal {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.news-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.75rem;
+    line-height: 1;
+    z-index: 100;
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-modal-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.news-modal-track {
+    display: flex;
+    transition: transform var(--anim-duration-base) var(--anim-ease-out);
+    width: 100%;
+}
+
+.news-modal-card {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.04);
+    height: auto;
+    min-height: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.news-modal-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.news-modal-image {
+    width: 100%;
+    max-height: 45vh;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.news-modal-card.active .news-modal-image {
+    transform: scale(1.02);
+}
+
+.news-modal-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.news-modal-category {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(166, 227, 88, 0.15);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-modal-card.active .news-modal-category {
+    transform: scale(1.05);
+}
+
+.news-modal-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--on-surface);
+    margin-bottom: 16px;
+    line-height: 1.3;
+    transition: color var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-modal-excerpt {
+    font-size: 1.1rem;
+    color: rgba(224, 227, 229, 0.85);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    flex: 1;
+}
+
+.news-modal-date {
+    font-size: 0.95rem;
+    color: rgba(224, 227, 229, 0.6);
+    margin-top: auto;
+}
+
+.news-modal-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(166, 227, 88, 0.2);
+    border: 1px solid rgba(166, 227, 88, 0.35);
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    font-size: 1.5rem;
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-modal-btn:hover {
+    background: var(--primary);
+    color: var(--on-primary);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(166, 227, 88, 0.4);
+}
+
+.news-modal-btn:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.news-modal-btn.prev {
+    left: 16px;
+}
+
+.news-modal-btn.next {
+    right: 16px;
+}
+
+.news-modal-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.news-modal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.news-modal-dot.active {
+    background: var(--primary);
+    width: 24px;
+    border-radius: 4px;
+}
+
+.news-modal-dot:hover {
+    background: var(--primary-fixed);
+    transform: scale(1.2);
+}
+
+/* ==========================================================================
+   EFECTOS DE TEXTO Y TÍTULOS
+   ========================================================================== */
+
+.text-gradient {
+    background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, #82cfff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 3s infinite;
+}
+
+.hero-title {
+    position: relative;
+}
+
+.hero-title::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform var(--anim-duration-base) var(--anim-ease-out);
+}
+
+.hero-title:hover::after {
+    transform: scaleX(1);
+}
+
+/* ==========================================================================
+   EFECTOS DE SCROLL Y PARALLAX SUAVE
+   ========================================================================== */
+
+.parallax-slow {
+    transform: translateY(var(--scroll-y, 0));
+    transition: transform 0.1s ease-out;
+}
+
+.parallax-medium {
+    transform: translateY(calc(var(--scroll-y, 0) * 0.5));
+    transition: transform 0.1s ease-out;
+}
+
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* ==========================================================================
+   EFECTOS DE ENTRADA DE PÁGINA
+   ========================================================================== */
+
+.page-enter {
+    animation: fadeIn var(--anim-duration-slow) var(--anim-ease-out);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.navbar {
+    animation: slideInDown 0.6s var(--anim-ease-out) forwards;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   EFECTOS DE TARJETAS DEL ADMIN Y DASHBOARD
+   ========================================================================== */
+
+.card-custom {
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+    position: relative;
+}
+
+.card-custom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(166, 227, 88, 0.03), transparent);
+    opacity: 0;
+    transition: opacity var(--anim-duration-base) var(--anim-ease-out);
+    pointer-events: none;
+}
+
+.card-custom:hover::before {
+    opacity: 1;
+}
+
+.card-custom:hover {
+    transform: translateY(-8px);
+    border-color: rgba(166, 227, 88, 0.4);
+}
+
+/* ==========================================================================
+   LISTA DE SIDEBAR ADMIN
+   ========================================================================== */
+
+.sidebar-menu .list-group-item {
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-menu .list-group-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary);
+    transform: scaleY(0);
+    transition: transform var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.sidebar-menu .list-group-item:hover::before,
+.sidebar-menu .list-group-item.active::before {
+    transform: scaleY(1);
+}
+
+.sidebar-menu .list-group-item:hover {
+    padding-left: 20px;
+}
+
+.sidebar-menu .material-symbols-outlined {
+    transition: transform var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.sidebar-menu .list-group-item:hover .material-symbols-outlined {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--primary-fixed);
+}
+
+/* ==========================================================================
+   EFECTOS DE IMÁGENES
+   ========================================================================== */
+
+img {
+    transition: transform var(--anim-duration-base) var(--anim-ease-out), filter var(--anim-duration-base) var(--anim-ease-out);
+}
+
+img:hover {
+    filter: brightness(1.1) contrast(1.05);
+}
+
+.glass-card:hover img {
+    filter: brightness(1.15) saturate(1.1);
+}
+
+/* ==========================================================================
+   BADGES Y ETIQUETAS
+   ========================================================================== */
+
+.badge {
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.badge:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   LOADERS Y ESTADOS DE CARGA
+   ========================================================================== */
+
+.loader-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin-slow 1s linear infinite;
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #1a1a2e 25%, #2a2a3e 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+    height: 16px;
+    width: 100%;
+}
+
+.skeleton-text {
+    height: 20px;
+    margin: 8px 0;
+}
+
+.skeleton-title {
+    height: 24px;
+    width: 60%;
+    margin: 12px 0;
+}
+
+/* ==========================================================================
+   EFECTOS DE FONDO DECORATIVO
+   ========================================================================== */
+
+.decorative-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.decorative-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(166, 227, 88, 0.05);
+    filter: blur(60px);
+    animation: float 8s ease-in-out infinite;
+}
+
+.decorative-circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.decorative-circle-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -2s;
+    background: rgba(130, 207, 255, 0.05);
+}
+
+.decorative-circle-3 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 50%;
+    animation-delay: -4s;
+    background: rgba(183, 245, 104, 0.03);
+}
+
+/* ==========================================================================
+   EFECTOS DE ENLACES SOCIALES
+   ========================================================================== */
+
+.navbar .bi,
+.footer .bi {
+    transition: all var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.navbar .bi:hover,
+.footer .bi:hover {
+    transform: scale(1.2) rotate(10deg);
+    color: var(--primary-fixed) !important;
+}
+
+/* ==========================================================================
+   TARJETAS DE NOTICIAS - EFECTOS ESPECÍFICOS
+   ========================================================================== */
+
+.news-card {
+    transition: all var(--anim-duration-base) var(--anim-ease-out);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(166, 227, 88, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.news-card:not(:hover) {
+    transform: translateY(0) scale(1);
+}
+
+/* ==========================================================================
+   RESPONSIVE PARA ANIMACIONES
+   ========================================================================== */
+
+@media (max-width: 640px) {
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        transform: translateY(20px);
+    }
+
+    .reveal.active,
+    .reveal-left.active,
+    .reveal-right.active,
+    .reveal-scale.active {
+        transform: translateY(0);
+    }
+
+    .news-slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .news-slider-btn.prev {
+        left: 4px;
+    }
+
+    .news-slider-btn.next {
+        right: 4px;
+    }
+
+    .news-modal {
+        max-width: 100%;
+        margin: 0 12px;
+        border-radius: 16px;
+    }
+
+    .news-modal-close {
+        top: 8px;
+        right: 8px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
+    }
+
+    .news-modal-image {
+        max-height: 35vh;
+    }
+
+    .news-modal-content {
+        padding: 16px;
+    }
+
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+}
+
+/* Preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
