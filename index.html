@@ -1370,69 +1370,46 @@
                             class="material-symbols-outlined fs-6">arrow_forward</span></a>
                 </div>
                 <div class="fb-widget-wrapper glass-card" id="fb-plugin-container">
-                    <div class="fb-page"
-                        data-href="https://www.facebook.com/jushmchl"
-                        data-tabs="timeline"
-                        data-width="540"
-                        data-height="560"
-                        data-small-header="false"
-                        data-adapt-container-width="true"
-                        data-hide-cover="false"
-                        data-show-facepile="false">
-                        <blockquote cite="https://www.facebook.com/jushmchl"
-                            class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/jushmchl">Junta de Usuarios Chancay Lambayeque</a>
-                        </blockquote>
-                    </div>
-                    <!-- Fallback: se muestra si el SDK no carga en 8 segundos -->
-                    <div id="fb-fallback" class="d-none w-100 text-center p-5">
-                        <div class="mb-4">
-                            <span class="material-symbols-outlined text-secondary-custom" style="font-size: 56px;">public</span>
+                <div class="noticias-grid">
+                    <article class="news-card">
+                        <img src="https://picsum.photos/seed/noticia1/600/800" class="news-image" alt="Avances en inteligencia artificial">
+                        <div class="news-content">
+                            <span class="news-category">Tecnología</span>
+                            <h3 class="news-title">Avances en inteligencia artificial transforman la industria</h3>
+                            <p class="news-excerpt">Las nuevas herramientas de IA generativa están redefiniendo procesos productivos y creativos en múltiples sectores económicos.</p>
+                            <span class="news-date">26 Oct 2026</span>
                         </div>
-                        <h4 class="text-white font-heading fw-bold mb-2">Síguenos en Facebook</h4>
-                        <p class="text-white-50 mb-4" style="max-width: 400px; margin: 0 auto;">Visita nuestra página oficial para mantenerte al día con las últimas noticias y actividades de la JUSHMCHL.</p>
-                        <a href="https://www.facebook.com/jushmchl" target="_blank" rel="noopener noreferrer"
-                            class="btn bg-secondary-custom btn-custom-pill d-inline-flex align-items-center gap-2 px-4 py-3">
-                            <i class="bi bi-facebook"></i>
-                            <span>Ir a nuestra página de Facebook</span>
-                            <span class="material-symbols-outlined fs-6">arrow_forward</span>
-                        </a>
-                    </div>
+                    </article>
+                    <article class="news-card">
+                        <img src="https://picsum.photos/seed/noticia2/800/600" class="news-image" alt="Energías renovables récord">
+                        <div class="news-content">
+                            <span class="news-category">Medio Ambiente</span>
+                            <h3 class="news-title">Energías renovables alcanzan récord histórico</h3>
+                            <p class="news-excerpt">La capacidad instalada de energía solar y eólica superó las expectativas anuales, marcando un hito en la transición energética global.</p>
+                            <span class="news-date">25 Oct 2026</span>
+                        </div>
+                    </article>
+                    <article class="news-card">
+                        <img src="https://picsum.photos/seed/noticia3/600/900" class="news-image" alt="Mercados e inflación">
+                        <div class="news-content">
+                            <span class="news-category">Economía</span>
+                            <h3 class="news-title">Mercados reaccionan ante nuevos datos de inflación</h3>
+                            <p class="news-excerpt">Los índices de precios al consumidor mostraron una moderación que impulsa expectativas de ajuste en las tasas de interés.</p>
+                            <span class="news-date">24 Oct 2026</span>
+                        </div>
+                    </article>
+                    <article class="news-card">
+                        <img src="https://picsum.photos/seed/noticia4/1000/600" class="news-image" alt="Final de campeonato">
+                        <div class="news-content">
+                            <span class="news-category">Deportes</span>
+                            <h3 class="news-title">Final de campeonato define al nuevo campeón</h3>
+                            <p class="news-excerpt">El equipo local se coronó tras un partido emocionante que mantuvo a los aficionados al borde de sus asientos hasta el final.</p>
+                            <span class="news-date">23 Oct 2026</span>
+                        </div>
+                    </article>
                 </div>
-                <!-- Script de detección de fallback del plugin de Facebook -->
-                <script>
-                    (function() {
-                        var fbCheckTimeout = setTimeout(function() {
-                            var container = document.getElementById('fb-plugin-container');
-                            var fbPage = container ? container.querySelector('.fb-page') : null;
-                            var iframe = container ? container.querySelector('iframe') : null;
-                            // Si no hay iframe renderizado por el SDK, mostrar fallback
-                            if (!iframe && container) {
-                                var fallback = document.getElementById('fb-fallback');
-                                if (fallback) {
-                                    fallback.classList.remove('d-none');
-                                    if (fbPage) fbPage.style.display = 'none';
-                                }
-                            }
-                        }, 8000); // Esperar 8 segundos antes de mostrar fallback
-
-                        // Si el SDK carga correctamente, cancelar el fallback
-                        var originalFbAsyncInit = window.fbAsyncInit;
-                        window.fbAsyncInit = function() {
-                            if (originalFbAsyncInit) originalFbAsyncInit();
-                            // Verificar después de un breve delay si el iframe se renderizó
-                            setTimeout(function() {
-                                var container = document.getElementById('fb-plugin-container');
-                                var iframe = container ? container.querySelector('iframe') : null;
-                                if (iframe) {
-                                    clearTimeout(fbCheckTimeout);
-                                    var fallback = document.getElementById('fb-fallback');
-                                    if (fallback) fallback.classList.add('d-none');
-                                }
-                            }, 3000);
-                        };
-                    })();
-                </script>
+            </div>
+                
 
 
             </div>
