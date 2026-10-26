@@ -33,9 +33,12 @@
 
         .login-container {
             max-width: 450px;
-            margin: auto;
             width: 100%;
             padding: 2rem;
+            margin: 8vh auto 10vh auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .dashboard-container {
@@ -47,14 +50,66 @@
         }
 
         .admin-nav {
-            background: rgba(10, 12, 16, 0.85);
-            backdrop-filter: blur(20px);
+            background: rgba(10, 12, 16, 0.92);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
             border-bottom: 1px solid var(--glass-stroke);
-            padding: 1rem 2rem;
+            padding: 0.875rem 1.5rem;
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 1050;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .admin-nav .navbar-brand {
+            text-decoration: none;
+        }
+
+        .admin-nav .nav-actions .btn-outline-light {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .admin-nav .nav-actions .btn-outline-light:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .letter-spacing-1 {
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 767.98px) {
+            .admin-nav {
+                padding: 0.75rem 1rem;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+
+            .admin-nav .navbar-brand {
+                flex: 1;
+            }
+
+            .admin-nav .nav-actions {
+                order: 2;
+                width: 100%;
+                justify-content: flex-end;
+                gap: 0.5rem;
+            }
+
+            .admin-nav .nav-actions .btn {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .admin-nav .nav-actions .btn span.d-none.d-sm-inline {
+                display: none !important;
+            }
         }
 
         .sidebar-menu .list-group-item {
@@ -184,24 +239,29 @@
 <body class="selection-bg-primary">
 
     <!-- Nav Bar -->
-    <nav class="admin-nav d-flex justify-content-between align-items-center">
-        <a class="navbar-brand d-flex align-items-center gap-3" href="/">
-            <img alt="Logo" src="assets/img/juchl.png" height="40">
-            <span class="font-heading text-white fw-bold fs-5 mb-0">Admin JUSHMCHL</span>
-        </a>
-        <div class="d-none" id="logoutSection">
-            <a href="index.html" class="btn btn-outline-custom btn-sm me-2 d-inline-flex align-items-center gap-1">
-                <span class="material-symbols-outlined fs-6">arrow_back</span> Volver al Sitio
+    <nav class="admin-nav d-flex justify-content-between align-items-center px-4">
+        <div class="navbar-brand d-flex align-items-center gap-2" style="text-decoration: none;">
+            <img alt="Logo" src="assets/img/juchl.png" width="48" height="48"
+                 style="object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+            <span class="font-heading text-white fw-bold fs-5 mb-0 letter-spacing-1">Admin JUSHMCHL</span>
+        </div>
+        <div class="nav-actions d-flex align-items-center gap-2" id="logoutSection">
+            <a href="index.html" class="btn btn-outline-light btn-sm d-none d-md-inline-flex align-items-center gap-1 px-3 py-2">
+                <span class="material-symbols-outlined fs-6">arrow_back</span>
+                <span class="d-none d-sm-inline">Volver al Sitio</span>
             </a>
-            <span class="text-white me-3 d-none d-md-inline">Administrador</span>
-            <button class="btn btn-outline-custom btn-sm" onclick="logout()">Cerrar Sesión</button>
+            <span class="text-white-50 small d-none d-md-inline me-2">Administrador</span>
+            <button class="btn btn-outline-light btn-sm px-3 py-2" onclick="logout()"
+                    style="color: #ffffff; border-color: rgba(255,255,255,0.35);">
+                <span class="material-symbols-outlined fs-6 me-1">exit_to_app</span>
+                <span class="d-none d-sm-inline">Cerrar Sesión</span>
+            </button>
         </div>
     </nav>
 
     <!-- Login Container -->
     <div class="login-container" id="loginFormSection">
         <div class="card-custom text-center">
-            <img src="assets/img/juchl.png" height="80" class="mb-4">
             <h3 class="font-heading text-white mb-2 fw-bold">Iniciar Sesión</h3>
             <p class="text-secondary-custom mb-4 fs-6">Panel de Control General</p>
 
