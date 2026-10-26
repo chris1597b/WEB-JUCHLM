@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /api/
+Disallow: /php-api/
+Disallow: /uploads/
+Disallow: /node_modules/
+Sitemap: http://localhost:8012/webjuch/sitemap.xml
