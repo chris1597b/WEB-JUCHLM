@@ -1448,97 +1448,244 @@
                             class="material-symbols-outlined fs-6">arrow_forward</span></a>
                 </div>
                 <div class="fb-widget-wrapper glass-card" id="fb-plugin-container">
-                <div class="noticias-slider-wrapper">
-                    <div class="noticias-track">
-                        <article class="news-card" data-news-id="0">
-                            <img src="https://picsum.photos/seed/noticia1/600/800" class="news-image" alt="Avances en inteligencia artificial">
+
+                <!-- Slider dinámico: cargado desde la API de noticias -->
+                <div class="noticias-slider-wrapper" id="actualidad-slider-wrapper">
+                    <div class="noticias-track" id="actualidad-noticias-track">
+                        <!-- Skeleton loaders mientras carga -->
+                        <article class="news-card news-skeleton">
+                            <div class="news-image" style="background:rgba(255,255,255,0.06);animation:pulse 1.5s infinite;"></div>
                             <div class="news-content">
-                                <span class="news-category">Tecnología</span>
-                                <h3 class="news-title">Avances en inteligencia artificial transforman la industria</h3>
-                                <p class="news-excerpt">Las nuevas herramientas de IA generativa están redefiniendo procesos productivos y creativos en múltiples sectores económicos.</p>
-                                <span class="news-date">26 Oct 2026</span>
+                                <span class="news-category" style="background:rgba(255,255,255,0.08);color:transparent;border-radius:4px;">████████</span>
+                                <h3 class="news-title" style="background:rgba(255,255,255,0.06);color:transparent;border-radius:4px;">████████████████████</h3>
+                                <p class="news-excerpt" style="background:rgba(255,255,255,0.04);color:transparent;border-radius:4px;">██████████████████████████████████</p>
                             </div>
                         </article>
-                        <article class="news-card" data-news-id="1">
-                            <img src="https://picsum.photos/seed/noticia2/800/600" class="news-image" alt="Energías renovables récord">
+                        <article class="news-card news-skeleton">
+                            <div class="news-image" style="background:rgba(255,255,255,0.06);animation:pulse 1.5s infinite .2s;"></div>
                             <div class="news-content">
-                                <span class="news-category">Medio Ambiente</span>
-                                <h3 class="news-title">Energías renovables alcanzan récord histórico</h3>
-                                <p class="news-excerpt">La capacidad instalada de energía solar y eólica superó las expectativas anuales, marcando un hito en la transición energética global.</p>
-                                <span class="news-date">25 Oct 2026</span>
-                            </div>
-                        </article>
-                        <article class="news-card" data-news-id="2">
-                            <img src="https://picsum.photos/seed/noticia3/600/900" class="news-image" alt="Mercados e inflación">
-                            <div class="news-content">
-                                <span class="news-category">Economía</span>
-                                <h3 class="news-title">Mercados reaccionan ante nuevos datos de inflación</h3>
-                                <p class="news-excerpt">Los índices de precios al consumidor mostraron una moderación que impulsa expectativas de ajuste en las tasas de interés.</p>
-                                <span class="news-date">24 Oct 2026</span>
-                            </div>
-                        </article>
-                        <article class="news-card" data-news-id="3">
-                            <img src="https://picsum.photos/seed/noticia4/1000/600" class="news-image" alt="Final de campeonato">
-                            <div class="news-content">
-                                <span class="news-category">Deportes</span>
-                                <h3 class="news-title">Final de campeonato define al nuevo campeón</h3>
-                                <p class="news-excerpt">El equipo local se coronó tras un partido emocionante que mantuvo a los aficionados al borde de sus asientos hasta el final.</p>
-                                <span class="news-date">23 Oct 2026</span>
+                                <span class="news-category" style="background:rgba(255,255,255,0.08);color:transparent;border-radius:4px;">████████</span>
+                                <h3 class="news-title" style="background:rgba(255,255,255,0.06);color:transparent;border-radius:4px;">████████████████████</h3>
+                                <p class="news-excerpt" style="background:rgba(255,255,255,0.04);color:transparent;border-radius:4px;">██████████████████████████████████</p>
                             </div>
                         </article>
                     </div>
-                    <button class="news-slider-btn prev" aria-label="Anterior">&#10094;</button>
-                    <button class="news-slider-btn next" aria-label="Siguiente">&#10095;</button>
+                    <button class="news-slider-btn prev" aria-label="Anterior" id="actualidad-prev-btn">&#10094;</button>
+                    <button class="news-slider-btn next" aria-label="Siguiente" id="actualidad-next-btn">&#10095;</button>
                 </div>
 
+                <!-- Modal dinámico -->
                 <div class="news-modal-overlay" id="news-modal-overlay" aria-hidden="true">
                     <div class="news-modal" role="dialog" aria-modal="true" aria-label="Ver noticia ampliada">
                         <button class="news-modal-close" aria-label="Cerrar">×</button>
-                        <div class="news-modal-track">
-                            <article class="news-modal-card" data-news-id="0">
-                                <img src="https://picsum.photos/seed/noticia1/1200/1600" class="news-modal-image" alt="Avances en inteligencia artificial">
-                                <div class="news-modal-content">
-                                    <span class="news-modal-category">Tecnología</span>
-                                    <h2 class="news-modal-title">Avances en inteligencia artificial transforman la industria</h2>
-                                    <p class="news-modal-excerpt">Las nuevas herramientas de IA generativa están redefiniendo procesos productivos y creativos en múltiples sectores económicos.</p>
-                                    <span class="news-modal-date">26 Oct 2026</span>
-                                </div>
-                            </article>
-                            <article class="news-modal-card" data-news-id="1">
-                                <img src="https://picsum.photos/seed/noticia2/1600/1200" class="news-modal-image" alt="Energías renovables récord">
-                                <div class="news-modal-content">
-                                    <span class="news-modal-category">Medio Ambiente</span>
-                                    <h2 class="news-modal-title">Energías renovables alcanzan récord histórico</h2>
-                                    <p class="news-modal-excerpt">La capacidad instalada de energía solar y eólica superó las expectativas anuales, marcando un hito en la transición energética global.</p>
-                                    <span class="news-modal-date">25 Oct 2026</span>
-                                </div>
-                            </article>
-                            <article class="news-modal-card" data-news-id="2">
-                                <img src="https://picsum.photos/seed/noticia3/1200/1800" class="news-modal-image" alt="Mercados e inflación">
-                                <div class="news-modal-content">
-                                    <span class="news-modal-category">Economía</span>
-                                    <h2 class="news-modal-title">Mercados reaccionan ante nuevos datos de inflación</h2>
-                                    <p class="news-modal-excerpt">Los índices de precios al consumidor mostraron una moderación que impulsa expectativas de ajuste en las tasas de interés.</p>
-                                    <span class="news-modal-date">24 Oct 2026</span>
-                                </div>
-                            </article>
-                            <article class="news-modal-card" data-news-id="3">
-                                <img src="https://picsum.photos/seed/noticia4/2000/1200" class="news-modal-image" alt="Final de campeonato">
-                                <div class="news-modal-content">
-                                    <span class="news-modal-category">Deportes</span>
-                                    <h2 class="news-modal-title">Final de campeonato define al nuevo campeón</h2>
-                                    <p class="news-modal-excerpt">El equipo local se coronó tras un partido emocionante que mantuvo a los aficionados al borde de sus asientos hasta el final.</p>
-                                    <span class="news-modal-date">23 Oct 2026</span>
-                                </div>
-                            </article>
+                        <div class="news-modal-track" id="actualidad-modal-track">
+                            <!-- Populated dynamically -->
                         </div>
                         <button class="news-modal-btn prev" aria-label="Anterior">&#10094;</button>
                         <button class="news-modal-btn next" aria-label="Siguiente">&#10095;</button>
                         <div class="news-modal-dots" id="news-modal-dots"></div>
                     </div>
                 </div>
-            </div>
-                
+
+                </div><!-- /fb-widget-wrapper -->
+
+                <!-- Script: carga dinámica de noticias desde la API -->
+                <script>
+                (function() {
+                    const API_URL = (function() {
+                        const isDev = window.location.port === '3000' ||
+                                      window.location.hostname.includes('run.app') ||
+                                      window.location.hostname.includes('aistudio');
+                        return isDev ? '/api/admin/noticias' : 'php-api/noticias.php';
+                    })();
+
+                    const DEFAULT_IMG = 'assets/img/canales.jpg';
+
+                    function esc(str) {
+                        if (!str) return '';
+                        return String(str)
+                            .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                            .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+                    }
+
+                    async function loadActualidad() {
+                        let noticias = [];
+                        try {
+                            const res = await fetch(API_URL);
+                            if (res.ok) {
+                                const data = await res.json();
+                                if (Array.isArray(data)) noticias = data;
+                            }
+                        } catch(e) {
+                            console.warn('No se pudo cargar la sección Actualidad:', e);
+                        }
+
+                        const track = document.getElementById('actualidad-noticias-track');
+                        const modalTrack = document.getElementById('actualidad-modal-track');
+                        const dotsContainer = document.getElementById('news-modal-dots');
+                        if (!track) return;
+
+                        if (noticias.length === 0) {
+                            track.innerHTML = '<article class="news-card" style="display:flex;align-items:center;justify-content:center;min-height:220px;"><div class="news-content"><p style="color:rgba(255,255,255,0.4);text-align:center;font-size:14px;">No hay noticias publicadas aún.</p></div></article>';
+                            if (modalTrack) modalTrack.innerHTML = '';
+                            return;
+                        }
+
+                        // Render slider cards
+                        track.innerHTML = noticias.map((n, i) => `
+                            <article class="news-card" data-news-id="${i}" tabindex="0" role="button" aria-label="Ver noticia: ${esc(n.title)}">
+                                <img src="${esc(n.imageUrl || DEFAULT_IMG)}" class="news-image" alt="${esc(n.title)}"
+                                     onerror="this.src='${DEFAULT_IMG}'">
+                                <div class="news-content">
+                                    <span class="news-category">${esc(n.category || 'Institucional')}</span>
+                                    <h3 class="news-title">${esc(n.title)}</h3>
+                                    <p class="news-excerpt">${esc(n.summary || '')}</p>
+                                    <span class="news-date">${esc(n.date || '')}</span>
+                                </div>
+                            </article>
+                        `).join('');
+
+                        // Render modal cards
+                        if (modalTrack) {
+                            modalTrack.innerHTML = noticias.map((n, i) => `
+                                <article class="news-modal-card" data-news-id="${i}">
+                                    <img src="${esc(n.imageUrl || DEFAULT_IMG)}" class="news-modal-image" alt="${esc(n.title)}"
+                                         onerror="this.src='${DEFAULT_IMG}'">
+                                    <div class="news-modal-content">
+                                        <span class="news-modal-category">${esc(n.category || 'Institucional')}</span>
+                                        <h2 class="news-modal-title">${esc(n.title)}</h2>
+                                        <p class="news-modal-excerpt">${esc(n.summary || '')}</p>
+                                        <span class="news-modal-date">${esc(n.date || '')}</span>
+                                    </div>
+                                </article>
+                            `).join('');
+                        }
+
+                        // Render modal dots
+                        if (dotsContainer) {
+                            dotsContainer.innerHTML = noticias.map((_, i) =>
+                                `<span class="news-modal-dot${i===0?' active':''}" data-index="${i}"></span>`
+                            ).join('');
+                        }
+
+                        // Re-initialize slider interactions now that DOM is ready
+                        initActualidadSlider();
+                    }
+
+                    function initActualidadSlider() {
+                        // Re-attach click events on cards (open modal)
+                        const track = document.getElementById('actualidad-noticias-track');
+                        const overlay = document.getElementById('news-modal-overlay');
+                        const modalTrack = document.getElementById('actualidad-modal-track');
+                        const dotsContainer = document.getElementById('news-modal-dots');
+
+                        if (!track || !overlay) return;
+
+                        let currentModal = 0;
+
+                        function showModalAt(idx) {
+                            if (!modalTrack) return;
+                            currentModal = idx;
+                            const cards = modalTrack.querySelectorAll('.news-modal-card');
+                            modalTrack.style.transform = `translateX(-${idx * 100}%)`;
+                            cards.forEach((c, i) => {
+                                c.classList.toggle('active', i === idx);
+                            });
+                            // Update dots
+                            if (dotsContainer) {
+                                dotsContainer.querySelectorAll('.news-modal-dot').forEach((d, i) => {
+                                    d.classList.toggle('active', i === idx);
+                                });
+                            }
+                        }
+
+                        // Open modal on card click
+                        track.querySelectorAll('.news-card').forEach(card => {
+                            card.addEventListener('click', () => {
+                                const id = parseInt(card.dataset.newsId || '0', 10);
+                                overlay.setAttribute('aria-hidden', 'false');
+                                overlay.classList.add('active');
+                                showModalAt(id);
+                            });
+                            card.addEventListener('keydown', (e) => {
+                                if (e.key === 'Enter' || e.key === ' ') card.click();
+                            });
+                        });
+
+                        // Modal close
+                        const closeBtn = overlay.querySelector('.news-modal-close');
+                        if (closeBtn) {
+                            closeBtn.onclick = () => {
+                                overlay.setAttribute('aria-hidden', 'true');
+                                overlay.classList.remove('active');
+                            };
+                        }
+                        overlay.addEventListener('click', (e) => {
+                            if (e.target === overlay) {
+                                overlay.setAttribute('aria-hidden', 'true');
+                                overlay.classList.remove('active');
+                            }
+                        });
+
+                        const prevBtn = document.getElementById('actualidad-prev-btn');
+                        const nextBtn = document.getElementById('actualidad-next-btn');
+                        if (prevBtn) prevBtn.onclick = () => track.scrollBy({ left: -340, behavior: 'smooth' });
+                        if (nextBtn) nextBtn.onclick = () => track.scrollBy({ left: 340, behavior: 'smooth' });
+
+                        // Modal prev/next
+                        overlay.querySelectorAll('.news-modal-btn').forEach(btn => {
+                            btn.onclick = () => {
+                                const cards = modalTrack ? modalTrack.querySelectorAll('.news-modal-card') : [];
+                                const total = cards.length;
+                                if (!total) return;
+                                if (btn.classList.contains('prev')) {
+                                    showModalAt((currentModal - 1 + total) % total);
+                                } else {
+                                    showModalAt((currentModal + 1) % total);
+                                }
+                            };
+                        });
+
+                        // Dot clicks
+                        if (dotsContainer) {
+                            dotsContainer.querySelectorAll('.news-modal-dot').forEach(dot => {
+                                dot.addEventListener('click', () => {
+                                    showModalAt(parseInt(dot.dataset.index, 10));
+                                });
+                            });
+                        }
+
+                        document.addEventListener('keydown', (e) => {
+                            if (!overlay.classList.contains('active')) return;
+                            const total = modalTrack ? modalTrack.querySelectorAll('.news-modal-card').length : 0;
+                            if (e.key === 'Escape') {
+                                overlay.setAttribute('aria-hidden', 'true');
+                                overlay.classList.remove('active');
+                            } else if (total && e.key === 'ArrowLeft') {
+                                showModalAt((currentModal - 1 + total) % total);
+                            } else if (total && e.key === 'ArrowRight') {
+                                showModalAt((currentModal + 1) % total);
+                            }
+                        });
+
+                        // Init modal track positions
+                        if (modalTrack) {
+                            const cards = modalTrack.querySelectorAll('.news-modal-card');
+                            cards.forEach((c, i) => { c.classList.toggle('active', i === 0); });
+                            modalTrack.style.transform = 'translateX(0)';
+                        }
+                    }
+
+                    // Run on DOM ready
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', loadActualidad);
+                    } else {
+                        loadActualidad();
+                    }
+                })();
+                </script>
+
+
 
 
             </div>
@@ -2756,111 +2903,6 @@
                 });
             }
         });
-    </script>
-
-    <!-- Slider de noticias y modal ampliado -->
-    <script>
-        (function() {
-            const track = document.querySelector(".noticias-track");
-            const btnPrev = document.querySelector(".news-slider-btn.prev");
-            const btnNext = document.querySelector(".news-slider-btn.next");
-            const cards = document.querySelectorAll(".news-card");
-            const overlay = document.getElementById("news-modal-overlay");
-            const modalTrack = document.querySelector(".news-modal-track");
-            const modalCards = document.querySelectorAll(".news-modal-card");
-            const modalClose = document.querySelector(".news-modal-close");
-            const modalBtnPrev = document.querySelector(".news-modal-btn.prev");
-            const modalBtnNext = document.querySelector(".news-modal-btn.next");
-            const modalDotsContainer = document.getElementById("news-modal-dots");
-
-            let modalIndex = 0;
-
-            function crearDots() {
-                if (!modalDotsContainer) return;
-                modalDotsContainer.innerHTML = "";
-                modalCards.forEach((_, i) => {
-                    const dot = document.createElement("button");
-                    dot.className = "news-modal-dot" + (i === 0 ? " active" : "");
-                    dot.setAttribute("aria-label", "Noticia " + (i + 1));
-                    dot.addEventListener("click", () => irAModal(i));
-                    modalDotsContainer.appendChild(dot);
-                });
-            }
-
-            function actualizarDots() {
-                modalDotsContainer.querySelectorAll(".news-modal-dot").forEach((dot, i) => {
-                    dot.classList.toggle("active", i === modalIndex);
-                });
-            }
-
-            function irAModal(index) {
-                modalIndex = index;
-                const translateX = -modalIndex * 100;
-                modalTrack.style.transform = "translateX(" + translateX + "%)";
-                actualizarDots();
-
-                // Activar tarjeta del modal con animación
-                modalCards.forEach((card, i) => {
-                    card.classList.toggle("active", i === modalIndex);
-                });
-            }
-
-            function abrirModal(index) {
-                modalIndex = index || 0;
-                irAModal(modalIndex);
-                overlay.classList.add("active");
-            }
-
-            function cerrarModal() {
-                overlay.classList.remove("active");
-            }
-
-            if (btnPrev && btnNext && track) {
-                const paso = 340;
-                btnPrev.addEventListener("click", () => {
-                    track.scrollBy({ left: -paso, behavior: "smooth" });
-                });
-                btnNext.addEventListener("click", () => {
-                    track.scrollBy({ left: paso, behavior: "smooth" });
-                });
-            }
-
-            cards.forEach((card) => {
-                card.addEventListener("click", () => {
-                    const id = parseInt(card.getAttribute("data-news-id"), 10) || 0;
-                    abrirModal(id);
-                });
-            });
-
-            if (modalClose) modalClose.addEventListener("click", cerrarModal);
-            if (overlay) overlay.addEventListener("click", (e) => {
-                if (e.target === overlay) cerrarModal();
-            });
-
-            if (modalBtnPrev) modalBtnPrev.addEventListener("click", () => {
-                const next = (modalIndex - 1 + modalCards.length) % modalCards.length;
-                irAModal(next);
-            });
-            if (modalBtnNext) modalBtnNext.addEventListener("click", () => {
-                const next = (modalIndex + 1) % modalCards.length;
-                irAModal(next);
-            });
-
-            document.addEventListener("keydown", (e) => {
-                if (!overlay.classList.contains("active")) return;
-                if (e.key === "Escape") cerrarModal();
-                if (e.key === "ArrowLeft") {
-                    const next = (modalIndex - 1 + modalCards.length) % modalCards.length;
-                    irAModal(next);
-                }
-                if (e.key === "ArrowRight") {
-                    const next = (modalIndex + 1) % modalCards.length;
-                    irAModal(next);
-                }
-            });
-
-            crearDots();
-        })();
     </script>
 
     <!-- Optimización de carga de imágenes y fuentes críticas -->

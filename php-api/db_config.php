@@ -21,7 +21,7 @@ define('DB_USER', getenv('DB_USER') ?: 'juchlorg_chris');
 define('DB_PASS', getenv('DB_PASS') ?: 'vK[85FbYJ9p6eI[)');
 define('DB_PORT', getenv('DB_PORT') ?: '3306');
 */
-//define('JWT_SECRET', getenv('JWT_SECRET') ?: 'jushmchl_secret_key_2026');
+define('JWT_SECRET', getenv('JWT_SECRET') ?: 'jushmchl_secret_key_2026');
 
 // Configuración de CORS e Headers Globales
 if (!headers_sent()) {
