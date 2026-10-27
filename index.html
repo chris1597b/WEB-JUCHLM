@@ -410,7 +410,7 @@
                         <div
                             class="glass-card p-4 d-flex flex-column align-items-center justify-content-center ambient-glow">
                             <span class="material-symbols-outlined fs-1 text-primary-custom mb-2">history</span>
-                            <span class="font-heading text-white fw-bold fs-1">54</span>
+                            <span class="font-heading text-white fw-bold fs-1" id="years-of-service">0</span>
                             <span class="text-uppercase fw-semibold"
                                 style="font-size: 12px; letter-spacing: 0.05em; color: var(--on-surface);">Años de
                                 Servicio</span>
@@ -3016,6 +3016,15 @@
                     this.style.filter = '';
                 });
             });
+        })();
+    </script>
+    <script>
+        (function () {
+            const foundingYear = 1972;
+            const counter = document.getElementById('years-of-service');
+            if (counter) {
+                counter.textContent = Math.max(0, new Date().getFullYear() - foundingYear);
+            }
         })();
     </script>
 </body>

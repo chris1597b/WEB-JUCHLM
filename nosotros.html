@@ -243,7 +243,7 @@
                         <div class="sticky-top" style="top: 150px;">
                             <h2 class="font-heading text-white fs-1 fw-bold mb-4"
                                 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8)">Nuestra<br>Institución</h2>
-                            <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8)">54 años al servicio de los usuarios
+                            <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8)"><span class="font-heading text-white fw-bold fs-1" id="years-of-service">0</span> años al servicio de los usuarios
                                 de agua, garantizando una
                                 gestión hídrica eficiente para el desarrollo agrícola del valle.</p>
                             <div
@@ -699,6 +699,15 @@
                 });
             }
         });
+    </script>
+    <script>
+        (function () {
+            const foundingYear = 1972;
+            const counter = document.getElementById('years-of-service');
+            if (counter) {
+                counter.textContent = Math.max(0, new Date().getFullYear() - foundingYear);
+            }
+        })();
     </script>
 </body>
 
