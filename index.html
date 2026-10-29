@@ -55,6 +55,105 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
+    <style>
+        /* ==========================================================================
+           MODAL IMAGEN PANTALLA COMPLETA - Actualidad
+           ========================================================================== */
+        .news-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 999999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .news-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .news-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 2rem;
+            line-height: 1;
+            z-index: 1000;
+            transition: all 0.2s ease;
+        }
+
+        .news-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .news-modal {
+            position: relative;
+            width: 90%;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .news-modal-image-full {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            display: block;
+            cursor: pointer;
+        }
+
+        /* Responsive móvil */
+        @media (max-width: 640px) {
+            .news-modal-overlay {
+                padding: 10px;
+            }
+
+            .news-modal-close {
+                top: 10px;
+                right: 10px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.6rem;
+            }
+
+            .news-modal {
+                width: 95%;
+                max-width: 95vw;
+                max-height: 90vh;
+            }
+
+            .news-modal-image-full {
+                max-height: 80vh;
+            }
+        }
+    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
 
@@ -1476,8 +1575,15 @@
                     <button class="news-slider-btn next" aria-label="Siguiente" id="actualidad-next-btn">&#10095;</button>
                 </div>
 
-
                 </div><!-- /fb-widget-wrapper -->
+
+                <!-- Modal imagen pantalla completa (fuera del contenedor padre) -->
+                <div class="news-modal-overlay" id="news-modal-overlay" aria-hidden="true">
+                    <button class="news-modal-close" aria-label="Cerrar">×</button>
+                    <div class="news-modal" role="dialog" aria-modal="true" aria-label="Ver imagen completa">
+                        <img class="news-modal-image-full" id="news-modal-image-full" src="" alt="Imagen completa de la noticia">
+                    </div>
+                </div>
 
                 <!-- Script: carga dinámica de noticias desde la API -->
                 <script>
@@ -1496,6 +1602,25 @@
                         return String(str)
                             .replace(/&/g,'&amp;').replace(/</g,'&lt;')
                             .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+                    }
+
+                    // Elementos del modal
+                    const overlay = document.getElementById('news-modal-overlay');
+                    const modalImg = document.getElementById('news-modal-image-full');
+                    const closeBtn = overlay ? overlay.querySelector('.news-modal-close') : null;
+
+                    function closeModal() {
+                        if (!overlay) return;
+                        overlay.setAttribute('aria-hidden', 'true');
+                        overlay.classList.remove('active');
+                        if (modalImg) modalImg.src = '';
+                    }
+
+                    function openModal(imgSrc) {
+                        if (!overlay || !modalImg) return;
+                        modalImg.src = imgSrc;
+                        overlay.setAttribute('aria-hidden', 'false');
+                        overlay.classList.add('active');
                     }
 
                     async function loadActualidad() {
@@ -1518,9 +1643,9 @@
                             return;
                         }
 
-                        // Render slider cards
+                        // Render slider cards con evento click para abrir imagen grande
                         track.innerHTML = noticias.map((n, i) => `
-                            <article class="news-card">
+                            <article class="news-card" tabindex="0" role="button" aria-label="Ver imagen: ${esc(n.title)}">
                                 <img src="${esc(n.imageUrl || DEFAULT_IMG)}" class="news-image" alt="${esc(n.title)}"
                                      onerror="this.src='${DEFAULT_IMG}'">
                                 <div class="news-content">
@@ -1531,6 +1656,45 @@
                                 </div>
                             </article>
                         `).join('');
+
+                        // Click en tarjeta abre el modal con imagen grande
+                        track.querySelectorAll('.news-card').forEach(card => {
+                            const img = card.querySelector('.news-image');
+                            const imgSrc = img ? img.src : DEFAULT_IMG;
+
+                            card.addEventListener('click', () => {
+                                openModal(imgSrc);
+                            });
+                            card.addEventListener('keydown', (e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    openModal(imgSrc);
+                                }
+                            });
+                        });
+
+                        // Cerrar modal
+                        if (closeBtn) {
+                            closeBtn.onclick = closeModal;
+                        }
+                        if (overlay) {
+                            overlay.addEventListener('click', (e) => {
+                                if (e.target === overlay) closeModal();
+                            });
+                        }
+
+                        // Teclado Escape para cerrar
+                        document.addEventListener('keydown', (e) => {
+                            if (overlay && overlay.classList.contains('active') && e.key === 'Escape') {
+                                closeModal();
+                            }
+                        });
+
+                        // Botones del slider (mover tarjetas)
+                        const prevBtn = document.getElementById('actualidad-prev-btn');
+                        const nextBtn = document.getElementById('actualidad-next-btn');
+                        if (prevBtn) prevBtn.onclick = () => track.scrollBy({ left: -340, behavior: 'smooth' });
+                        if (nextBtn) nextBtn.onclick = () => track.scrollBy({ left: 340, behavior: 'smooth' });
                     }
 
                     // Run on DOM ready
